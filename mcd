@@ -1,0 +1,14 @@
+A COMMENTER, 0N Poste, 11 Poste
+Poste:id,date,message,lien
+DF, ON Utilisateur, 11 Poste
+:
+
+Lien: id,lien
+LIKE, 0N Utilisateur, 0N Poste
+Utilisateur: id,nom,prenom,email,motDePasse,dateDeNaissance,PhotoDeProfile
+EST ABONNER, 0N Utilisateur, 11 Utilisateur
+
+EST DANS, 0N DOSSIER, 11 Lien
+DOSSIER: id,publicPrivate,nom
+Possede, 0N Utilisateur, 11 DOSSIER
+:
