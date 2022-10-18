@@ -1,14 +1,20 @@
-A COMMENTER, 0N Poste, 11 Poste
-Poste:id,date,message,lien
-DF, ON Utilisateur, 11 Poste
+:
+Est abonné(e), 0N UTILISATEUR, 0N UTILISATEUR
+:
 :
 
-Lien: id,lien
-LIKE, 0N Utilisateur, 0N Poste
-Utilisateur: id,nom,prenom,email,motDePasse,dateDeNaissance,PhotoDeProfile
-EST ABONNER, 0N Utilisateur, 11 Utilisateur
+Posséder, 0N UTILISATEUR, 11 DOSSIER
+UTILISATEUR: id,nom,prenom,email,motDePasse,dateDeNaissance,PhotoDeProfile
+Liker, 0N UTILISATEUR, 0N POSTE
+:
 
-EST DANS, 0N DOSSIER, 11 Lien
 DOSSIER: id,publicPrivate,nom
-Possede, 0N Utilisateur, 11 DOSSIER
+Sous-dossier, 11 DOSSIER, 0N DOSSIER
+Poster, ON UTILISATEUR, 11 POSTE
+POSTE: id,date,message
+À commenter, 0N POSTE, 11 POSTE
+
+Être présent dans, 0N DOSSIER, 0N LIEN
+LIEN: id,lien
+Contenir, 0N LIEN, 11 POSTE
 :
