@@ -1,8 +1,8 @@
 import 'tachyons';
 import React from 'react';
-import '../styles/All.scss';
-import '../styles/Connexion.scss';
-import App from '../App';
+import '../styles/components/_connexion.scss';
+import { NavLink } from "react-router-dom";
+//import App from '../App';
 
 function Connexion(){
     return(
@@ -18,8 +18,10 @@ function Connexion(){
                         <input type="password" required="required"/>
                         <span>mot de passe</span>
                     </div>
-                    <input type="submit" value="connection"/>
-    		        <button id="buttonTEL">Inscription</button>
+                    <input type="submit" value="connexion"/>
+                    <NavLink to="/Inscription" className='b'>
+    		            <button id="buttonTEL">Inscription</button>
+                    </NavLink>
                 </form>
                 <p className=''>Mot de passe oublié?</p>
             </div>

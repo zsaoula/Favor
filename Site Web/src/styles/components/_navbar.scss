@@ -1,0 +1,63 @@
+.b:visited {
+    color: #b9b9b9;
+}
+
+
+.b:hover, 
+.b:focus {
+    color: lightgrey; 
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: #AAAAAA;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-transform: uppercase;
+    color: #b9b9b9;
+    position: fixed;
+}
+
+.logo{
+    margin-right: 250px;
+}
+
+.b:active {
+    color: #b9b9b9;
+}
+
+
+.home{
+    width: 2rem;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    list-style-type: none;
+    li{
+        padding-left: 1rem;
+    }
+}
+
+.b{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-neko-bleue{
+    color: blue;
+}
+
+.n{
+    height: 0.95rem;
+    width: 0.95rem;
+    padding-top: 0.15rem;
+    overflow: hidden;
+    fill: #b9b9b9;
+}
