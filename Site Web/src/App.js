@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Tendances from './pages/Tendances';
 import Decouvrir from './pages/Decouvrir';
 import Inscription from './pages/Inscription';
+import "./styles/index.scss"
 
 function App() {
   return (
