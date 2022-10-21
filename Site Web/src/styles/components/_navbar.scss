@@ -48,13 +48,20 @@ ul{
         align-self: center;
     }
 
+    .nav-active-menu {
+        padding-top: 50px;
+    }
+
+    .nav-active-tendances-decouvrir {
+        padding-bottom: 0.75rem;
+    }
+
     .nav-active {
         position: relative;
   
         &::after {
           content: "";
           height: 4px;
-          width: 0;
           background: violet;
           position: absolute;
           border-radius: 10px;
