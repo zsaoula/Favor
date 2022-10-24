@@ -1,6 +1,5 @@
 trigger:
   event:
     - push
-    
-steps:
-  - name: code-analysis    
+  steps:
+    - name: code-analysis    
