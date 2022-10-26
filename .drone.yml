@@ -8,3 +8,12 @@ trigger:
 
 steps:
   - name: code-analysis
+    environment:
+        SONAR_TOKEN:
+          from_secret: sonar_token
+    settings:
+        sources: ./SiteWeb
+    commands:
+      - cd SiteWeb
+      - ./gradlew sonarqube -Dsonar .projectKey=Favor -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${SONAR_TOKEN}
+    depends_on: [ app-build, api-build ]
