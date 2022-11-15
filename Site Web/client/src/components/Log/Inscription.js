@@ -62,7 +62,7 @@ const Inscription = () => {
                 </div>
             ) : ( 
                 <div className="formulaire">
-                    <form className="cadre" action='' onSubmit={handleRegister}>
+                    <form className="cadre" action='' onSubmit={handleRegister} >
                         <h1>Inscription</h1>
                         <div className="inputbox">
                             <input type="text"

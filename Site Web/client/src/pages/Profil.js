@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
 import { UidContext } from '../components/AppContext';
 import Log from '../components/Log'
-import '../styles/pages/_profil.scss'
+import '../styles/pages/_profil.scss';
+import Home from './Home';
+import { NavLink } from 'react-router-dom';
+//<Link to="/discover"/>
 
 const Profil = () => {
     const uid = useContext(UidContext);
@@ -9,7 +12,7 @@ const Profil = () => {
     return (
         <div className="profil-page">
             {uid ? (
-                <h1>UPDATE PAGE</h1>
+                < Home />
             ) : (
                 <div className="log-container">
                     <Log  signin={true} signup={false}/>

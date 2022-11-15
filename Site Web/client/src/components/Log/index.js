@@ -21,7 +21,7 @@ const Log = ( props ) => {
         <div className="connection-form">
             <div className="form-container">
                 <div className="info-form-container">
-                    <ul>
+                    <ul className='ul-profil'>
                         <li className='info-form-right'>Bienvenue !</li>
                         <li className='info-form-right'>
                             <div className='description-type-connection'>
