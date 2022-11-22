@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import PP  from "../assets/img/unknown.png";
 import cookie from 'js-cookie';
 import axios from "axios";
+import Logo from "../assets/img/logo.png";
 
 const Navbar = () => {
     const uid = useContext( UidContext );
@@ -24,7 +25,7 @@ const Navbar = () => {
         })
             .then(() => removeCookie('jwt'))
             .catch((err) => console.log(err));
-        window.location = "/Profil";
+        window.location = "/HomeNavigation";
 
     }
 
@@ -35,7 +36,7 @@ const Navbar = () => {
                 <nav>
                     <ul className="partie-gauche-nav ul-navBar">
                         <li className="logo">
-                            <img src=''alt='Logo'/>
+                            <img src={Logo} height="30px" alt='Logo'/>
                         </li>
                     </ul>
                     <ul className="ul-navBar">
@@ -62,13 +63,13 @@ const Navbar = () => {
                     </ul>
                     <ul className="partie-droit-nav ul-navBar">
                         <li >
-                            <NavLink to="/Trends" className='b'>
+                            <NavLink to="/Profil" className='b'>
                                 { (userData==null) ? (<span></span>):(<span>{userData.pseudo}</span>)}
                             </NavLink>
                         </li>
                     
                         <li>
-                            <NavLink to="/Trends" className='b'>
+                            <NavLink to="/Profil" className='b'>
                                 <img src={PP} alt='Logo' className="img-profile"/>
                             </NavLink>
                         </li>

@@ -1,160 +1,38 @@
-$color-1: #A4EBF3;
-$color-2: #CCF2F4;
-$color-3: #F4F9F9;
-$color-4: #AAAAAA;
-
-.ul-profil{
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .button-form{
-        cursor: pointer;
-        border: 3px solid black;
-        border-radius: 20px;
-        padding: 10px 20px;
-        transition: 0.2s;
-        width: 150px;
-        height: 45px;
-        text-align: center;
-        margin-top: 10px;
-    }
-    .active-btn {
-        background: $color-1;
-
-        &:hover {
-          background: $color-2;
-        }
-      }
-      .button-form:not(.active-btn) {
-        &:hover {
-          transform: translateX(3px);
-        }
-      }
+#PhotoProfile{
+	display: block;
+    	margin-left: auto;
+        margin-right: auto;
+	width: 150px;
+	height:150px;
+	border-radius: 80px;
+	border: 2px solid #555;
 }
 
-
-.info-form-container{
-    width: 20%;
-    border: 2px solid black;
-    border-radius: 0px 15px 15px 0px;
-    background-color: aliceblue;
-    p{
-        line-height: 15px;
-        letter-spacing: 1.01px;
-    }
+#blocAbonnement{
+	display: flex;
+	justify-content: center;
+	
+	
+}
+#blocAbonnement div{
+	margin-left: 80px;
+	margin-right: 80px;
 }
 
-.profile-page{
-  width: 100%;
-}
-.form-container{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding-top: 2%;
-
+#blocName{
+	text-align: center;
 }
 
-
-.description-type-connection{
-    text-align: center;
+.nombre{
+	color:black;
 }
 
-
-
-.cadre {
-    padding: 50px 50px;
-    border: 2px solid black;
-    border-right: 0px solid black;
-    border-radius: 15px 0px 0px 15px;
-    background-color: $color-1;
-    h1 {
-      letter-spacing: 5px;
-      margin-bottom: 60px;
-      font-weight: bold;
-      text-align: center;
-    }
-    .inputbox {
-      position: relative;
-      width: 300px;
-      margin-top: 25px;
-      input {
-        width: 100%;
-        border: 2px solid #000;
-        outline: none;
-        background-color: $color-3;
-        padding: 10px;
-        border-radius: 10px;
-        font-size: 1.1em;
-      }
-      span {
-        position: absolute;
-        top: 14px;
-        left: 20px;
-        font-size: 1em;
-        transition: 0.3s;
-        font-family: sans-serif;
-      }
-    }
-    .chexkboxConditionGenerale{
-      margin-top: 3px;
-      padding: 5px;
-    }
-    .error{
-      padding-left: 5px;
-      font-size: small;
-      font-weight: 600;
-      color: red;
-      position: absolute;
-    }
-    #connexion,#inscription{
-      margin-top: 5px;
-    }
-}
-  
-  
-.span_date{
-  margin-left: 7px;
-  font-size: 1em;
-  font-family: sans-serif;
-}
-  
-.cadre .inputbox input:focus ~ span,
-.cadre .inputbox input:valid ~ span {
-  transform: translateX(-13px) translateY(-35px);
-  font-size: 1em;
-}
-  
-input[type="submit"], .buttonTEL{
-    border: none;
-    border-radius: 8px;
-    border: 2px solid #000;
-    background-color: $color-3;
-    width: 300px;
-    height: 50px;
+.texteNombre{
+	color:grey;
 }
 
-.buttonTEL{
-  margin-top: 15px;
-  margin-bottom: 15px;
+#bandeauProfil{
+    background-color: aqua;
+    margin-top: 50px;
 }
 
-input[type="submit"]:hover, .buttonTEL:hover{
-    background-color: $color-4;
-}
-
-.mdp{
-  font-weight: 900;
-}
-
-.info-form-container{
-  .info-form-right{
-    padding-top: 15px;
-  }
-}
-
-.enregistrementReussi{
-  display: flex;
-  flex-direction: column;
-}

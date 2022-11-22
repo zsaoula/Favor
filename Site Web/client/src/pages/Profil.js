@@ -1,25 +1,35 @@
-import React, { useContext } from 'react';
-import { UidContext } from '../components/AppContext';
-import Log from '../components/Log'
-import '../styles/pages/_profil.scss';
-import Home from './Home';
-import { NavLink } from 'react-router-dom';
-//<Link to="/discover"/>
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Navbar from '../components/Navbar';
 
 const Profil = () => {
-    const uid = useContext(UidContext);
-
+    const userData =  useSelector((state) => state.pictures.pictures);
     return (
-        <div className="profil-page">
-            {uid ? (
-                < Home />
-            ) : (
-                <div className="log-container">
-                    <Log  signin={true} signup={false}/>
+        <>
+            <Navbar />
+            <div id="bandeauProfil">
+                <div id="image">
+                    <img id="PhotoProfile" alt="Profil" src={userData.picture}/>
                 </div>
-            )}
-        </div>
-    );
+                <div id="blocName">
+                    <h1>{userData.pseudo}</h1>
+                    <h2 className="subdo">@{userData.pseudo}</h2>
+                    <div>
+                        <div id="blocAbonnement">
+                            <div>
+                                <div className="nombre">10k</div>
+                                <div className="texteNombre">Abonnement</div>
+                            </div>
+                            <div>
+                                <div className="nombre">10k</div>
+                                <div className="texteNombre">Abonnée</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 };
 
 export default Profil;

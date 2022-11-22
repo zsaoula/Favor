@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Connexion from './Connexion';
 import Inscription from './Inscription';
-import '../../styles/pages/_profil.scss'
 
 const Log = ( props ) => {
     const [signUpModal, setSignUpModal] = useState(props.signup);
