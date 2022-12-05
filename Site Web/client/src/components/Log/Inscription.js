@@ -10,7 +10,6 @@ const Inscription = () => {
     const [controlPassword, setControlPassword] = useState('');
     
     const handleRegister = async (e) => {
-        console.log("test");
         e.preventDefault();
         const terms = document.getElementById("terms");
         const pseudoError = document.querySelector(".pseudo.error");

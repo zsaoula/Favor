@@ -4,7 +4,7 @@ import PP  from "../assets/img/unknown.png";
 import { NavLink } from "react-router-dom";
 
 
-function configuration(){
+const  Configuration = () => {
     return(
         <div>
             <div className='ligneVertical'>
@@ -33,3 +33,5 @@ function configuration(){
         </div>
     );
 }
+
+export default Configuration;
