@@ -6,6 +6,8 @@ import PP  from "../assets/img/unknown.png";
 import cookie from 'js-cookie';
 import axios from "axios";
 import Logo from "../assets/img/logo.png";
+import Configuration from "./../pages/Configuration";
+
 
 const Navbar = () => {
     const uid = useContext( UidContext );
@@ -82,7 +84,7 @@ const Navbar = () => {
                                     </svg>
                                 </div>
                                 <div className="more-menu">
-                                    <NavLink className='element-menu-deroulant'>Élement 1</NavLink>
+                                    <NavLink className='element-menu-deroulant' to="/Configuration">Configurations</NavLink>
                                     <NavLink className='element-menu-deroulant'>Élement 2</NavLink>
                                     <NavLink  className='element-menu-deroulant' onClick={logout}>Élement 3</NavLink>
                                 </div>

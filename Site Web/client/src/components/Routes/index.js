@@ -5,6 +5,7 @@ import Home from '../../pages/Home.js';
 import Trends from '../../pages/Trends.js';
 import Discover from '../../pages/Discover.js';
 import Profil from '../../pages/Profil.js';
+import Configuration from '../../pages/Configuration';
 
 const index = () => {
     return (
@@ -16,6 +17,7 @@ const index = () => {
                     <Route path="/discover" element={<Discover/>} />
                     <Route path="*" element={<HomeNavigation/>} />
                     <Route path="/profil" element={<Profil />} />
+                    <Route path="/configuration" element={<Configuration/>}/>
                 </Routes>
             </BrowserRouter>
     );

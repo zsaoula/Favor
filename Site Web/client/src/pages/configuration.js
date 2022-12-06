@@ -1,36 +1,52 @@
 import 'tachyons';
-import React from 'react';
-import PP  from "../assets/img/unknown.png";
-import { NavLink } from "react-router-dom";
+import React, {useState} from 'react';
+import ConfigurationDuProfil from '../components/Configurations/ConfigurationDuProfil';
+import ConfigurationDuCompte from '../components/Configurations/ConfigurationDuCompte.js';
+import PolitiqueDeConfidentialite from '../components/Configurations/PolitiqueDeConfidentialite';
 
+function Configuration(){
 
-const  Configuration = () => {
+        const [ConfigurationCompte, setConfigurationDuCompte] = useState(false);
+        const [ConfigurationProfil, setConfigurationDuProfil] = useState(true);
+        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(false)
+    
+        const handleModals = (e) => {
+            if (e.target.id === "ConfigurationDuProfil") {
+                setConfigurationDuCompte(false);
+                setPolitiqueDeConfidentialite(false);
+                setConfigurationDuProfil(true);
+            } else if (e.target.id === "ConfigurationDuCompte") {
+                setConfigurationDuCompte(true);
+                setPolitiqueDeConfidentialite(false);
+                setConfigurationDuProfil(false);
+            } else if (e.target.id ==="PolitiqueDeConfidentialite"){
+                setConfigurationDuCompte(false);
+                setPolitiqueDeConfidentialite(true);
+                setConfigurationDuProfil(false);
+            }
+
+        };        
     return(
-        <div>
-            <div className='ligneVertical'>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                 
-            </div>
-            <div>
-                <h2>Modifucation information du compte</h2>
-                <div className='ligneHorizontal'>
-                    <img src={PP}/>
-                    <div>
-                        <span>Pseudo : Pseudo</span>
-                        <span>Nom d'utilisateur : @Pseudo</span>
-                    </div>
-                </div>
-                <h2>Acces au dossiers personnel</h2>
-               
-                <div className='ligneHorizontal'>
-                <caption> Rendre vos dossiers prives</caption>
+        <>
 
-                </div>  
-            </div>
+            <div className='boutonDeConfigurations'>
 
-        </div>
+            <button onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
+            Configuration du profil
+            </button>
+            <button onClick={handleModals} id="ConfigurationDuCompte" className={ConfigurationCompte}>
+            Configuration du compte
+            </button>
+            <button onClick={handleModals} id="PolitiqueDeConfidentialite" className={PolitiqueConfidentialite}>
+            Politique de confidentialite
+            </button>
+            
+            <div className='ligneVertical'/>
+            </div>
+            {ConfigurationProfil &&<ConfigurationDuProfil/>}
+            {ConfigurationCompte &&<ConfigurationDuCompte/>}
+            {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
+        </>
     );
 }
 
