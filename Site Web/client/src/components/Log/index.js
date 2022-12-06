@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Connexion from './Connexion';
 import Inscription from './Inscription';
 
