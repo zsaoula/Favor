@@ -1,16 +1,14 @@
 import 'tachyons';
 import React, {useState} from 'react';
-import { NavLink } from "react-router-dom";
-import Navbar from '../components/Navbar';
-import ConfigurationDuProfil from '../components/ConfigurationDuProfil';
-import ConfigurationDuCompte from '../components/ConfigurationDuCompte.js';
-import PolitiqueDeConfidentialite from '../components/PolitiqueDeConfidentialite';
+import ConfigurationDuProfil from '../components/Configurations/ConfigurationDuProfil';
+import ConfigurationDuCompte from '../components/Configurations/ConfigurationDuCompte.js';
+import PolitiqueDeConfidentialite from '../components/Configurations/PolitiqueDeConfidentialite';
 
-function Configuration(props){
+function Configuration(){
 
-        const [ConfigurationCompte, setConfigurationDuCompte] = useState(props.configCompte);
-        const [ConfigurationProfil, setConfigurationDuProfil] = useState(props.configProfil);
-        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(props.PolitiqueConf)
+        const [ConfigurationCompte, setConfigurationDuCompte] = useState(false);
+        const [ConfigurationProfil, setConfigurationDuProfil] = useState(true);
+        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(false)
     
         const handleModals = (e) => {
             if (e.target.id === "ConfigurationDuProfil") {
