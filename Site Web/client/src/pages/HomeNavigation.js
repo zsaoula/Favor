@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { UidContext } from '../components/AppContext';
 import Log from '../components/Log'
 import Home from './Home';
+import Poste from '../components/Poste';
 import { NavLink } from 'react-router-dom';
 //<Link to="/discover"/>
 
