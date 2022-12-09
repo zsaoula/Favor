@@ -17,11 +17,11 @@ const Profil = () => {
                     <div>
                         <div id="blocAbonnement">
                             <div>
-                                <div className="nombre">10k</div>
+                                <div className="nombre">{userData.following.length}</div>
                                 <div className="texteNombre">Abonnement</div>
                             </div>
                             <div>
-                                <div className="nombre">10k</div>
+                                <div className="nombre">{userData.followers.length}</div>
                                 <div className="texteNombre">Abonnée</div>
                             </div>
                         </div>
