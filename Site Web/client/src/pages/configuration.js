@@ -30,7 +30,6 @@ function Configuration(){
         <>
 
             <div className='boutonDeConfigurations'>
-
             <button onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
             Configuration du profil
             </button>
@@ -40,9 +39,9 @@ function Configuration(){
             <button onClick={handleModals} id="PolitiqueDeConfidentialite" className={PolitiqueConfidentialite}>
             Politique de confidentialite
             </button>
-            
-            <div className='ligneVertical'/>
             </div>
+            <div className='ligneVertical'/>
+            
             {ConfigurationProfil &&<ConfigurationDuProfil/>}
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
             {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
