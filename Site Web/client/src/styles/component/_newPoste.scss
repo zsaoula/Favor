@@ -1,0 +1,43 @@
+.newPoste-form-popup {
+  background-color: white;
+  display: none;
+  position:fixed;
+
+  margin-left:33%;
+  margin-right: 33%;
+  border: 2px solid #666;
+  border-radius:10px;
+  width: 33%;
+}
+
+/* Largeur complète pour les champs de saisie */
+.newPoste-form-container input[name="lien"],
+.newPoste-form-container textarea[name="description"],
+.newPoste-form-container label{
+  width: 80%;
+  margin: 10px 10% 50px 10%;
+}
+
+textarea{
+  resize: none;
+  height: 100px;
+}
+
+input[name="lien"],
+textarea[name="description"]{
+  margin-left: 100px;
+  border: none;
+  background: #D9D9D9;
+}
+
+.newPoste-input{
+  margin-top:20px;
+}
+
+#newPoste-buttonForm{
+  margin-left:10%;
+  margin-right:10%;
+  margin-bottom:10px;
+  display:flex;
+  justify-content: space-between;
+}
