@@ -1,20 +1,34 @@
-.ligneVertical{
-    border-right: thick solid $color-1;
-    height:85%;
-    width: 1%;
-}
+
 .boutonDeConfigurations{
-    align-items: center;
-button{
-    padding: 1%;
-    margin-top: 2%;
-    margin-left: 5%;
-    width: 15%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+    button{
+        padding: 1%;
+        margin-bottom: 1%;
+        margin-top: 2%;
+        margin-left: 6%;
+        width: 16%;
+        max-width: 200px;
+        background-color: $color-3;
+        border: 2px solid $color-4;
+        border-radius: 20px;
+    }
+    button:hover  {
+        background-color: $color-1;
+        border-color: black;
+        
+    }
+
 }
-}
+
+
 .ligneHorizontal{
-    border-top: thick solid $color-1;
-    width: 78%;
+    border-bottom: thick solid $color-1;
+    width: 84%;
     height: 1%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 

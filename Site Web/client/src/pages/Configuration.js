@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import ConfigurationDuProfil from '../components/Configurations/ConfigurationDuProfil';
 import ConfigurationDuCompte from '../components/Configurations/ConfigurationDuCompte.js';
 import PolitiqueDeConfidentialite from '../components/Configurations/PolitiqueDeConfidentialite';
-
+import Navbar from '../components/Navbar';
 function Configuration(){
 
         const [ConfigurationCompte, setConfigurationDuCompte] = useState(false);
@@ -28,7 +28,7 @@ function Configuration(){
         };        
     return(
         <>
-
+        <Navbar />
             <div className='boutonDeConfigurations'>
             <button onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
             Configuration du profil
@@ -40,7 +40,7 @@ function Configuration(){
             Politique de confidentialite
             </button>
             </div>
-            <div className='ligneVertical'/>
+            
             
             {ConfigurationProfil &&<ConfigurationDuProfil/>}
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
