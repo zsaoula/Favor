@@ -12,6 +12,9 @@ const Post = ( { post } ) => {
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
 
+
+    
+
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false)
     })
