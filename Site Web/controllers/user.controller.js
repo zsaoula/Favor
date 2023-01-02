@@ -59,22 +59,27 @@ module.exports.follow = async (req, res) => {
 
   try {
     // add to the follower list
-    await UserModel.findByIdAndUpdate(
+     await UserModel.findByIdAndUpdate(
       req.params.id,
-      { $addToSet: { following: req.body.idToFollow } },
-      { new: true, upsert: true }
-        .then((data) => res.send(data))
-        .catch((err) => res.status(500).send({ message: err }))),
-
+      { $addToSet: { following: req.body.idToFollow }, },
+      { new: true , upsert: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+          else return res.status(200).send(err);
+      }
+    )
       // ajouter à la liste des followers
       await UserModel.findByIdAndUpdate(
         req.body.idToFollow,
-        { $addToSet: { followers: req.params.id } },
-        { new: true, upsert: true }
-          .then((data) => res.send(data))
-          .catch((err) => res.status(500).send({ message: err })))
+        { $addToSet: { followers: req.params.id }, },
+        { new: true , upsert: true},
+        (err, docs) => {
+          if (!err) return res.send(docs);
+          else return res.status(200).send(err);
+        }
+      );
   } catch (err) {
-    return res.status(500).json({ message: err });
+    return res.status(400).send(err);
   }
 };
 
@@ -88,19 +93,24 @@ module.exports.unfollow = async (req, res) => {
   try {
     await userModel.findByIdAndUpdate(
       req.params.id,
-      { $pull: { following: req.body.idToUnfollow } },
-      { new: true, upsert: true }
-        .then((data) => res.send(data))
-        .catch((err) => res.status(500).send({ message: err }))),
+      { $pull: { following: req.body.idToUnfollow ,} },
+      { new: true , upsert: true },
+      (err, docs) => {
+        if (err) return res.status(400).send(err);
+      }
+    );
 
       // Retirer de la liste des followers
       await userModel.findByIdAndUpdate(
         req.body.idToUnfollow,
         { $pull: { followers: req.params.id } },
-        { new: true, upsert: true }
-          .then((data) => res.send(data))
-          .catch((err) => res.status(500).send({ message: err })))
+        { new: true , upsert: true},
+        (err, docs) => {
+          if (!err) return res.send(docs);
+          else return res.status(400).send(err);
+        }
+      );
   } catch (err) {
-    return res.status(500).json({ message: err });
+      return res.status(401).send(err);
   }
 }

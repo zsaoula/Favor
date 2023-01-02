@@ -1,9 +1,21 @@
 import React from 'react';
+import AjoutLien from '../components/AjoutLien';
 import Navbar from '../components/Navbar';
+import DisplayPosts from '../components/Post/DisplayPosts';
 
 const Discover = () => {
     return (
-        <Navbar />
+        <>
+            <Navbar />
+            <main >
+                <div className='postInMain'>
+                    <DisplayPosts/>
+                </div>
+                <div className="RightBar">
+                    <AjoutLien/>
+                </div>
+            </main>
+        </>
     );
 };
 

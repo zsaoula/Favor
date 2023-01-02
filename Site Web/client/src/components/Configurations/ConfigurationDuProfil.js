@@ -1,9 +1,11 @@
 import React from 'react';
 import PP  from "../../assets/img/unknown.png";
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 const ConfigurationDuProfil = ()=>{
+    const userData = useSelector((state) => state.userReducer)
     return(
 
         <div>

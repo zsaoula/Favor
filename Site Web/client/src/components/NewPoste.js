@@ -3,26 +3,28 @@ import React, { useState } from 'react';
 
 
 //e.preventDefaul(); pour ne pas recharcher la page
-const NewPoste = (props) => {
+const NewPoste = ({ post }) => {
+
     return (
         <div>
-            <div class="newPoste-form-popup" id="newPoste-popupFormulaireCreationPoste">
-                <form action="/action_page.php" class="newPoste-form-container">
-                    <div class="newPoste-input">
-                        <label for="lien">Lien:</label>
+            <div className="newPoste-form-popup" id="newPoste-popupFormulaireCreationPoste">
+                <form action="/action_page.php" className="newPoste-form-container">
+                    <div className="newPoste-input">
+                        {/* <label for="lien">Lien:</label> */}
                         <input type="text" name="lien" required />
                     </div>
-                    <div class="newPoste-input">
-                        <label for="description">Description:</label>
+                    <div className="newPoste-input">
+                        {/* <label for="description">Description:</label> */}
                         <textarea name="description" row="250"></textarea>
                     </div>
 
                     <div id="newPoste-buttonForm">
                         <div>
-                            <button type="button" class="newPoste-btn-cancel" onclick="closeForm()">retour</button>
+                            {/* <button type="button" className="newPoste-btn-cancel" onclick="closeForm()">retour</button> */}
+                            <button type="button" className="newPoste-btn-cancel" >retour</button>
                         </div>
                         <div>
-                            <button type="submit" class="newPoste-btn">Poster</button>
+                            <button type="submit" className="newPoste-btn">Poster</button>
                         </div>
                     </div>
                 </form>

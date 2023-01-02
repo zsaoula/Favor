@@ -20,8 +20,6 @@ const HomeNavigation = () => {
                     <Log  signin={true} signup={false}/>
                 </div>
             )}
-            <AjoutLien></AjoutLien>
-            <NewPoste></NewPoste>
         </div>
     );
 };

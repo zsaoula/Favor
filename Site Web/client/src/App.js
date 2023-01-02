@@ -3,7 +3,7 @@ import { UidContext } from "./components/AppContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setPictureData } from "./feature/pictures.slice";
+import { getUser } from "./actions/user.actions";
 
 //useeffect controle le token de l'utilisateur 
 //les crochets dans le use effect permette de pas lancer la fonction à l'infini
@@ -22,11 +22,12 @@ function App() {
         .catch((err) => console.log("No Token"));
     };
     fetchToken();
-    if (uid){
+    if(uid) dispatch(getUser(uid));
+    /*if (uid){
       axios
       .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
       .then((res) => dispatch(setPictureData(res.data)))
-    };
+    };*/
   
   }, [uid, dispatch]);
 

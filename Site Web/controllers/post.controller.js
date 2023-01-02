@@ -16,7 +16,7 @@ module.exports.readPost = (req, res) => {
 
 module.exports.createPost = async (req, res) => {
   const newPost = new postModel({
-    postedId: req.body.posterId,
+    postedId: req.body.postedId,
     message: req.body.message,
     lien: req.body.lien,
     likers: [],
@@ -70,20 +70,24 @@ module.exports.likePost = async (req, res) => {
       {
         $addToSet: { likers: req.body.id },
       },
-      { new: true })
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
-
+      { new: true },
+      (err, docs) => {
+        if (err) return res.status(200).send(err);
+      }
+    );
     await UserModel.findByIdAndUpdate(
       req.body.id,
       {
         $addToSet: { likes: req.params.id },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
+      { new: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+        else return res.status(200).send(err);
+      }
+    );
     } catch (err) {
-        return res.status(400).send(err);
+        return res.status(200).send(err);
     }
 };
 
@@ -97,18 +101,22 @@ module.exports.unlikePost = async (req, res) => {
       {
         $pull: { likers: req.body.id },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-
+      { new: true },
+      (err, docs) => {
+        if (err) return res.status(400).send(err);
+      }
+    );
     await UserModel.findByIdAndUpdate(
       req.body.id,
       {
         $pull: { likes: req.params.id },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
+      { new: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+        else return res.status(400).send(err);
+      }
+    );
     } catch (err) {
         return res.status(400).send(err);
     }
