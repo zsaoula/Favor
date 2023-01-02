@@ -6,14 +6,37 @@ import { dateParser, isEmpty } from '../Utils';
 import ButtonLike from './ButtonLike';
 
 
+const LinkPreview = ({ link }) => {
+    const [preview, setPreview] = useState({ image: '', title: '', description: '' });
+
+    useEffect(() => {
+        const key = '9f24d981b6f0ddfce993ce4a20d58867';
+        const fullLink = `http://api.linkpreview.net/?key=${key}&q=${link}`;
+
+        axios
+            .get(fullLink)
+            .then((res) => setPreview(res.data))
+            .catch((err) => console.error(err));
+    }, [link]);
+
+    return (
+        <div>
+            <a href={link}>
+                <img id="imageLien" src={preview.image} alt={preview.title} />
+            </a>
+            <a id="url" href={link}>
+                {link}
+            </a>
+            <p>{preview.description}</p>
+        </div>
+    );
+};
+
 //e.preventDefaul(); pour ne pas recharcher la page
 const Post = ( { post } ) => {
     const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
-
-
-    
 
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false)
@@ -50,11 +73,9 @@ const Post = ( { post } ) => {
                         <div>{dateParser(post.createdAt)}</div>
                     </div>
 
-                    <div id="contenuePoste">
-                        /*utliser leakpreview*/
-                    </div>
 
                     <div id="contenuePoste">
+                        <LinkPreview link="https://www.bbc.com/news/uk-politics-63335671" />
                         <p>{post.message}</p>
                     </div>
 
@@ -74,6 +95,8 @@ const Post = ( { post } ) => {
         </li>
     );
 };
+
+
 
 //ce qui écrit dans le input est récuperé par le state
 export default Post;

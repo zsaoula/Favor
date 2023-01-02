@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PP  from "../../assets/img/unknown.png";
 import { NavLink } from "react-router-dom";
-import { useSelector } from 'react-redux';
 
 
 const ConfigurationDuProfil = ()=>{
