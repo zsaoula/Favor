@@ -18,7 +18,13 @@
   main {
     padding: 1rem 4rem;
     margin-left: 5rem;
-    text-align: justify;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .RightBar{
+    width: 20%;
   }
   
   .navbar {

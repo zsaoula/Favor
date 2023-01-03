@@ -24,10 +24,10 @@ const LinkPreview = ({ link }) => {
             <a href={link}>
                 <img id="imageLien" src={preview.image} alt={preview.title} />
             </a>
-            <a id="url" href={link}>
+            {/* <a id="url" href={link}>
                 {link}
             </a>
-            <p>{preview.description}</p>
+            <p>{preview.description}</p> */}
         </div>
     );
 };
@@ -75,7 +75,7 @@ const Post = ( { post } ) => {
 
 
                     <div id="contenuePoste">
-                        <LinkPreview link="https://www.bbc.com/news/uk-politics-63335671" />
+                        {/* <LinkPreview link="https://www.bbc.com/news/uk-politics-63335671" /> */}
                         <p>{post.message}</p>
                     </div>
 

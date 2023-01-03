@@ -5,7 +5,10 @@ import { NavLink } from "react-router-dom";
 
 
 const ConfigurationDuProfil = ()=>{
-    const userData = useSelector((state) => state.userReducer)
+    const userData = useSelector((state) => state.user.user);
+    const [pseudo, setPseudo] = useState('');
+    const [nomUtilisateur, setNomUtilisateur] = useState('');
+
     return(
 
     <div className='modificationDuProfilBackgroud'>
@@ -40,7 +43,7 @@ const ConfigurationDuProfil = ()=>{
         <h2 className='ligneHorizontal' >Acces au dossiers personnel</h2>
         <div className='accesDossiersPerso'>
             <input type="checkbox" id="accesDossiersPerso" name='cocher' />
-            <label for="cocher">Cocher si oui</label>
+            <label >Cocher si oui</label>
         </div> 
     </div>
 

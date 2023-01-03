@@ -4,7 +4,8 @@ import ConfigurationDuProfil from '../components/Configurations/ConfigurationDuP
 import ConfigurationDuCompte from '../components/Configurations/ConfigurationDuCompte.js';
 import PolitiqueDeConfidentialite from '../components/Configurations/PolitiqueDeConfidentialite';
 import Navbar from '../components/Navbar';
-function Configuration(){
+
+const Configuration = () => {
 
         const [ConfigurationCompte, setConfigurationDuCompte] = useState(false);
         const [ConfigurationProfil, setConfigurationDuProfil] = useState(true);
@@ -27,7 +28,7 @@ function Configuration(){
 
         };        
     return(
-        <>
+        <main className='mainConfig'>
         <Navbar />
             <div className='boutonDeConfigurations'>
             <button onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
@@ -45,7 +46,7 @@ function Configuration(){
             {ConfigurationProfil &&<ConfigurationDuProfil/>}
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
             {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
-        </>
+        </main>
     );
 }
 

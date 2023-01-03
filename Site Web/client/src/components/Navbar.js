@@ -116,10 +116,10 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="navbar-item">
-                    <a onClick={() => setDisplayAdd(true)} className="navbar-link">
+                    <NavLink to="/Configuration" className="navbar-link">
                       <i className="fas fa-cog navbar-icon"></i>
                       <span className="navbar-title">Paramètre</span>
-                    </a>
+                    </NavLink>
                   </li>
                   <li className="navbar-item">
                     <a onClick={logout} className="navbar-link">
