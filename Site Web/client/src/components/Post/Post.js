@@ -10,7 +10,9 @@ const LinkPreview = ({ link }) => {
     const [preview, setPreview] = useState({ image: '', title: '', description: '' });
 
     useEffect(() => {
-        const key = '9f24d981b6f0ddfce993ce4a20d58867';
+        //const key = '9f24d981b6f0ddfce993ce4a20d58867';
+        const key = '2865b6b9d9571dc00bf940fad5728248';
+
         const fullLink = `http://api.linkpreview.net/?key=${key}&q=${link}`;
 
         axios
@@ -19,17 +21,19 @@ const LinkPreview = ({ link }) => {
             .catch((err) => console.error(err));
     }, [link]);
 
-    return (
-        <div>
-            <a href={link}>
-                <img id="imageLien" src={preview.image} alt={preview.title} />
-            </a>
-            <a id="url" href={link}>
-                {link}
-            </a>
-            <p>{preview.description}</p>
-        </div>
-    );
+    if(preview.image === "") {
+        return (<div><a href={link}>{link}</a></div>);
+    }
+    else {
+        return (
+            <div>
+                <a href={link}>
+                    <img id="imageLien" src={preview.image} alt={preview.title}/>
+                </a>
+                <p>{preview.description}</p>
+            </div>
+        );
+    }
 };
 
 //e.preventDefaul(); pour ne pas recharcher la page
@@ -75,10 +79,9 @@ const Post = ( { post } ) => {
 
 
                     <div id="contenuePoste">
-                        <LinkPreview link="https://www.bbc.com/news/uk-politics-63335671" />
+                        <LinkPreview link={post.lien}/>
                         <p>{post.message}</p>
                     </div>
-
                     <div id="basPoste">
                         <div id="like">
                             <ButtonLike post={post}/>
