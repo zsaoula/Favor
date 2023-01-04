@@ -14,38 +14,38 @@ const ConfigurationDuProfil = ()=>{
     <div className='modificationDuProfilBackgroud'>
         <h2 className='ligneHorizontal' >Modifucation  du Profil</h2>
         <div className='modificationDuProfil' >
-            <img src={PP} className="imageDeProfil"/>
-                <span>Pseudo: </span>
+            <img src={PP} className="imageDeProfilConfiguration imageDeProfil"/>
+
                 <div className='modificationDuProfilText'>
-                <div className="inputbox">
-                    <input 
-                        type="pseudo" 
-                        name="pseudo" 
-                        id="pseudo" 
-                        value={userData.pseudo}
-                        onChange={(e) => setPseudo (e.target.value)} 
-
-                    />
-
+                <span>Pseudo: </span>
+                <span>Nom d'utilisateur:</span>
                 </div>
-                <div className="inputbox">
-                    <span>Nom d'utilisateur</span>
+                <div className='modificationDuProfilText'>
+                
                     <input 
                         type="nomUtilisateur" 
                         name="nomUtilisateur" 
                         id="nomUtilisateur" 
                         onChange={(e) => setNomUtilisateur (e.target.value)} 
-                        value={userData.pseudo}
+                        value={pseudo}
+                    />
+                    <input 
+                        type="pseudo" 
+                        name="pseudo" 
+                        id="pseudo" 
+                        value={pseudo}
+                        onChange={(e) => setPseudo (e.target.value)} 
                     />
                 </div>
-            </div>
+                
         </div>
         <h2 className='ligneHorizontal' >Acces au dossiers personnel</h2>
         <div className='accesDossiersPerso'>
-            <input type="checkbox" id="accesDossiersPerso" name='cocher' />
-            <label >Cocher si oui</label>
+            <input type="checkbox" name='cocher' />
+            <label for="cocher" class='textAccesDossiersPerso'>Cocher si oui</label>
         </div> 
     </div>
+
 
     )
 
