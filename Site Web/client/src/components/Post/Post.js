@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import FollowHandler from '../UserProfil/FollowHandler';
 import { dateParser, isEmpty } from '../Utils';
 import ButtonLike from './ButtonLike';
+import Comment from './Comment';
 
 
 const LinkPreview = ({ link }) => {
@@ -41,6 +42,10 @@ const Post = ( { post } ) => {
     const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
+    const [updated,setUpdate] = useState(false);
+    const [message, setMessage] = useState(null);
+    const [comments, setComments] = useState(false);
+
 
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false)
@@ -89,10 +94,11 @@ const Post = ( { post } ) => {
                             <div>{post.likers.length}</div>
                         </div>
                         <div id="commentaire">
-                            <img src="commentaire.png"/>
+                            <img src="commentaire.png" onClick={() => setComments(!comments)}/>
                             <div>{post.comments.length}</div>
                         </div>
                     </div>
+                    {comments && <Comment post={post} />}
                 </div>
             </div>) }
         </li>

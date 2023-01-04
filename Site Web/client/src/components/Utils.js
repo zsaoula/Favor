@@ -22,6 +22,9 @@ export const dateParser = (num) => {
     return date.toString();
 };
   
+
+
+
 export const timestampParser = (num) => {
     let options = {
       hour: "2-digit",
