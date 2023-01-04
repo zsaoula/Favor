@@ -1,0 +1,13 @@
+.conteneur_notif {
+  display: flex;
+  align-items:center;
+  justify-content: start;
+
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+
+.contenue_notif:nth-child(2) {
+  margin-right: 10px;
+}
