@@ -46,7 +46,6 @@ const ConfigurationDuProfil = ()=>{
         </div> 
     </div>
 
-
     )
 
 }
