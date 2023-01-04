@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 const PolitiqueDeConfidentialite =()=>{
     return(
-        <div>
-            Cette politique de confidentialité s’applique au site : Designed By GG.
+        <div className='PolitiqueDeConfidentialiteText'>
+           <p> Cette politique de confidentialité s’applique au site : Designed By GG.
             La présente politique de confidentialité a pour but d’exposer aux utilisateurs du site :
 
             La manière dont sont collectées et traitées leurs données à caractère
@@ -15,7 +15,7 @@ const PolitiqueDeConfidentialite =()=>{
             collectées et traitées ;
             A qui ces données sont transmises ;
             Eventuellement, la politique du site en matière de fichiers “cookies”
-            
+            </p>
         </div>
     )
 }
