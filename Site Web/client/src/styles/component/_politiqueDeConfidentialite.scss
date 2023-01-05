@@ -1,0 +1,39 @@
+
+.PolitiqueDeConfidentialiteText{
+    margin-top: 2%;
+    text-indent: 1%;   
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    p{
+        max-width:85% ;
+        min-width: 380px;
+        animation-duration: 3s;
+        animation-name: slidein;
+        
+          
+          @keyframes slidein {
+            from {
+              margin-top: 100%;
+              width: 50%;
+            }
+          
+            to {
+              margin-top: 0%;
+              width: 100%;
+            }
+          }
+          
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
