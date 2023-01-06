@@ -15,7 +15,7 @@ const ConfigurationDuCompte =()=>{
         <div>
         <h2 className='ligneHorizontal'>Modifucation information du compte</h2>
        
-            <div className="ModifucationInformationDuCompte">
+            <form className="ModifucationInformationDuCompte">
                         
                         <div className='ModificationInformationDuCompteText'>
                         <span>email</span>
@@ -46,7 +46,7 @@ const ConfigurationDuCompte =()=>{
                                 value={controlPassword}/>
                                 <div className='password error'></div>
                         </div>
-            </div>
+            </form>
         <div />
         <h2 className='ligneHorizontal'>Suppression du compte</h2>
         <div className='buttonSuppressionCompte'>
@@ -54,7 +54,7 @@ const ConfigurationDuCompte =()=>{
         <button>
             supprimer votre compte    
         </button>
-        <span>gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</span>
+            <p className='buttonSuppressionText'>Note : action irreversible qui vous fera perdre toutes les données du compte en conséquence</p>
         </div> 
     </div>
     )

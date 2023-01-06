@@ -30,22 +30,24 @@ const Configuration = () => {
     return(
         <main className='mainConfig'>
         <Navbar />
+        <div className='configuration'>
             <div className='boutonDeConfigurations'>
-            <button onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
+            <a onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
             Configuration du profil
-            </button>
-            <button onClick={handleModals} id="ConfigurationDuCompte" className={ConfigurationCompte}>
+            </a>
+            <a onClick={handleModals} id="ConfigurationDuCompte" className={ConfigurationCompte}>
             Configuration du compte
-            </button>
-            <button onClick={handleModals} id="PolitiqueDeConfidentialite" className={PolitiqueConfidentialite}>
+            </a>
+            <a onClick={handleModals} id="PolitiqueDeConfidentialite" className={PolitiqueConfidentialite}>
             Politique de confidentialite
-            </button>
+            </a>
             </div>
             
             
             {ConfigurationProfil &&<ConfigurationDuProfil/>}
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
             {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
+        </div>
         </main>
     );
 }

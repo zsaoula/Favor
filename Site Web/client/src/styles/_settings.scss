@@ -5,6 +5,8 @@ $color-2: #CCF2F4;
 $color-3: #F4F9F9;
 $color-4: #AAAAAA;
 $color-5: #AABBCC;
+$color-6:  #5499c7  ;
+$color-7:  #1b4f72 ;
 
 
 
@@ -17,6 +19,8 @@ $color-5: #AABBCC;
 // $color-6: yellow;
 
 
+
+
 * {
     padding: 0;
     margin: 0;
@@ -24,7 +28,7 @@ $color-5: #AABBCC;
 }
 
 .imageDeProfil{
-    object-fit: none;
+    object-fit: cover;
     clip-path:circle(50%);
     
 }
