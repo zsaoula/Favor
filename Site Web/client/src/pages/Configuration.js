@@ -28,7 +28,7 @@ const Configuration = () => {
 
         };        
     return(
-        <main className='mainConfig'>
+        <>
         <Navbar />
         <div className='configuration'>
             <div className='boutonDeConfigurations'>
@@ -48,7 +48,7 @@ const Configuration = () => {
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
             {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
         </div>
-        </main>
+        </>
     );
 }
 

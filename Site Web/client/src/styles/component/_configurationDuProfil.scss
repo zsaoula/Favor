@@ -1,4 +1,8 @@
-
+@mixin object-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .modificationDuProfil{
     display: flex;
@@ -87,7 +91,7 @@ input{
 }
 
 .popup-modificationProfil{
-    z-index: 100;
+    z-index: 10;
     width: 100%;
     height: 100%;
     top: 0;
@@ -147,13 +151,44 @@ input{
             display: flex;
             justify-content: space-between;
             flex-direction: row;
+            .profile-pic {
+              color: transparent;
+              transition: all .3s ease;
+              @include object-center;
+              position: relative;
+              transition: all .3s ease;
+              
+              input{
+                display:none;
+              }
 
-        }
-        .imagesPopup{
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+              img{
+                position: absolute;
+                object-fit: cover;
+                z-index: 0;
+              }
+              .-label {
+                cursor: pointer;
+              }
 
+              &:hover {
+                .-label {
+                  @include object-center;
+                  background-color: rgba(0,0,0,.8);
+                  z-index: 10;
+                  color: rgba(255,255,255);
+                  transition: background-color .2s ease-in-out;
+                  border-radius: 20px;
+                  margin-bottom: 0;
+               }
+              }
+              
+              span {
+                display: inline-flex;
+                padding: .2em;
+                height: 2em;
+              }
+            }
         }
         .buttonPopup {
           display: flex;
@@ -175,3 +210,18 @@ input{
         }
         
 }
+
+.buttonValidationChangements{
+  position: relative;
+  margin-top: 2%;
+
+  border-radius: 20px;
+  min-width: 60px;
+}
+
+
+.camera{
+  background: url("./../../assets/img/Photo-Video-Camera-icon.png");
+}
+
+
