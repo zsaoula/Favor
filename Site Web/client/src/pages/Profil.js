@@ -100,7 +100,7 @@ const Profil = () => {
             <div>
             <div>
                 <div class="imageProfil">
-                    <img src={userData.picture}/>
+                    <img class="image" src={userData.picture}/>
                 </div>
                 <div class="divPseudo">
                     <h3 class="pseudo">{userData.pseudo}</h3>
@@ -211,17 +211,17 @@ const Profil = () => {
               <hr/>
               <div class="ListReco">
                 <div class="UtiReco">
-                <img src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                <img class="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 <span>UtiT</span>
                 <a href="#" class="buttonReco" id="button">Suivre</a>
               </div>
               <div class="UtiReco">
-                <img src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                <img class="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 <span>UtiT</span>
                 <a href="#" class="buttonReco" id="button">Suivre</a>
               </div>
               <div class="UtiReco">
-                <img src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                <img class="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 <span>UtiT</span>
                 <a href="#" class="buttonReco" id="button">Suivre</a>
               </div>
