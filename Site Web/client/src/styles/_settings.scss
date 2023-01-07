@@ -7,8 +7,7 @@ $color-4: #AAAAAA;
 $color-5: #AABBCC;
 $color-6:  #5499c7  ;
 $color-7:  #1b4f72 ;
-
-
+$color-8: #FAFAFA;
 
 
 // $color-1: #4cbfa6;
@@ -25,6 +24,10 @@ $color-7:  #1b4f72 ;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-color: #F0F0F0;
 }
 
 .imageDeProfil{

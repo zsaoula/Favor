@@ -1,13 +1,31 @@
 #cadrePoste{
-    background: white;
-    border: 2px solid grey;
+    background: $color-8;
+    border: 0.3px solid $color-5;
     border-radius:5px;
+    margin-bottom: 10px;
     width: 70%;
-    margin-bottom: 20px;
+
+    margin-left: 3%;
 }
 
 #postContenu{
     padding: 15px;
+    
+
+}
+
+#contenuePoste{
+    background: $color-8;
+    border: 0.3px solid $color-5;
+    border-radius:5px;
+    margin-bottom: 10px;
+    p{
+        margin-top: 0.5%;
+        margin: 1%;
+        background-color: $color-3;
+        border: 0.2px solid $color-5;
+    }
+
 }
 
 #hautPoste{
@@ -21,11 +39,13 @@
     list-style-type: none;
     display: flex;
     justify-content: center;
+    
 }
 
 #cadreInfoPoste{
     display: flex;
     align-items:center;
+    
 }
 #PhotoProfile{
     margin: 0px 15px 0px 0px;
@@ -33,6 +53,7 @@
     height:40px;
     border-radius: 20px;
     border: 2px solid #555;
+    margin-bottom: 8%;
 }
 
 #NomProfile{
@@ -47,9 +68,14 @@
     justify-content: space-between;
     margin-left: 10px;
     margin-right: 10px;
+
+    
 }
 
 #like, #commentaire{
     display: flex;
     align-items:center;
+    
 }
+
+
