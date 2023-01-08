@@ -17,12 +17,12 @@ const ConfigurationDuCompte =()=>{
        
             <form className="ModifucationInformationDuCompte">
                         
-                        <div className='ModificationInformationDuCompteText'>
+                        <div className='ModificationInformationDuCompteText alignementText'>
                         <span>email</span>
                         <span>mot de passe</span>
                         <span>comfirmation mot de passe</span>
                         </div>
-                        
+                        <div>
                         <div className='ModificationInformationDuCompteText'>
                         
                         <input  type="text" 
@@ -46,6 +46,8 @@ const ConfigurationDuCompte =()=>{
                                 value={controlPassword}/>
                                 <div className='password error'></div>
                         </div>
+                        <button className='buttonValidationChangements'>Valider</button>
+            </div>
             </form>
         <div />
         <h2 className='ligneHorizontal'>Suppression du compte</h2>

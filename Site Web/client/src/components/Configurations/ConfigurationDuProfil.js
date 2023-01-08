@@ -36,7 +36,7 @@ const ConfigurationDuProfil = ()=>{
                 <img src={PLUS} className="plusButton "/>
                 <img src={a} className="imageDeProfilConfiguration imageDeProfil" onClick={() => setDisplayAdd(true)}/>
             </button>
-            <div className='modificationDuProfilText'>
+            <div className='modificationDuProfilText alignementText'>
                 <span>Pseudo: </span>
                 <span>Nom d'utilisateur:</span>
             </div>

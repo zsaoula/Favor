@@ -214,9 +214,11 @@ input{
 .buttonValidationChangements{
   position: relative;
   margin-top: 2%;
-
   border-radius: 20px;
-  min-width: 60px;
+  min-width: 80px;
+  background-color: $color-7;
+  color: white;
+  transition: all 1s;
 }
 
 
@@ -224,4 +226,6 @@ input{
   background: url("./../../assets/img/Photo-Video-Camera-icon.png");
 }
 
-
+.alignementText{
+  margin-bottom: 2%;
+}
