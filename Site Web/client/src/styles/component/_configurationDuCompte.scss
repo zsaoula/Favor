@@ -25,9 +25,24 @@
         margin-left: 6%;
         width: 16%;
         max-width: 160px;
+        min-width: 120px;
         background-color: $color-3;
         border: 2px solid $color-4;
         border-radius: 20px;
+    }
+    .buttonSuppressionText{
+        margin-left: 2%;
+        max-width: 400px;
+        min-width: 200px;
+        width: 35%;
+        font-style: italic;
+        color: red;
+        opacity: 70%;
+        background-color: $color-3;
+        height: fit-content;
+        padding: 1%;
+        
+
     }
     button:hover  {
         background-color: $color-1;

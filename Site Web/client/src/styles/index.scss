@@ -5,9 +5,13 @@
 @import './component/poste';
 @import './pages/configuration';
 @import './component/ajoutLien';
-@import './component/configurationDuProfil';
+@import'./component/configurationDuProfil.scss';
+@import'./component/configurationDuCompte.scss';
+@import'./component/politiqueDeConfidentialite';
 @import './component/newPoste';
 
+
+
 @import './component/notif';
-@import './component/trends';
+@import './pages/trends';
 

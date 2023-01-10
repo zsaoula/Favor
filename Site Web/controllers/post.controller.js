@@ -7,6 +7,21 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
 const { promisify } = require("util");
 
+//import { addNotification } from "./notifFonction";
+const {addNotification} = require("./notifFonction");
+//const UserModel = require("../models/user.model");
+
+/*const addNotification = (userId, notification) => {
+  UserModel.findById(userId, (err, user) => {
+    if (err) {
+      console.log(err);
+    } else {
+      user.notif.push(notification);
+      user.save();
+    }
+  });
+};*/
+
 module.exports.readPost = (req, res) => {
   PostModel.find((err, docs) => {
     if (!err) res.send(docs);
@@ -60,7 +75,15 @@ module.exports.deletePost = (req, res) => {
   });
 };
 
+
 module.exports.likePost = async (req, res) => {
+  addNotification("63b835de3f9be509b614df36", {
+    typeNotif: "like",
+    id_user: "5f1a32c2f9f9ab74a1b7a6c8",
+    id_post1: "5f1a32c2f9f9ab74a1b7a6c8",
+    id_post2: ""
+  });
+
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 

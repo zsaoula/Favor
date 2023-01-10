@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
 
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+/*import PolitiqueDeConfidentialite from '../components/';
+*/
 
 
 const ConfigurationDuCompte =()=>{
@@ -13,14 +17,14 @@ const ConfigurationDuCompte =()=>{
         <div>
         <h2 className='ligneHorizontal'>Modifucation information du compte</h2>
        
-            <div className="ModifucationInformationDuCompte">
+            <form className="ModifucationInformationDuCompte">
                         
-                        <div className='ModificationInformationDuCompteText'>
+                        <div className='ModificationInformationDuCompteText alignementText'>
                         <span>email</span>
                         <span>mot de passe</span>
                         <span>comfirmation mot de passe</span>
                         </div>
-                        
+                        <div>
                         <div className='ModificationInformationDuCompteText'>
                         
                         <input  type="text" 
@@ -44,7 +48,9 @@ const ConfigurationDuCompte =()=>{
                                 value={controlPassword}/>
                                 <div className='password error'></div>
                         </div>
+                        <button className='buttonValidationChangements'>Valider</button>
             </div>
+            </form>
         <div />
         <h2 className='ligneHorizontal'>Suppression du compte</h2>
         <div className='buttonSuppressionCompte'>
@@ -52,12 +58,11 @@ const ConfigurationDuCompte =()=>{
         <button>
             supprimer votre compte    
         </button>
-        <span>gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</span>
+            <p className='buttonSuppressionText'>Note : action irreversible qui vous fera perdre toutes les données du compte en conséquence</p>
         </div> 
     </div>
     )
 }
-
 
 
 

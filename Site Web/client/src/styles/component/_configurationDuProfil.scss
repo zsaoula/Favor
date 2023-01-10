@@ -1,7 +1,7 @@
-
-.modificationDuProfilBackgroud{
-    // background: $color-6;
-    
+@mixin object-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modificationDuProfil{
@@ -25,13 +25,38 @@ span{
 
 }
 
-.imageDeProfilConfiguration{
+
+.plusButton{
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    opacity: 0; 
+    transition: opacity 0.5s; 
+}
+
+
+.imageDeProfilConfigurationPlus {
+    position: relative;
     width: 15%;
+    max-width: 180px;
+    min-width: 130px;
+    border: none;
+
+}
+
+.imageDeProfilConfigurationPlus:hover .plusButton {
+    opacity:0.70;
     
 }
+
 .imageDeProfilConfiguration:hover{
     filter: blur(1px);
+    opacity: 0.2; 
+    transition: opacity 1s; 
+    
 }
+
 .accesDossiersPerso{
     display: flex;
     align-items: row;
@@ -46,12 +71,161 @@ input{
     margin-bottom: 2%;
 }
 
+
+
 .accesDossiersPerso{
     display: flex;
+    flex-direction: column;
   
+}
+.accesDossiersPersoValidation{
+    flex-direction: row;
 }
 
 .textAccesDossiersPerso{
     margin-left:18px;
+    font-size: medium;
+    font-style: italic;
+    opacity: 70%;
+
 }
 
+.popup-modificationProfil{
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    animation: popup 1s forwards;
+
+    @keyframes popup {
+      to {
+        backdrop-filter: blur(2px);
+      }
+    }
+
+    .modal {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-100%);
+      background: $color-2;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 2px rgba(131, 130, 130, 0.356);
+      overflow: auto;
+      transform: scaleY(0);
+      transform-origin: center;
+      animation: modal .5s forwards;
+      max-width: 360px;
+      min-width: 320px;
+      border: 2px solid $color-4;
+      border-bottom-right-radius: 50px;
+
+      @keyframes modal {
+        to {
+          transform: scale(1) translate(-50%);
+        }
+      }
+
+        &:hover {
+          transform: scale(1.07);
+        }
+      }
+
+
+        &::-webkit-scrollbar {
+          width: 2px;
+        }
+        &::-webkit-scrollbar-track {
+          background: $color-4;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: $color-1;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+        .imagesPopup{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            .profile-pic {
+              color: transparent;
+              transition: all .3s ease;
+              @include object-center;
+              position: relative;
+              transition: all .3s ease;
+              
+              input{
+                display:none;
+              }
+
+              img{
+                position: absolute;
+                object-fit: cover;
+                z-index: 0;
+              }
+              .-label {
+                cursor: pointer;
+              }
+
+              &:hover {
+                .-label {
+                  @include object-center;
+                  background-color: rgba(0,0,0,.8);
+                  z-index: 10;
+                  color: rgba(255,255,255);
+                  transition: background-color .2s ease-in-out;
+                  border-radius: 20px;
+                  margin-bottom: 0;
+               }
+              }
+              
+              span {
+                display: inline-flex;
+                padding: .2em;
+                height: 2em;
+              }
+            }
+        }
+        .buttonPopup {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 5%;
+          margin-left: 8%;
+          margin-right: 8%;
+          button{
+            background: $color-4;
+            border-radius: 20px;
+
+            &:hover {
+                color: $color-3;
+                transform: translateX(2px);
+            }
+          }
+  
+        }
+        
+}
+
+.buttonValidationChangements{
+  position: relative;
+  margin-top: 2%;
+  border-radius: 20px;
+  min-width: 80px;
+  background-color: $color-7;
+  color: white;
+  transition: all 1s;
+}
+
+
+.camera{
+  background: url("./../../assets/img/Photo-Video-Camera-icon.png");
+}
+
+.alignementText{
+  margin-bottom: 2%;
+}

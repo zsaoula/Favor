@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+ const mongoose = require('mongoose');
 
 //trim pour supprimer les espaces
 const postSchema = new mongoose.Schema(
