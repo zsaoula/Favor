@@ -40,27 +40,28 @@ const Connexion = (props) => {
                 <form className='cadre' action='' onSubmit={handleLogin} id="sign-up-form">
                     <h1>Connexion</h1>
                         <div className='inputbox'>
+                        <span>email</span>
                             <input 
                                 type="text" 
                                 name="email" 
                                 id="email" 
                                 onChange={(e) => setEmail (e.target.value)} 
                                 value={email}/>
-                            <span>email</span>
+                            <div className="email error"></div>
                         </div>
-                        <div className="email error"></div>
                         <br />
 
                         <div className="inputbox">
+                        <span>mot de passe</span>
                             <input 
                                 type="password" 
                                 name="password" 
                                 id="password" 
                                 onChange={(e) => setPassword (e.target.value)} 
                                 value={password}/>
-                            <span>mot de passe</span>
+                            <div className="password error"></div>
                         </div>
-                        <div className="password error"></div>
+
                         <br />
                         
                         <input type="submit" value="connexion" id='connexion' />

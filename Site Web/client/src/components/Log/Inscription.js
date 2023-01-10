@@ -64,57 +64,52 @@ const Inscription = () => {
                     <form className="cadre" action='' onSubmit={handleRegister} >
                         <h1>Inscription</h1>
                         <div className="inputbox">
+                        <span>pseudo</span>
                             <input type="text"
                                     name="pseudo"
                                     id="pseudo"
                                     onChange={(e) => setPseudo(e.target.value)}
                                     value={pseudo}/>
-                            <span>pseudo</span>
+                          <div className='pseudo error'></div>
                         </div>
-                        <div className='pseudo error'></div>
                         <br />
-                        
                         <div className="inputbox">
+                        <span>email</span>
                             <input  type="text" 
                                     name="email"
                                     id="email"
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}/>
-                            <span>email</span>
+                           <div className='password error'></div>
                         </div>
-                        <div className='email error'></div>
                         <br />
-
                         <div className="inputbox">
+                        <span>mot de passe</span>
                             <input  type="password"
                                     name="password"
                                     id="password"
                                     onChange={(e) => setPassword(e.target.value)}
                                     value={password}/>
-                            <span>mot de passe</span>
+                            <div className='password error'></div>
                         </div>
-                        <div className='password error'></div>
                         <br />
-
-                        
                         <div className="inputbox">
+                        <span>comfirmation mot de passe</span>
                             <input  type="password" 
                                     name="password"
                                     id="password-conf"
                                     onChange={(e) => setControlPassword(e.target.value)}
                                     value={controlPassword}/>
-                            <span>comfirmation mot de passe</span>
+                            <div className='password-confirm error'></div>
                         </div>
-                        <div className='password-confirm error'></div>
                         <br />
-                        
                         <div className="chexkboxConditionGenerale">
                           <input  type="checkbox" 
                                   name="terms"
                                   id="terms"/>
                           <span>J'accepte les <a href="/" target="_blank" rel='noopener noreferrer'>conditions générales</a></span>
+                          <div className="terms error"></div>
                         </div>
-                        <div className="terms error"></div>
                         <br />
                         
                         <input type="submit" value="inscription" id="inscription"/>
