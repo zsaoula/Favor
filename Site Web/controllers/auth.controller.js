@@ -14,6 +14,8 @@ const createToken = (id) => {
 
 //gestion des erreurs
 module.exports.signUp = async (req, res) => {
+    console.log(req.body);
+
     //Attention à enlever
     
     const {pseudo, email, password} = req.body
@@ -29,7 +31,7 @@ module.exports.signUp = async (req, res) => {
 }
 
 module.exports.signIn = async (req, res) => {
-    //console.log(req.body);
+    console.log(req.body);
     const {email, password} = req.body
     try {
         const user = await UserModel.login({email, password});
