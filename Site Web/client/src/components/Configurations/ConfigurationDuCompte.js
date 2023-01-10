@@ -1,6 +1,5 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
 
+import { NavLink } from "react-router-dom";
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 /*import PolitiqueDeConfidentialite from '../components/';
