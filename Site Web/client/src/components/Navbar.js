@@ -75,7 +75,7 @@ const Navbar = () => {
         })
             .then(() => removeCookie('jwt'))
             .catch((err) => console.log(err));
-        window.location = "/HomeNavigation";
+        window.location = "/";
 
     }
 
