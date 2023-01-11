@@ -5,6 +5,7 @@ import PLUS from "../../assets/img/plus.png";
 import { NavLink } from "react-router-dom";
 
 
+
 const ConfigurationDuProfil = ()=>{
    
    
@@ -70,12 +71,7 @@ const ConfigurationDuProfil = ()=>{
             <input type="checkbox" name='cocher' />
             <label for="cocher" class='textAccesDossiersPerso'>Cocher si oui</label>
             </div>
-            
-            
-            <div className='dossierPersonnel'>
-                <span>dossiers</span>
-
-            </div>
+           
         </div> 
         
         {displayAdd && (

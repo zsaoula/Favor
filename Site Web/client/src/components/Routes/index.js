@@ -12,12 +12,12 @@ const index = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<HomeNavigation/>} />
-                    <Route path="/home" element={<Home/>} />
-                    <Route path="/trends" element={<Trends/>} />
-                    <Route path="/discover" element={<Discover/>} />
+                    <Route path="/Home" element={<Home/>} />
+                    <Route path="/Trends" element={<Trends/>} />
+                    <Route path="/Discover" element={<Discover/>} />
                     {/* <Route path="*" element={<HomeNavigation/>} /> */}
-                    <Route path="/profil" element={<Profil />} />
-                    <Route path="/configuration" element={<Configuration/>}/>
+                    <Route path="/Profil" element={<Profil />} />
+                    <Route path="/Configuration" element={<Configuration/>}/>
                 </Routes>
             </BrowserRouter>
     );

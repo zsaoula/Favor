@@ -32,13 +32,13 @@ const Configuration = () => {
         <Navbar />
         <div className='configuration'>
             <div className='boutonDeConfigurations'>
-            <a onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
+            <a onClick={handleModals} id="ConfigurationDuProfil" >
             Configuration du profil
             </a>
-            <a onClick={handleModals} id="ConfigurationDuCompte" className={ConfigurationCompte}>
+            <a onClick={handleModals} id="ConfigurationDuCompte" >
             Configuration du compte
             </a>
-            <a onClick={handleModals} id="PolitiqueDeConfidentialite" className={PolitiqueConfidentialite}>
+            <a onClick={handleModals} id="PolitiqueDeConfidentialite" >
             Politique de confidentialite
             </a>
             </div>

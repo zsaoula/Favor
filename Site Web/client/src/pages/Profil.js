@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import { dateParser } from '../components/Utils';
 import FollowHandler from '../components/UserProfil/FollowHandler';
+import PostPersonnels from '../components/UserProfil/NavigationProfil/PostsPersonnels';
+import DossierPersonnels from '../components/UserProfil/NavigationProfil/DossiersPersonnels';
+import PostsLikes from '../components/UserProfil/NavigationProfil/PostsLikes';
 
 const Profil = () => {
     const userData =  useSelector((state) => state.user.user);
@@ -10,6 +13,27 @@ const Profil = () => {
     const dispatch = useDispatch();
     const [followingPopup, setFollowingPopup] = useState(false);
     const [followerPopup, setFollowerPopup] = useState(false);
+    const [dossierPersonnels,setdossierPersonnels ] = useState(false);
+    const [postPersonnels,setpostPersonnels ] = useState(true);
+    const [postLikes,setpostLikes ] =useState(false)
+
+    const handleModals = (e) => {
+        if (e.target.id === "DossierPersonnels") {
+            setdossierPersonnels(true);
+            setpostPersonnels(false);
+            setpostLikes(false);
+        } else if (e.target.id === "PostsPersonnels") {
+            setdossierPersonnels(false);
+            setpostPersonnels(true);
+            setpostLikes(false);
+        } else if (e.target.id ==="PostsLikes"){
+            setdossierPersonnels(false);
+            setpostPersonnels(false);
+            setpostLikes(true);
+        }
+    }; 
+
+
 
     return (
         <>
@@ -186,21 +210,24 @@ const Profil = () => {
                     <nav role="navigation" class="navProfil">
                         <ul class="navItemsProfil">
                             <li class="navItemProfil">
-                                <a href="#" class="navLinkProfil" ><span>Dossier Personnel</span></a>
+                                <a class="navLinkProfil" id='DossierPersonnels' onClick={handleModals}><span>Dossier Personnel</span></a>
                             </li> 
                             <li class="navItemProfil">
-                                <a href="#" class="navLinkProfil"><span>Posts</span></a>
+                                <a class="navLinkProfil" id='PostsPersonnels' onClick={handleModals}><span>Posts</span></a>
                             </li>
                             <li class="navItemProfil">
-                                <a href="#" class="navLinkProfil"><span>Posts likés</span></a>
+                                <a  class="navLinkProfil" id='PostLikes' onClick={handleModals}><span>Posts likés</span></a>
                             </li> 
                           
                         </ul>
                      </nav>
               </div>
               <div class="menuContent">
+
                 <div class="listContent">
-                  <span>suu</span>
+                {dossierPersonnels &&<DossierPersonnels/>}
+                {postPersonnels &&<PostPersonnels/>}
+                {postLikes &&<PostsLikes/>}
                 </div>
                   
               </div>
