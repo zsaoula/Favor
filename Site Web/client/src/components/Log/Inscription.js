@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink, redirect} from "react-router-dom";
 import axios from "axios";
 import Connexion from "./Connexion";
 
@@ -52,13 +53,16 @@ const Inscription = () => {
             .catch((err) => console.log(err));
         }
     };
-
+    /* const showText=()=>{
+        const timeoutID =setTimeout(()=>{document.getElementById("textSucces").style.visibility="visible"},3000);
+        clearTimeout(timeoutID);
+      };
+      */
     return (
         <>
             {formSubmit ? (
-                <div className='enregistrementReussi'>
-                    <Connexion error={true} />
-                </div>
+                  <Connexion error={true}/>
+                  
             ) : ( 
                 <div className="formulaire">
                     <form className="cadre" action='' onSubmit={handleRegister} >
