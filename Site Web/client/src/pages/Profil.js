@@ -13,8 +13,8 @@ const Profil = () => {
     const dispatch = useDispatch();
     const [followingPopup, setFollowingPopup] = useState(false);
     const [followerPopup, setFollowerPopup] = useState(false);
-    const [dossierPersonnels,setdossierPersonnels ] = useState(false);
-    const [postPersonnels,setpostPersonnels ] = useState(true);
+    const [dossierPersonnels,setdossierPersonnels ] = useState(true);
+    const [postPersonnels,setpostPersonnels ] = useState(false);
     const [postLikes,setpostLikes ] =useState(false)
 
     const handleModals = (e) => {
