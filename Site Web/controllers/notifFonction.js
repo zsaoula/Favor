@@ -1,12 +1,10 @@
 const UserModel = require("../models/user.model");
+const PostModel = require("../models/post.model");
 
-module.exports.addNotification = (userId, notification) => {
-    UserModel.findById(userId, (err, user) => {
-        if (err) {
-            console.log(err);
-        } else {
-            user.notif.push(notification);
-            user.save();
-        }
-    });
+module.exports.addNotification = async (userId, notification) => {
+    await UserModel.findByIdAndUpdate(
+        userId,
+        { $addToSet: { notif: notification } },
+        { new: true, upsert: true }
+    );
 };

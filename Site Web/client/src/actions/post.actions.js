@@ -49,11 +49,11 @@ export const addPost = (data) => {
         .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
         .then((res) => {
             console.log(data,"test");
-        /* if (res.data.errors) {
+         if (res.data.errors) {
             dispatch(setPostError({payload: res.data.errors }));
          } else {
              dispatch(setPostError({payload: "" }));
-          }*/
+          }
         });
     };
   };

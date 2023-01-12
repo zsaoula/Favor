@@ -7,6 +7,13 @@ module.exports.getAllUsers = async (req, res) => {
   res.status(200).json(users);
 };
 
+module.exports.getNotif = async (req, res) => {
+
+  const users = await UserModel.find().select("-password");
+  console.log('api get notif',users);
+  res.status(200).json(users);
+};
+
 //req.params par url
 module.exports.userInfo = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
