@@ -19,14 +19,13 @@ const AjoutLien = () => {
             dispatch(getPosts());
             cancelPost();
             setDisplayAdd(false);
-           /* window.location.reload();*/
+            window.location.reload();
         }else {
             alert("Veuillez compléter tous les champs.")
         }
       else{
         alert("Ce n'est pas lien!")
       }
-      
     };
 
 

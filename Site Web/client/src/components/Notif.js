@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {isEmpty} from "./Utils";
-import {useSelector} from "react-redux";
-import axios from "axios";
 
-import { useDispatch } from 'react-redux';
-
-const Notif = ({message} ) => {
+const Notif = ({notification} ) => {
+    const messageNotif = (typeNotif) =>{
+        if(typeNotif == 'like') {
+            return "a like";
+        }
+        return 'a commenter'
+    }
     return (
         <div className='conteneur_notif'>
             <div className={'contenue_notif'}>
@@ -13,11 +15,13 @@ const Notif = ({message} ) => {
             </div>
             <div className={'contenue_notif'} >
                 <h6 id="NomProfile">
-                    bastien
+                    {notification.typeNotif}
                 </h6>
             </div>
             <div className={'contenue_notif'}>
-                    {message}
+                {
+                    messageNotif(notification.typeNotif)
+                }
             </div>
         </div>
 

@@ -13,6 +13,18 @@ export const getUser = (uid) => {
     };
 };
 
+export const getNotif = (uid) => {
+    console.log("loadNotif3");
+
+    return (dispatch)=> {
+        return axios
+            .get(`${process.env.REACT_APP_API_URL}api/user/notif/${uid}`)
+            .then((res) => {
+                dispatch(setUserData(res.data))
+            })
+            .catch((err) => console.log(err));
+    };
+};
 
 
 export const uploadPicture = (data, id) => {

@@ -20,6 +20,7 @@ router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 router.patch('/follow/:id', userController.follow);
 router.patch('/unfollow/:id', userController.unfollow);
+router.patch('/notif/:id', userController.getNotif);
 
 //upload pb avec postman
 router.post("/upload", upload.single('file'), uploadController.uploadProfil);

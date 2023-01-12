@@ -68,7 +68,7 @@ module.exports.deletePost = (req, res) => {
 module.exports.likePost = async (req, res) => {
   //notif
   const idUser = await PostModel.findOne({ _id: ObjectID( req.params.id) });
-  console.log(idUser);
+  console.log("like",idUser);
   addNotification.addNotification(idUser.postedId, {
     typeNotif: "like",
     id_user: req.body.id,
