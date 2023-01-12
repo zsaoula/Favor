@@ -8,7 +8,7 @@ const DossiersPersonnels=()=>{
 
     return(
     <div className='dossierPersonnel'>
-    pppp
+     <NouveauDisplayPosts/>
 
     </div>
     )

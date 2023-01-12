@@ -23,7 +23,7 @@ export const uploadPicture = (data, id) => {
             return axios 
             .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
             .then((res) => {
-                dispatch(setUserDataImg(res.data.picture));
+                /*dispatch(setUserDataImg(res.data.picture));*/
             })
         })
         .catch((err) => console.log(err));

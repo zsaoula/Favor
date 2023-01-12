@@ -51,10 +51,11 @@ const PostNouvelleAffichage = ( { post } ) => {
     })
 
     return (
-        <li className='conteneur_postes' key={post._id}>
+        <li className='PostesProfilConteneur' key={post._id}>
             {isLoading ? (
                 <i className='fas fa-spinner fa-spin'></i>
             ):(
+                <>
             <div className="unPosteNouvelleAffichage">
                 <div className="dateDePublicationDuPost">
                     <div>{dateParser(post.createdAt)}</div>
@@ -71,11 +72,12 @@ const PostNouvelleAffichage = ( { post } ) => {
                     </div>
                     <div id="commentaire">
                         <img src="commentaire.png" onClick={() => setComments(!comments)}/>
-                        <div>{post.comments.length}</div>
+                        <div >{post.comments.length}</div>
                     </div>
                 </div>
-                {comments && <Comment post={post} />}
             </div>
+            {comments && <Comment className="CommentaireProfil" post={post} />}
+            </>
             ) }
         </li>
     );

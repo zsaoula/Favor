@@ -8,7 +8,7 @@ const PostPersonnels=()=>{
 
     return(
     <div className='postPersonnel'>
-    <NouveauDisplayPosts/>
+   
     </div>
     )
 }

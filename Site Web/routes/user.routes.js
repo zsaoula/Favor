@@ -15,7 +15,7 @@ router.get('/logout', authController.logout);
 // user 
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.userInfo);
-//put pour faire des updates
+router.put("/:id", userController.updateUser);
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 router.patch('/follow/:id', userController.follow);

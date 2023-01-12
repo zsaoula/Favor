@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PP  from "../../assets/img/unknown.png";
 import PLUS from "../../assets/img/plus.png";
 import { NavLink } from "react-router-dom";
@@ -10,32 +10,28 @@ const ConfigurationDuProfil = ()=>{
    
    
     const userData = useSelector((state) => state.user.user);
-    const [pseudo, setPseudo] = useState('');
-    const [nomUtilisateur, setNomUtilisateur] = useState('');
+    const [pseudo, setPseudo] = useState(userData.pseudo);
+    const [nomUtilisateur, setNomUtilisateur] = useState(userData.pseudo);
+    const[userPicture, setUserPicture] = useState(userData.picture)
+    const [tmpImage, setTmpImage] =useState('')
     const [displayAdd, setDisplayAdd] = useState(false);
-    /*const [updateImage, setUpdateImage]= useState(false);
-    const setimageDeProfile=()=>{
-        if(updateImage=true){
-        useState("");
+    const handlevalidationPopup =(e)=>{
+        setUserPicture(tmpImage);
         setDisplayAdd(false);
-        }
-        else{
-            setDisplayAdd(false);
-        }
-    }*/
-    var handleLoadFile=(e)=>{
+    }
+    const handleLoadFile=(e)=>{
         var image = document.getElementById("output");
         image.src = URL.createObjectURL(e.target.files[0]);
-        
+        setTmpImage(image.src);
     };
-    var a=PP;
+
     return(
     <div className='modificationDuProfilBackgroud'>
         <h2 className='ligneHorizontal' >Modifucation du Profil</h2>
         <div className='modificationDuProfil' >
             <button className='imageDeProfilConfigurationPlus imageDeProfil' >
                 <img src={PLUS} className="plusButton "/>
-                <img src={a} className="imageDeProfilConfiguration imageDeProfil" onClick={() => setDisplayAdd(true)}/>
+                <img src={userPicture} className="imageDeProfilConfiguration imageDeProfil" onClick={() => setDisplayAdd(true)}/>
             </button>
             <div className='modificationDuProfilText alignementText'>
                 <span>Pseudo: </span>
@@ -78,7 +74,7 @@ const ConfigurationDuProfil = ()=>{
             <div className='popup-modificationProfil'>
                 <div className="modal">
                 <div className='imagesPopup'>
-                    <img src={PP} className="imageDeProfilConfigurationPlus imageDeProfil"/>
+                    <img src={userPicture} className="imageDeProfilConfigurationPlus imageDeProfil"/>
                     <div className="imageDeProfilConfigurationPlus imageDeProfil profile-pic" >
                         <label className="-label" for="file">
                         <span class="camera"></span>
@@ -89,15 +85,29 @@ const ConfigurationDuProfil = ()=>{
                     </div>
                 </div >
                 <div className='buttonPopup'>
-                <button  onClick={() => setDisplayAdd(false)/*&&setUpdateImage(true)*/}>Retour</button>
-                <button /*onClick={} */>Valider</button>
+                <button  onClick={()=>setDisplayAdd(false)}>Retour</button>
+                <button onClick={handlevalidationPopup} >Valider</button>
+                
                 </div>
                 </div>
             </div>
         )}
     </div>
 
+
     )
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

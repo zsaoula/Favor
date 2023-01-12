@@ -23,16 +23,19 @@ const LinkPreview = ({ link }) => {
     }, [link]);
 
     if(preview.image === "") {
-        return (<div><a href={link}>{link}</a></div>);
+        return (<div className='alignementLien'><a className="LienPostHome" href={link}>{link}</a></div>);
     }
     else {
         return (
-            <div>
+            <>
+            <div className='alignementLien'>
                 <a href={link}>
-                    <img id="imageLien" src={preview.image} alt={preview.title}/>
+                    <img id="imageLien" className="LienPostHome" src={preview.image} alt={preview.title}/>
                 </a>
-                <p>{preview.description}</p>
+                
             </div>
+            <p>{preview.description}</p>
+            </>
         );
     }
 };
