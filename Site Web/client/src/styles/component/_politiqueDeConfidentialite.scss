@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2%;
+  margin-top: 0.2%;
   margin-left: 5%;
   text-indent: 1%;   
   text-align: justify;
@@ -19,15 +19,15 @@
   scrollbar-gutter: stable both-edges;
 
   p{
-      animation-duration: 2s;
+      animation-duration: 1s;
       animation-name: slide;
       margin: 1.5%;
       
         
         @keyframes slide {
           from {
-            margin-top: 100%;
-            width: 50%;
+            margin-top: 80%;
+            width: 80%;
           }
         
           to {
