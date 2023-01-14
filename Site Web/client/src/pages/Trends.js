@@ -64,17 +64,17 @@ const Trends = () => {
             </div>
         );*/
 
-    return (
-        <div id={'listeNotif'}>
-            <Navbar />
-            <h1>Notification</h1>
-            <Notif message="a like"/>
-            <Notif message="a like"/>
-            <Notif message="a like"/>
-            <Notif message="a like"/>
-            <Notif message="a like"/>
-            <Notif message="a commenter votre poste"/>
-        </div>);
+    // return (
+    //     <div id={'listeNotif'}>
+    //         <Navbar />
+    //         <h1>Notification</h1>
+    //         <Notif message="a like"/>
+    //         <Notif message="a like"/>
+    //         <Notif message="a like"/>
+    //         <Notif message="a like"/>
+    //         <Notif message="a like"/>
+    //         <Notif message="a commenter votre poste"/>
+    //     </div>);
 };
 
 export default Trends;

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PP  from "../../assets/img/unknown.png";
 import PLUS from "../../assets/img/plus.png";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 
 
@@ -25,14 +26,51 @@ const ConfigurationDuProfil = ()=>{
         setTmpImage(image.src);
     };
 
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        //const pseudoError = document.querySelector(".pseudo.error");
+        const pictureError =document.querySelector(".picture.error");
+
+          await axios({
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/user/upload`,
+            data: {
+              //pseudo,
+              userPicture,
+            },
+          })
+             .then((res) => {
+               console.log(res);
+               if (res.data.errors) {
+                // pseudoError.innerHTML = res.data.errors.pseudo;
+                 pictureError.innerHTML = res.data.errors.picture;
+               } 
+            })
+            .catch((err) => console.log(err));
+    };
+
+
+
+
+
+
+
+
+
+
     return(
     <div className='modificationDuProfilBackgroud'>
-        <h2 className='ligneHorizontal' >Modifucation du Profil</h2>
+        
+        <h2 className='ligneHorizontal' >Modification des informations du Profil</h2>
+        <form action='' onSubmit={handleUpdate} >
         <div className='modificationDuProfil' >
+            <>
             <button className='imageDeProfilConfigurationPlus imageDeProfil' >
                 <img src={PLUS} className="plusButton "/>
                 <img src={userPicture} className="imageDeProfilConfiguration imageDeProfil" onClick={() => setDisplayAdd(true)}/>
             </button>
+            {/*<div className='picture error'></div>*/}
+            </>
             <div className='modificationDuProfilText alignementText'>
                 <span>Pseudo: </span>
                 <span>Nom d'utilisateur:</span>
@@ -54,12 +92,14 @@ const ConfigurationDuProfil = ()=>{
                     value={pseudo}
                     onChange={(e) => setPseudo (e.target.value)} 
                 />
+               {/* <div className='pseudo error'></div>*/}
 
             
             </div>
-            <button className='buttonValidationChangements'>Valider</button>
+            <button type='submit' className='buttonValidationChangements' id='update' value='update' >Valider</button>
             </div>
         </div>
+        </form>
         
         <h2 className='ligneHorizontal' >Acces au dossiers personnel</h2>
         <div className='accesDossiersPerso'>
@@ -74,14 +114,16 @@ const ConfigurationDuProfil = ()=>{
             <div className='popup-modificationProfil'>
                 <div className="modal">
                 <div className='imagesPopup'>
-                    <img src={userPicture} className="imageDeProfilConfigurationPlus imageDeProfil"/>
-                    <div className="imageDeProfilConfigurationPlus imageDeProfil profile-pic" >
+                    <div className='imageModifSpace'>
+                    <img src={userPicture} className=" imageDeProfil "/>
+                    </div>
+                    <div className='profile-pic '>
                         <label className="-label" for="file">
                         <span class="camera"></span>
                             <span>Changer</span>
                         </label>
-                        <input type="file" id="file" onChange={handleLoadFile}/>
-                        <img src={PLUS} id="output" />
+                        <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/>
+                        <img src={PLUS} className="imageDeProfil"id="output" />
                     </div>
                 </div >
                 <div className='buttonPopup'>
