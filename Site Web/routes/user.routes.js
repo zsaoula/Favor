@@ -12,6 +12,7 @@ router.post('/login', authController.signIn);
 //retirer le token (cookie)
 router.get('/logout', authController.logout);
 
+
 // user 
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.userInfo);
