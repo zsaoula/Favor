@@ -17,6 +17,9 @@ const DisplayPosts = () => {
     }
 
     useEffect(() => {
+        while(postsData== null){
+
+        }
         if (loadPost) {
             dispatch(getPosts(count));
             setLoadPost(false);

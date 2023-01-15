@@ -51,7 +51,7 @@ const Post = ( { post } ) => {
 
 
     useEffect(() => {
-        !isEmpty(usersData[0]) && setIsLoading(false)
+        !isEmpty(usersData[0]) && !isEmpty(userData) && setIsLoading(false)
     })
 
     return (
@@ -79,8 +79,8 @@ const Post = ( { post } ) => {
                                     }).join('')
                                 }
                             </h6>
-                            {/* {post.postedId !== userData._id && 
-                            (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)} */}
+                            {post.postedId !== userData._id && 
+                            (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)}
                         </div>
                         <div>{dateParser(post.createdAt)}</div>
                     </div>
