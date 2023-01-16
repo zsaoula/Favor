@@ -70,7 +70,7 @@ const AjoutLien = () => {
                 }
             </div>
             {displayAdd && (
-                <div className="popup-profil-container">
+                <div className="popup-ajout-container">
                     <div className="modal">
                         <h3>Ajout d'un lien</h3>
                         <span className="cross" onClick={() => setDisplayAdd(false)}>

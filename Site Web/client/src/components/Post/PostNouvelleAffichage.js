@@ -40,7 +40,6 @@ const LinkPreview = ({ link }) => {
 const PostNouvelleAffichage = ( { post } ) => {
     const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.users.users);
-    const userData = useSelector((state) => state.user.user);
     const [updated,setUpdate] = useState(false);
     const [message, setMessage] = useState(null);
     const [comments, setComments] = useState(false);
