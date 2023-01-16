@@ -105,7 +105,7 @@ const ConfigurationDuProfil = ()=>{
         <div className='accesDossiersPerso'>
             <div className='accesDossiersPersoValidation'>
             <input type="checkbox" name='cocher' />
-            <label for="cocher" class='textAccesDossiersPerso'>Cocher si oui</label>
+            <label for="cocher" className='textAccesDossiersPerso'>Cocher si oui</label>
             </div>
            
         </div> 
@@ -119,7 +119,7 @@ const ConfigurationDuProfil = ()=>{
                     </div>
                     <div className='profile-pic '>
                         <label className="-label" for="file">
-                        <span class="camera"></span>
+                        <span className="camera"></span>
                             <span>Changer</span>
                         </label>
                         <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/>

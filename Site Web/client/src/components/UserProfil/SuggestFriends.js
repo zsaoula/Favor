@@ -43,12 +43,9 @@ const SuggestFriends = () => {
         const stateTopFollowers = () => {
             let array = [];
             let obj = JSON.parse(JSON.stringify(usersData));
-            console.log("obj");
-            console.log(obj);
             obj.sort((a, b) => b.followers.length - a.followers.length);
-            console.log(obj);
             obj.map((user) => {
-                if(user._id !== userData._id){
+                if(user._id !== userData._id && !user.followers.includes(userData._id)){
                     return array.push(user._id);
                 }
             })
@@ -69,19 +66,19 @@ const SuggestFriends = () => {
     }, [userData, usersData, change])
 
     return (
-            <div class="recoDiv">
-                <div class="reco">
+            <div className="recoDiv">
+                <div className="reco">
                     <span>Vous pourriez suivre</span>
                     <hr/>
                     {chargement ? (
                         <i className='fas fa-spinner fa-pulse'></i> 
                     ) : (
-                        <div class="ListReco" >
+                        <div className="ListReco" >
                             {friends && friends.map((user) => {
                                 for(let i = 0; i < usersData.length; i++){
                                     if(user === usersData[i]._id){
                                         return (
-                                            <div class="UtiReco" key={user}>
+                                            <div className="UtiReco" key={user}>
                                                 <img src={usersData[i].picture} alt="img"/>
                                                 <p>{usersData[i].pseudo}</p>
                                                 <FollowHandler idToFollow={usersData[i]._id} type={"card"}/>
