@@ -84,7 +84,7 @@ const Inscription = () => {
                                     id="email"
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}/>
-                           <div className='password error'></div>
+                           <div className='email error'></div>
                         </div>
                         <br />
                         <div className="inputbox">

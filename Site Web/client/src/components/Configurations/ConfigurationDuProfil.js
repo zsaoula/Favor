@@ -4,6 +4,7 @@ import PP  from "../../assets/img/unknown.png";
 import PLUS from "../../assets/img/plus.png";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { uploadPicture } from '../../actions/user.actions';
 
 
 
@@ -12,11 +13,12 @@ const ConfigurationDuProfil = ()=>{
    
     const userData = useSelector((state) => state.user.user);
     const [pseudo, setPseudo] = useState(userData.pseudo);
-    const [nomUtilisateur, setNomUtilisateur] = useState(userData.pseudo);
     const[userPicture, setUserPicture] = useState(userData.picture)
     const [tmpImage, setTmpImage] =useState('')
     const [displayAdd, setDisplayAdd] = useState(false);
-    const handlevalidationPopup =(e)=>{
+    const dispatch = useDispatch();
+
+    const handleValidationPopup =(e)=>{
         setUserPicture(tmpImage);
         setDisplayAdd(false);
     }
@@ -27,26 +29,34 @@ const ConfigurationDuProfil = ()=>{
     };
 
     const handleUpdate = async (e) => {
+        console.log(userPicture)
         e.preventDefault();
-        //const pseudoError = document.querySelector(".pseudo.error");
-        const pictureError =document.querySelector(".picture.error");
+        const data = new FormData();
+        data.append("pseudo", pseudo);
+        data.append("userId", userData._id);
+        data.append("file",userPicture);
 
+        dispatch(uploadPicture(data,userData._id));
+        //const pseudoError = document.querySelector(".pseudo.error");
+      /*  const pictureError =document.querySelector(".picture.error");
           await axios({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/user/upload`,
             data: {
-              //pseudo,
+             // pseudo,
               userPicture,
-            },
+              
+            }
+            , 
           })
              .then((res) => {
                console.log(res);
                if (res.data.errors) {
-                // pseudoError.innerHTML = res.data.errors.pseudo;
-                 pictureError.innerHTML = res.data.errors.picture;
+                //pseudoError.innerHTML = res.data.errors.pseudo;
+                pictureError.innerHTML = res.data.errors.picture;
                } 
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err));*/
     };
 
 
@@ -69,22 +79,14 @@ const ConfigurationDuProfil = ()=>{
                 <img src={PLUS} className="plusButton "/>
                 <img src={userPicture} className="imageDeProfilConfiguration imageDeProfil" onClick={() => setDisplayAdd(true)}/>
             </button>
-            {/*<div className='picture error'></div>*/}
+            <div className='picture error'></div>
             </>
             <div className='modificationDuProfilText alignementText'>
                 <span>Pseudo: </span>
-                <span>Nom d'utilisateur:</span>
             </div>
             <div>
             <div className='modificationDuProfilText'>
                 
-                <input className='inputConfiguration' 
-                    type="nomUtilisateur" 
-                    name="nomUtilisateur" 
-                    id="nomUtilisateur" 
-                    onChange={(e) => setNomUtilisateur (e.target.value)} 
-                    value={nomUtilisateur}
-                />
                 <input className='inputConfiguration'
                     type="pseudo" 
                     name="pseudo" 
@@ -122,13 +124,13 @@ const ConfigurationDuProfil = ()=>{
                         <span className="camera"></span>
                             <span>Changer</span>
                         </label>
-                        <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/>
+                        <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/> {/* onChange={(e)=> setTmpImage(e.target.files[0].name)} */}
                         <img src={PLUS} className="imageDeProfil"id="output" />
                     </div>
                 </div >
                 <div className='buttonPopup'>
                 <button  onClick={()=>setDisplayAdd(false)}>Retour</button>
-                <button onClick={handlevalidationPopup} >Valider</button>
+                <button onClick={handleValidationPopup} >Valider</button>
                 
                 </div>
                 </div>

@@ -45,6 +45,24 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
+// module.exports.compteUpdate = async (req,res)=>{
+
+//    const{email, password}=req.body
+
+//   try{
+//     await UserModel.findOneAndUpdate{
+//       {_id: req.params.id}
+//       {set:{
+//         email: req.body.email
+//       }}
+//     }
+//   }
+
+// }
+
+
+
+
 module.exports.deleteUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
