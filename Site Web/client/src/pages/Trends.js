@@ -8,13 +8,6 @@ const Trends = () => {
     const [setLoadNotif] = useState(true);
     const userData =  useSelector((state) => state.user.user);
 
-    const loadMore = () => {
-        if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight){
-            setLoadNotif(true);
-        }
-    }
-    console.log("idUser: ",userData._id);
-
     return (
         <div id={'listeNotif'}>
             <Navbar />

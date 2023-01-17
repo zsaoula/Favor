@@ -78,7 +78,6 @@ const Navbar = () => {
         window.location = "/";
 
     }
-    console.log("uid:", uid);
     return (
         <div>
             {uid ? (

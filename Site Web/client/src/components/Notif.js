@@ -10,7 +10,7 @@ const Notif =  ({notification} ) => {
 
     const MessageNotif =  (notification) =>{
         if(notification.typeNotif == 'like') {
-            return "a like";
+            return "a like votre post";
         }
         else if(notification.typeNotif == 'commente') {
             return "a commenter votre post";
