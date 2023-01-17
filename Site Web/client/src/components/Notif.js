@@ -1,30 +1,30 @@
-import React from 'react';
-import {isEmpty} from "./Utils";
+import React, {useEffect,useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getPosts} from "../actions/post.actions";
+import {getUserTemp} from "../actions/user.actions";
+import MiniProfil from "./MiniProfil";
 
-const Notif = ({notification} ) => {
-    const messageNotif = (typeNotif) =>{
-        if(typeNotif == 'like') {
-            return "a like";
+const Notif =  ({notification} ) => {
+    console.log('notification',notification)
+
+
+    const MessageNotif =  (notification) =>{
+        if(notification.typeNotif == 'like') {
+            return "a like votre post";
         }
-        return 'a commenter'
+        else if(notification.typeNotif == 'commente') {
+            return "a commenter votre post";
+        }
+        return 'vous follow'
     }
+
     return (
-        <div className='conteneur_notif'>
+        <div className='conteneur_notif' key={notification._id}>
+            <MiniProfil uid={notification.id_user}></MiniProfil>
             <div className={'contenue_notif'}>
-                <img id="PhotoProfile" alt="" src="lien" />
-            </div>
-            <div className={'contenue_notif'} >
-                <h6 id="NomProfile">
-                    {notification.typeNotif}
-                </h6>
-            </div>
-            <div className={'contenue_notif'}>
-                {
-                    messageNotif(notification.typeNotif)
-                }
+                { MessageNotif(notification) }
             </div>
         </div>
-
     );
 };
 

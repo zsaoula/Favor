@@ -19,7 +19,7 @@ const AjoutLien = () => {
             dispatch(getPosts());
             cancelPost();
             setDisplayAdd(false);
-            /*window.location.reload();*/
+            window.location.reload();
         }else {
             alert("Veuillez compléter tous les champs.")
         }
@@ -70,7 +70,7 @@ const AjoutLien = () => {
                 }
             </div>
             {displayAdd && (
-                <div className="popup-ajout-container">
+                <div className="popup-profil-container">
                     <div className="modal">
                         <h3>Ajout d'un lien</h3>
                         <span className="cross" onClick={() => setDisplayAdd(false)}>

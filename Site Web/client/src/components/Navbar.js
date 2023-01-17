@@ -23,7 +23,7 @@ const Navbar = () => {
             data.append('postedId', userData._id);
             data.append('message', description);
             data.append('lien', lien);
-            console.log(data);
+            //console.log("test",data);
             putData(data);
             console.log(data);
             cancelPost();
@@ -78,7 +78,6 @@ const Navbar = () => {
         window.location = "/";
 
     }
-
     return (
         <div>
             {uid ? (
@@ -110,7 +109,7 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="navbar-item">
-                    <NavLink to="/Profil" className="navbar-link">
+                    <NavLink to={`/Profil/${uid}`} className="navbar-link">
                       <i className="fas fa-user navbar-icon"></i>
                       <span className="navbar-title">Me</span>
                     </NavLink>
