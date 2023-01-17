@@ -165,7 +165,9 @@ module.exports.unlikePost = async (req, res) => {
 //     }
 // };
 
-module.exports.commentPost = (req, res) => {
+module.exports.commentPost = async (req, res) => {
+  const idUser = await PostModel.findOne({ _id: ObjectID( req.params.id) });
+
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -183,7 +185,14 @@ module.exports.commentPost = (req, res) => {
         },
       },
       { new: true })
-            .then((data) => res.send(data))
+            .then((data) => {
+              addNotification.addNotification(idUser.postedId, {
+                typeNotif: "commente",
+                id_user: req.body.commenterId,
+                id_post1: req.params.id,
+                id_post2: data.comments.slice(-1)[0]._id
+              });
+              res.send(data);})
             .catch((err) => res.status(500).send({ message: err }));
     } catch (err) {
         return res.status(400).send(err);

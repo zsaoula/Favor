@@ -9,6 +9,7 @@ const upload = multer();
 //controlleur d'authentification
 router.post('/register', authController.signUp);
 router.post('/login', authController.signIn);
+//router.post('/send-verification-email', authController.verifEmail);
 //retirer le token (cookie)
 router.get('/logout', authController.logout);
 

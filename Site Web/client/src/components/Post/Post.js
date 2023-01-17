@@ -6,6 +6,7 @@ import { dateParser, isEmpty } from '../Utils';
 import ButtonLike from './ButtonLike';
 import Comment from './Comment';
 import Commentaire from '../../assets/img/commentaire.png';
+import MiniProfil from "../MiniProfil";
 
 const LinkPreview = ({ link }) => {
     const [preview, setPreview] = useState({ image: '', title: '', description: '' });
@@ -63,24 +64,8 @@ const Post = ( { post } ) => {
                 <div id="postContenu">
                     <div id="hautPoste">
                         <div id="cadreInfoPoste">
-                            <img id="PhotoProfile" alt="" src={
-                                !isEmpty(usersData[0]) &&
-                                usersData.map((user) => {
-                                    if (user._id === post.postedId) return user.picture;
-                                    else return null;
-                                }).join('')
-                            }/>
-                            <h6 id="NomProfile">
-                                {
-                                    !isEmpty(usersData[0]) &&
-                                    usersData.map((user) => {
-                                        if(user._id === post.postedId) return user.pseudo;
-                                        else return null;
-                                    }).join('')
-                                }
-                            </h6>
-                            {post.postedId !== userData._id && 
-                            (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)}
+                            <MiniProfil uid={post.postedId}/>
+                            {post.postedId !== userData._id && (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)}
                         </div>
                         <div>{dateParser(post.createdAt)}</div>
                     </div>
