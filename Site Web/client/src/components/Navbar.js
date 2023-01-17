@@ -78,7 +78,7 @@ const Navbar = () => {
         window.location = "/";
 
     }
-
+    console.log("uid:", uid);
     return (
         <div>
             {uid ? (
@@ -110,7 +110,7 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="navbar-item">
-                    <NavLink to="/Profil/63bea7b7b50d82de71f56184" className="navbar-link">
+                    <NavLink to={`/Profil/${uid}`} className="navbar-link">
                       <i className="fas fa-user navbar-icon"></i>
                       <span className="navbar-title">Me</span>
                     </NavLink>
