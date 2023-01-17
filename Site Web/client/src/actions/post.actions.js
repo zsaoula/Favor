@@ -7,7 +7,22 @@ export const getPosts = (num) => {
         return axios
         .get(`${process.env.REACT_APP_API_URL}api/post/`)
         .then((res) => {
-            const array = res.data.slice(0, num);
+            let array = res.data.slice(0, num);
+            dispatch(setPostData(array));
+        })
+        .catch((err) => console.log(err))
+    }
+}
+
+export const getPostsDisc = (num) => {
+    return (dispatch) => {
+        return axios
+        .get(`${process.env.REACT_APP_API_URL}api/post/`)
+        .then((res) => {
+            console.log("test");
+            let array = res.data.sort((a, b) => b.likers.length - a.likers.length);
+            array = array.slice(0, num);
+            console.log(array);
             dispatch(setPostData(array));
         })
         .catch((err) => console.log(err))

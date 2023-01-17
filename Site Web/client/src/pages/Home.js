@@ -12,7 +12,7 @@ const Home = () => {
             <Navbar />
             <main >
                 <div className='postInMain'>
-                    <DisplayPosts/>
+                    <DisplayPosts type={"home"}/>
                 </div>
                 <div className="RightBar">
                     <AjoutLien/>

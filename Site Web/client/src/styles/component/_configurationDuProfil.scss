@@ -16,14 +16,15 @@
     flex-direction: column;
     padding-left:5%;
     font-size: medium;
+    span{
+
+      margin-bottom: 4%;
+  
+    }
 
 }
 
-span{
 
-    margin-bottom: 4%;
-
-}
 
 
 .plusButton{
@@ -38,9 +39,10 @@ span{
 
 .imageDeProfilConfigurationPlus {
     position: relative;
+    
     width: 15%;
-    max-width: 180px;
-    min-width: 130px;
+    max-width: 200px;
+    min-width: 150px;
     border: none;
 
 }
@@ -119,8 +121,8 @@ input{
       transform: scaleY(0);
       transform-origin: center;
       animation: modal .5s forwards;
-      max-width: 360px;
-      min-width: 320px;
+      max-width: 650px;
+      min-width: 500px;
       border: 2px solid $color-4;
       border-bottom-right-radius: 50px;
 
@@ -130,42 +132,33 @@ input{
         }
       }
 
-        &:hover {
-          transform: scale(1.07);
-        }
+        
       }
 
 
-        &::-webkit-scrollbar {
-          width: 2px;
-        }
-        &::-webkit-scrollbar-track {
-          background: $color-4;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: $color-1;
-        }
-        &::-webkit-scrollbar-thumb:hover {
-          background: #555;
-        }
+       
         .imagesPopup{
             display: flex;
             justify-content: space-between;
             flex-direction: row;
+            .imageModifSpace{
+              margin-right: 18%;
+              img{
+                max-width: initial;
+              }
+            }
             .profile-pic {
+              position: relative;
+              width: 100%;
               color: transparent;
               transition: all .3s ease;
               @include object-center;
-              position: relative;
-              transition: all .3s ease;
-              
               input{
                 display:none;
               }
 
               img{
                 position: absolute;
-                object-fit: cover;
                 z-index: 0;
               }
               .-label {

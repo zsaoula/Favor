@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from '../../actions/post.actions';
+import { getPosts, getPostsDisc } from '../../actions/post.actions';
 import { isEmpty } from "../Utils";
 import Post from './Post';
 
-const DisplayPosts = () => {
+const DisplayPosts = ( {type} ) => {
     const [loadPost, setLoadPost] = useState(true);
     const [count , setCount] = useState(5);
     const dispatch = useDispatch();
@@ -17,8 +17,16 @@ const DisplayPosts = () => {
     }
 
     useEffect(() => {
+        while(postsData== null){
+
+        }
         if (loadPost) {
-            dispatch(getPosts(count));
+            if(type === "discover"){
+                dispatch(getPostsDisc(count));
+            }
+            else{
+                dispatch(getPosts(count));
+            }
             setLoadPost(false);
             setCount(count + 5);
         }

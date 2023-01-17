@@ -8,16 +8,18 @@
     cursor: pointer;
 }
 
-.popup-profil-container {
-    z-index: 100;
-    width: 100%;
-    top: 0;
-    left: 0;
-    height: 100%;
-    position: fixed;
-    animation: popup 1s forwards;
 
+
+.popup-ajout-container {
+  position: fixed;
+  animation: popup 1s forwards;
+  z-index: 100;
+  left: 50%;
+  
     @keyframes popup {
+      from{
+        backdrop-filter: none;
+      }
       to {
         backdrop-filter: blur(2px);
       }
@@ -49,6 +51,7 @@
         top: 25px;
         right: 25px;
         transition: 0.1s;
+        
         cursor: pointer;
 
         &:hover {
@@ -57,23 +60,12 @@
       }
 
       ul {
+        min-width: 250px;
+        max-width: 300px;
         margin: 20px 0 0;
         max-height: 500px;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        min-height: 200px;
 
-        &::-webkit-scrollbar {
-          width: 2px;
-        }
-        &::-webkit-scrollbar-track {
-          background: $color-4;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: $color-1;
-        }
-        &::-webkit-scrollbar-thumb:hover {
-          background: #555;
-        }
 
         li {
           display: grid;

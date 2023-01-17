@@ -14,7 +14,7 @@ const ConfigurationDuCompte =()=>{
 
     return(
         <div>
-        <h2 className='ligneHorizontal'>Modifucation information du compte</h2>
+        <h2 className='ligneHorizontal'>Modification des information du compte</h2>
        
             <form className="ModifucationInformationDuCompte">
                         

@@ -9,7 +9,7 @@ const Configuration = () => {
 
         const [ConfigurationCompte, setConfigurationDuCompte] = useState(false);
         const [ConfigurationProfil, setConfigurationDuProfil] = useState(true);
-        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(false)
+        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(false);
     
         const handleModals = (e) => {
             if (e.target.id === "ConfigurationDuProfil") {

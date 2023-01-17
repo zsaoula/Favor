@@ -9,7 +9,7 @@ const Discover = () => {
             <Navbar />
             <main >
                 <div className='postInMain'>
-                    <DisplayPosts/>
+                    <DisplayPosts type={"discover"}/>
                 </div>
                 <div className="RightBar">
                     <AjoutLien/>

@@ -1,4 +1,4 @@
-import NouveauDisplayPosts from "../../Post/NouveauDisplayPosts";
+import DisplayPostLikeProfil from "../../Post/DisplayPost/DisplayPostLikeProfil";
 
 
 
@@ -10,7 +10,7 @@ const PostLikes=()=>{
 return(
 
     <div className='postPersonnel'>
-    <NouveauDisplayPosts/>
+    <DisplayPostLikeProfil/>
     </div>
 )
 

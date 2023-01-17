@@ -1,31 +1,35 @@
 
 .PolitiqueDeConfidentialiteText{
-  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0.2%;
   margin-left: 5%;
   text-indent: 1%;   
   text-align: justify;
-  display: flex;
-  justify-content: center;
+  
+  
   background-color: $color-8;
   border: 0.2px solid $color-5;
   max-width:85% ;
   min-width: 380px;
   height: 550px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable both-edges;
 
   p{
-      animation-duration: 2s;
+      animation-duration: 1s;
       animation-name: slide;
       margin: 1.5%;
       
         
         @keyframes slide {
           from {
-            margin-top: 100%;
-            width: 50%;
+            width: 80%;
           }
         
           to {
-            margin-top: 0%;
             width: 100%;
           }
         }

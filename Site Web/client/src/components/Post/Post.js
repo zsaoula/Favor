@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import FollowHandler from '../UserProfil/FollowHandler';
 import { dateParser, isEmpty } from '../Utils';
 import ButtonLike from './ButtonLike';
 import Comment from './Comment';
-
+import Commentaire from '../../assets/img/commentaire.png';
 
 const LinkPreview = ({ link }) => {
     const [preview, setPreview] = useState({ image: '', title: '', description: '' });
@@ -23,16 +23,19 @@ const LinkPreview = ({ link }) => {
     }, [link]);
 
     if(preview.image === "") {
-        return (<div><a href={link}>{link}</a></div>);
+        return (<div className='alignementLien'><a className="LienPostHome" href={link}>{link}</a></div>);
     }
     else {
         return (
-            <div>
+            <>
+            <div className='alignementLien'>
                 <a href={link}>
-                    <img id="imageLien" src={preview.image} alt={preview.title}/>
+                    <img id="imageLien" className="LienPostHome" src={preview.image} alt={preview.title}/>
                 </a>
-                <p>{preview.description}</p>
+                
             </div>
+            <p>{preview.description}</p>
+            </>
         );
     }
 };
@@ -48,7 +51,7 @@ const Post = ( { post } ) => {
 
 
     useEffect(() => {
-        !isEmpty(usersData[0]) && setIsLoading(false)
+        !isEmpty(usersData[0]) && !isEmpty(userData) && setIsLoading(false)
     })
 
     return (
@@ -76,8 +79,8 @@ const Post = ( { post } ) => {
                                     }).join('')
                                 }
                             </h6>
-                            {/* {post.postedId !== userData._id && 
-                            (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)} */}
+                            {post.postedId !== userData._id && 
+                            (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)}
                         </div>
                         <div>{dateParser(post.createdAt)}</div>
                     </div>
@@ -94,7 +97,7 @@ const Post = ( { post } ) => {
                             <div>{post.likers.length}</div>
                         </div>
                         <div id="commentaire">
-                            <img src="commentaire.png" onClick={() => setComments(!comments)}/>
+                            <img src={Commentaire} onClick={() => setComments(!comments)}/>
                             <div>{post.comments.length}</div>
                         </div>
                     </div>

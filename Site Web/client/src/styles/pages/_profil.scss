@@ -162,6 +162,7 @@
   padding-top: 2%;
   padding-bottom: 2%;
   list-style: none;
+  
 }
 
 .navItemProfil {
@@ -317,9 +318,10 @@ margin-top: 1%;
 }
 
 .menuContent{
-background-color: #8c8c8e;
+border: 0.3px solid $color-5;
+background-color: $color-9;
+border-radius: 10px;
 margin: 0% 0% 0% 2.5%;
-border-radius: 25px;
 width: 95%;
 height: 85%;
 }
@@ -339,10 +341,12 @@ padding-top: 3%;
 }
 
 .listContent {
-/* display: flex;
-justify-content: center; */
-padding-left: 2.5%;
-padding-top: 2.5%;
+padding-left: 1%;
+padding-top: 1%;
+overflow-y: scroll;
+scrollbar-width: thin;
+scrollbar-gutter: stable both-edges;
+
 }
 
 .basDePage {
