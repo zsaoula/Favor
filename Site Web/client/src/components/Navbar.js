@@ -116,6 +116,12 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="navbar-item">
+                    <NavLink to="/SearchBar" className="navbar-link">
+                      <i className="fas fa-search navbar-icon"></i>
+                      <span className="navbar-title">Recherche</span>
+                    </NavLink>
+                  </li>
+                  <li className="navbar-item">
                     <NavLink to="/Configuration" className="navbar-link">
                       <i className="fas fa-cog navbar-icon"></i>
                       <span className="navbar-title">Paramètre</span>

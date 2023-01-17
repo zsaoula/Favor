@@ -6,6 +6,7 @@ import Trends from '../../pages/Trends.js';
 import Discover from '../../pages/Discover.js';
 import Profil from '../../pages/Profil.js';
 import Configuration from '../../pages/Configuration.js';
+import SearchBar from '../../pages/SearchBar.js';
 
 const index = () => {
     return (
@@ -15,6 +16,7 @@ const index = () => {
                     <Route path="/Home" element={<Home/>} />
                     <Route path="/Trends" element={<Trends/>} />
                     <Route path="/Discover" element={<Discover/>} />
+                    <Route path="/SearchBar" element={<SearchBar/>} />
                     {/* <Route path="*" element={<HomeNavigation/>} /> */}
                     <Route path="/Profil" element={<Profil />} />
                     <Route path="/Configuration" element={<Configuration/>}/>

@@ -9,6 +9,7 @@ const Inscription = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [controlPassword, setControlPassword] = useState('');
+
     
     const handleRegister = async (e) => {
         e.preventDefault();

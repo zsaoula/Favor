@@ -10,7 +10,6 @@ import { uploadPicture } from '../../actions/user.actions';
 
 const ConfigurationDuProfil = ()=>{
    
-   
     const userData = useSelector((state) => state.user.user);
     const [pseudo, setPseudo] = useState(userData.pseudo);
     const[userPicture, setUserPicture] = useState(userData.picture)
