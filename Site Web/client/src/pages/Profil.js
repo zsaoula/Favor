@@ -13,6 +13,11 @@ import MiniProfil from "../components/MiniProfil";
 const Profil = () => {
     const { uid } = useParams();
     const [userData, setUserData] = useState(null);
+    const [followingPopup, setFollowingPopup] = useState(false);
+    const [followerPopup, setFollowerPopup] = useState(false);
+    const [dossierPersonnels,setdossierPersonnels ] = useState(false);
+    const [postPersonnels,setpostPersonnels ] = useState(true);
+    const [postLikes,setpostLikes ] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
@@ -23,12 +28,6 @@ const Profil = () => {
         fetchData();
     }, [uid]);
 
-
-    const [followingPopup, setFollowingPopup] = useState(false);
-    const [followerPopup, setFollowerPopup] = useState(false);
-    const [dossierPersonnels,setdossierPersonnels ] = useState(false);
-    const [postPersonnels,setpostPersonnels ] = useState(true);
-    const [postLikes,setpostLikes ] = useState(false)
 
     const handleModals = (e) => {
         if (e.target.id === "DossierPersonnels") {
@@ -217,13 +216,13 @@ const Profil = () => {
                     <nav role="navigation" className="navProfil">
                         <ul className="navItemsProfil">
                             <li className="navItemProfil">
-                                <a className="navLinkProfil" id='DossierPersonnels' onClick={handleModals}><span>Dossier Personnel</span></a>
+                                <a className="navLinkProfil" id='DossierPersonnels' onClick={handleModals}>Dossier Personnel</a>
                             </li> 
                             <li className="navItemProfil">
-                                <a className="navLinkProfil" id='PostsPersonnels' onClick={handleModals}><span>Posts</span></a>
+                                <a className="navLinkProfil" id='PostsPersonnels' onClick={handleModals}>Posts</a>
                             </li>
                             <li className="navItemProfil">
-                                <a  className="navLinkProfil" id='PostLikes' onClick={handleModals}><span>Posts likés</span></a>
+                                <a  className="navLinkProfil" id='PostsLikes' onClick={handleModals}>Posts likés</a>
                             </li> 
                           
                         </ul>
