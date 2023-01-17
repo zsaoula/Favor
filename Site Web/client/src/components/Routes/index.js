@@ -16,7 +16,7 @@ const index = () => {
                     <Route path="/Trends" element={<Trends/>} />
                     <Route path="/Discover" element={<Discover/>} />
                     {/* <Route path="*" element={<HomeNavigation/>} /> */}
-                    <Route path="/Profil" element={<Profil />} />
+                    <Route path="/Profil/:uid" element={<Profil/>} />
                     <Route path="/Configuration" element={<Configuration/>}/>
                 </Routes>
             </BrowserRouter>

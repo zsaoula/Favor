@@ -26,6 +26,10 @@ const NouveauDisplayPosts = () => {
         return () => window.removeEventListener('scroll',loadMore);
     }, [loadPost,dispatch,count])
 
+    if (!loadPost) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <div>
             <ul>

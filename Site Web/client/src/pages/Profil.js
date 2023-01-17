@@ -1,21 +1,34 @@
-import {React, useState} from 'react';
+import React,{useEffect, useState} from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar';
-import { dateParser } from '../components/Utils';
+import {dateParser, isEmpty} from '../components/Utils';
 import FollowHandler from '../components/UserProfil/FollowHandler';
 import PostPersonnels from '../components/UserProfil/NavigationProfil/PostsPersonnels';
 import DossierPersonnels from '../components/UserProfil/NavigationProfil/DossiersPersonnels';
 import PostsLikes from '../components/UserProfil/NavigationProfil/PostsLikes';
+import MiniProfil from "../components/MiniProfil";
 
 const Profil = () => {
-    const userData =  useSelector((state) => state.user.user);
-    const usersData =  useSelector((state) => state.users.users);
-    const dispatch = useDispatch();
+    const { uid } = useParams();
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/user/${uid}`);
+            const data = await response.json();
+            setUserData(data);
+        }
+        fetchData();
+    }, [uid]);
+
+
     const [followingPopup, setFollowingPopup] = useState(false);
     const [followerPopup, setFollowerPopup] = useState(false);
     const [dossierPersonnels,setdossierPersonnels ] = useState(false);
     const [postPersonnels,setpostPersonnels ] = useState(true);
-    const [postLikes,setpostLikes ] =useState(false)
+    const [postLikes,setpostLikes ] = useState(false)
 
     const handleModals = (e) => {
         if (e.target.id === "DossierPersonnels") {
@@ -31,37 +44,39 @@ const Profil = () => {
             setpostPersonnels(false);
             setpostLikes(true);
         }
-    }; 
+    };
 
-
+    if (!userData) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <>
             <Navbar />
             {/* <main>
             <div id="bandeauProfil">
-                <h1 className='affichage-date'>Compte créé le : {dateParser(userData.createdAt)}</h1>
+                <h1 classNameName='affichage-date'>Compte créé le : {dateParser(userData.createdAt)}</h1>
                 <div id="image">
                     <img id="PhotoProfile" alt="Profil" src={userData.picture}/>
                 </div>
                 <div id="blocName">
                     <h1>{userData.pseudo}</h1>
-                    <h2 className="subdo">@{userData.pseudo}</h2>
+                    <h2 classNameName="subdo">@{userData.pseudo}</h2>
                     <div>
                         <div id="blocAbonnement">
-                            <div onClick={() => setFollowingPopup(true)} className="bloc-aboonnements-abonner">
-                                <div className="nombre">{userData.following.length}</div>
-                                <div className="texteNombre">Abonnement</div>
+                            <div onClick={() => setFollowingPopup(true)} classNameName="bloc-aboonnements-abonner">
+                                <div classNameName="nombre">{userData.following.length}</div>
+                                <div classNameName="texteNombre">Abonnement</div>
                             </div>
-                            <div onClick={() => setFollowerPopup(true)} className="bloc-aboonnements-abonner">
-                                <div className="nombre">{userData.followers.length}</div>
-                                <div className="texteNombre">Abonnée</div>
+                            <div onClick={() => setFollowerPopup(true)} classNameName="bloc-aboonnements-abonner">
+                                <div classNameName="nombre">{userData.followers.length}</div>
+                                <div classNameName="texteNombre">Abonnée</div>
                             </div>
                             {followingPopup && (
-                                <div className="popup-profil-container">
-                                <div className="modal">
+                                <div classNameName="popup-profil-container">
+                                <div classNameName="modal">
                                     <h3>Abonnements</h3>
-                                    <span className="cross" onClick={() => setFollowingPopup(false)}>
+                                    <span classNameName="cross" onClick={() => setFollowingPopup(false)}>
                                     &#10005;
                                     </span>
                                     <ul>
@@ -72,7 +87,7 @@ const Profil = () => {
                                             <li key={user._id}>
                                                 <img src={user.picture} alt="user-pic" />
                                                 <h4>{user.pseudo}</h4>
-                                                <div className="follow-handler">
+                                                <div classNameName="follow-handler">
                                                 <FollowHandler idToFollow={user._id} type={'card'}/>
                                                 </div>
                                             </li>
@@ -86,10 +101,10 @@ const Profil = () => {
                                 </div>
                             )}
                             {followerPopup && (
-                                <div className="popup-profil-container">
-                                <div className="modal">
+                                <div classNameName="popup-profil-container">
+                                <div classNameName="modal">
                                     <h3>Abonnés</h3>
-                                    <span className="cross" onClick={() => setFollowerPopup(false)}>
+                                    <span classNameName="cross" onClick={() => setFollowerPopup(false)}>
                                     &#10005;
                                     </span>
                                     <ul>
@@ -100,7 +115,7 @@ const Profil = () => {
                                             <li key={user._id}>
                                                 <img src={user.picture} alt="user-pic" />
                                                 <h4>{user.pseudo}</h4>
-                                                <div className="follow-handler">
+                                                <div classNameName="follow-handler">
                                                 <FollowHandler idToFollow={user._id} type={'card'} />
                                                 </div>
                                             </li>
@@ -123,24 +138,24 @@ const Profil = () => {
             <main>
             <div>
             <div>
-                <div class="imageProfil">
-                    <img class="image" src={userData.picture}/>
+                <div className="imageProfil">
+                    <img className="image" src={userData.picture}/>
                 </div>
-                <div class="divPseudo">
-                    <h3 class="pseudo">{userData.pseudo}</h3>
+                <div className="divPseudo">
+                    <h3 className="pseudo">{userData.pseudo}</h3>
                     {/* <h3>suuu</h3> */}
                 </div>
-                <div class="divSuivreFollowing">
-                    <a href="#" class="button" id="button">Suivre +</a>
+                <div className="divSuivreFollowing">
+                    <a href="#" className="button" id="button">Suivre +</a>
                 </div>
-                <div class="divSuivreFollowing">
-                 <div class="nbFollow" onClick={() => setFollowingPopup(true)}>
+                <div className="divSuivreFollowing">
+                 <div className="nbFollow" onClick={() => setFollowingPopup(true)}>
                   <h4>{userData.following.length}</h4>
-                  <h4 class="txtFollower">Abonnements</h4>
+                  <h4 className="txtFollower">Abonnements</h4>
                  </div>
-                 <div class="nbFollow" onClick={() => setFollowerPopup(true)}>
+                 <div className="nbFollow" onClick={() => setFollowerPopup(true)}>
                     <h4>{userData.followers.length}</h4>
-                    <h4 class="txtFollower">Abonnés</h4>
+                    <h4 className="txtFollower">Abonnés</h4>
                   </div> 
                 </div>
                   {followingPopup && (
@@ -151,50 +166,42 @@ const Profil = () => {
                                     &#10005;
                                     </span>
                                     <ul>
-                                    {usersData.map((user) => {
-                                        for (let i = 0; i < userData.following.length; i++) {
-                                        if (user._id === userData.following[i]) {
-                                            return (
-                                            <li key={user._id}>
-                                                <img src={user.picture} alt="user-pic" />
-                                                <h4>{user.pseudo}</h4>
-                                                <div className="follow-handler">
-                                                <FollowHandler idToFollow={user._id} type={'card'}/>
-                                                </div>
-                                            </li>
-                                            );
-                                        } 
+                                        {
+                                            userData.following.map((follower, i) => {
+                                                return (
+                                                    <li key={i}>
+                                                        <MiniProfil uid={follower}/>
+                                                        <div classNameName="follow-handler">
+                                                            <FollowHandler idToFollow={uid} type={'card'}/>
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })
                                         }
-                                        return null;
-                                    })}
                                     </ul>
                                 </div>
                                 </div>
                             )}
                             {followerPopup && (
-                                <div className="popup-profil-container">
-                                <div className="modal">
+                                <div classNameName="popup-profil-container">
+                                <div classNameName="modal">
                                     <h3>Abonnés</h3>
-                                    <span className="cross" onClick={() => setFollowerPopup(false)}>
+                                    <span classNameName="cross" onClick={() => setFollowerPopup(false)}>
                                     &#10005;
                                     </span>
                                     <ul>
-                                    {usersData.map((user) => {
-                                        for (let i = 0; i < userData.followers.length; i++) {
-                                        if (user._id === userData.followers[i]) {
-                                            return (
-                                            <li key={user._id}>
-                                                <img src={user.picture} alt="user-pic" />
-                                                <h4>{user.pseudo}</h4>
-                                                <div className="follow-handler">
-                                                <FollowHandler idToFollow={user._id} type={'card'} />
-                                                </div>
-                                            </li>
-                                            );
+                                        {
+                                            userData.followers.map((follower, i) => {
+                                                return (
+                                                    <li key={i}>
+                                                        <MiniProfil uid={follower}/>
+                                                        <div classNameName="follow-handler">
+                                                            <FollowHandler idToFollow={uid} type={'card'}/>
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })
                                         }
-                                        }
-                                        return null;
-                                    })}
                                     </ul>
                                 </div>
                                 </div>
@@ -202,29 +209,29 @@ const Profil = () => {
 
                 
             </div>
-        
-            
-        <div class="basDePage">
-          <div class="divMenu">
+
+
+        <div className="basDePage">
+          <div className="divMenu">
                 <div>
-                    <nav role="navigation" class="navProfil">
-                        <ul class="navItemsProfil">
-                            <li class="navItemProfil">
-                                <a class="navLinkProfil" id='DossierPersonnels' onClick={handleModals}><span>Dossier Personnel</span></a>
+                    <nav role="navigation" className="navProfil">
+                        <ul className="navItemsProfil">
+                            <li className="navItemProfil">
+                                <a className="navLinkProfil" id='DossierPersonnels' onClick={handleModals}><span>Dossier Personnel</span></a>
                             </li> 
-                            <li class="navItemProfil">
-                                <a class="navLinkProfil" id='PostsPersonnels' onClick={handleModals}><span>Posts</span></a>
+                            <li className="navItemProfil">
+                                <a className="navLinkProfil" id='PostsPersonnels' onClick={handleModals}><span>Posts</span></a>
                             </li>
-                            <li class="navItemProfil">
-                                <a  class="navLinkProfil" id='PostLikes' onClick={handleModals}><span>Posts likés</span></a>
+                            <li className="navItemProfil">
+                                <a  className="navLinkProfil" id='PostLikes' onClick={handleModals}><span>Posts likés</span></a>
                             </li> 
                           
                         </ul>
                      </nav>
               </div>
-              <div class="menuContent">
+              <div className="menuContent">
 
-                <div class="listContent">
+                <div className="listContent">
                 {dossierPersonnels &&<DossierPersonnels/>}
                 {postPersonnels &&<PostPersonnels/>}
                 {postLikes &&<PostsLikes/>}
@@ -232,25 +239,25 @@ const Profil = () => {
                   
               </div>
           </div>
-          <div class="recoDiv">
-            <div class="reco">
+          <div className="recoDiv">
+            <div className="reco">
               <span>Vous pourriez suivre</span>
               <hr/>
-              <div class="ListReco">
-                <div class="UtiReco">
-                <img class="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+              <div className="ListReco">
+                <div className="UtiReco">
+                <img className="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 <span>UtiT</span>
-                <a href="#" class="buttonReco" id="button">Suivre</a>
+                <a href="#" className="buttonReco" id="button">Suivre</a>
               </div>
-              <div class="UtiReco">
-                <img class="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+              <div className="UtiReco">
+                <img className="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 <span>UtiT</span>
-                <a href="#" class="buttonReco" id="button">Suivre</a>
+                <a href="#" className="buttonReco" id="button">Suivre</a>
               </div>
-              <div class="UtiReco">
-                <img class="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+              <div className="UtiReco">
+                <img className="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 <span>UtiT</span>
-                <a href="#" class="buttonReco" id="button">Suivre</a>
+                <a href="#" className="buttonReco" id="button">Suivre</a>
               </div>
               </div>
               

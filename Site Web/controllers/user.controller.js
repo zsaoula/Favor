@@ -8,9 +8,7 @@ module.exports.getAllUsers = async (req, res) => {
 };
 
 module.exports.getNotif = async (req, res) => {
-
   const users = await UserModel.find().select("-password");
-  console.log('api get notif',users);
   res.status(200).json(users);
 };
 
@@ -18,10 +16,15 @@ module.exports.getNotif = async (req, res) => {
 module.exports.userInfo = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
+  console.log('userinfo:',req.params.id)
 
   UserModel.findById(req.params.id, (err, docs) => {
-    if (!err) res.send(docs);
-    else console.log("ID unknown : " + err);
+    if (!err) {
+      console.log('doc:',docs)
+      res.send(docs);
+    }
+    else
+      console.log("ID unknown : " + err);
   }).select("-password");
 };
 
