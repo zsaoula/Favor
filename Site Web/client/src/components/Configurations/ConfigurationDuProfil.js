@@ -13,8 +13,8 @@ const ConfigurationDuProfil = ()=>{
    
     const userData = useSelector((state) => state.user.user);
     const [pseudo, setPseudo] = useState(userData.pseudo);
-    const[userPicture, setUserPicture] = useState(userData.picture)
-    const [tmpImage, setTmpImage] =useState('')
+    const[userPicture, setUserPicture] = useState(userData.picture);
+    const [tmpImage, setTmpImage] =useState(PLUS);
     const [displayAdd, setDisplayAdd] = useState(false);
     const dispatch = useDispatch();
 
@@ -23,11 +23,23 @@ const ConfigurationDuProfil = ()=>{
         setDisplayAdd(false);
     }
     const handleLoadFile=(e)=>{
-        var image = document.getElementById("output");
-        image.src = URL.createObjectURL(e.target.files[0]);
-        setTmpImage(image.src);
+        const file=e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+        setTmpImage({
+            data: reader.result,
+            contentType: file.type,
+        });
+    };
     };
 
+
+
+    const handleTPM =()=> {
+        console.log("test");
+        console.log(tmpImage);
+    }
     const handleUpdate = async (e) => {
         console.log(userPicture)
         e.preventDefault();
@@ -124,13 +136,13 @@ const ConfigurationDuProfil = ()=>{
                         <span className="camera"></span>
                             <span>Changer</span>
                         </label>
-                        <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/> {/* onChange={(e)=> setTmpImage(e.target.files[0].name)} */}
-                        <img src={PLUS} className="imageDeProfil"id="output" />
+                        <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/> {/*onChange={handleLoadFile} onChange={(e)=> setTmpImage(e.target.files[0].name)} */}
+                        <img src={tmpImage} className="imageDeProfil"id="output" />
                     </div>
                 </div >
                 <div className='buttonPopup'>
                 <button  onClick={()=>setDisplayAdd(false)}>Retour</button>
-                <button onClick={handleValidationPopup} >Valider</button>
+                <button onClick={handleTPM()} >Valider</button>
                 
                 </div>
                 </div>
