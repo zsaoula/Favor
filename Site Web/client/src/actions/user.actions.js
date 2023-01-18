@@ -13,8 +13,6 @@ export const getUser = (uid) => {
     };
 };
 
-
-
 export const uploadPicture = (data, id) => {
     return (dispatch) => {
         return axios
@@ -22,7 +20,7 @@ export const uploadPicture = (data, id) => {
         .then((res) => {
             return axios 
             .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
-            .then((res) => {
+            .then((res) => {        
                 dispatch(setUserDataImg(res.data.picture));
             })
         })
@@ -59,3 +57,5 @@ export const unFollowUser = (followerId, idToUnFollow) => {
         .catch((err) => console.log(err));
     };
 };
+
+

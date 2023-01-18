@@ -32,24 +32,17 @@ module.exports.signInErrors = (err) => {
 }
 
 module.exports.uploadErrors = (err) => {
-  let errors = { format: '', maxSize: ""};
+  let errors = { format: '', maxSize: "",empty:""};
 
   if (err.message.includes('invalid file'))
     errors.format = "Format incompatabile";
 
   if (err.message.includes('max size'))
     errors.maxSize = "Le fichier dépasse 500ko";
+  
+  if(err.message.includes('empty file'))
+    errors.empty ="Le fichier est vide";
 
   return errors
 }
 
-module.exports.uploadErrors = (err) => {
-  let errors = { format: '', maxSize: ""};
-
-  if (err.message.includes('invalid file'))
-    errors.format = "Format incompatible";
-  
-  if (err.message.includes('max size'))
-    errors.maxSize = "Le fichier dépasse 500ko";
-  return errors;
-}

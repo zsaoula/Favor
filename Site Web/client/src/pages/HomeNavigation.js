@@ -3,11 +3,6 @@ import { UidContext } from '../components/AppContext';
 import Log from '../components/Log'
 import Home from './Home';
 
-import { NavLink } from 'react-router-dom';
-import NewPoste from "../components/NewPoste";
-import AjoutLien from "../components/AjoutLien";
-//<Link to="/discover"/>
-
 const HomeNavigation = () => {
     const uid = useContext(UidContext);
 

@@ -1,44 +1,47 @@
 
-
-.ul-profil{
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .button-form{
-        cursor: pointer;
-        border: 3px solid black;
-        border-radius: 20px;
-        padding: 10px 5%;
-        transition: 0.2s;
-        width: 96%;
-        text-align: center;
-        margin-top: 6%;
-    }
-    .active-btn {
-        background: $color-3;
-
-        &:hover {
-          background: $color-5;
-        }
-      }
-      .button-form:not(.active-btn) {
-        &:hover {
-          transform: translateX(3px);
-        }
-      }
-}
-
-
 .info-form-container{
     width: 20%;
-    border: 2px solid black;
+    background: $color-8;
+    border: 0.3px solid $color-5;
     border-radius: 0px 15px 15px 0px;
-    background-color: $color-3;
     p{
         line-height: 15px;
         letter-spacing: 1.01px;
     }
+    .ul-profil{
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .button-form{
+          cursor: pointer;
+          background: $color-8;
+          border: 0.3px solid $color-5;
+          border-radius: 15px;
+          padding:3% 4%;
+          width: 96%;
+          text-align: center;
+          margin-top: 6%;
+          transition: all 1s;
+      }
+      .active-btn{
+          background: $color-8;
+  
+          &:hover {
+            background: $color-5;
+          }
+        }
+        .button-form:not(.active-btn) {
+          &:hover {
+            transform: translateX(3px);
+          }
+        }
+  }
+
+
+
+
+
 }
 
 .profile-page{
@@ -61,52 +64,50 @@
 
 .cadre {
     padding: 5% 10%;
-    border: 2px solid black;
-    border-right: 0px solid black;
+    border: 0.3px solid $color-5;
+    border-right: 0px;
     border-radius: 15px 0px 0px 15px;
     background-color: $color-1;
     h1 {
       letter-spacing: 5px;
-      margin-bottom: 30%;
+      margin-bottom: 15%;
       font-weight: bold;
       text-align: center;
     }
     .inputbox {
       position: relative;
       width: 100%;
-      margin-top: 4%;
+      margin-top: 8%;
       input {
         width: 100%;
-        border: 2px solid #000;
+        border: 0.3px solid $color-5;
         outline: none;
-        background-color: $color-3;
+        background-color: $color-8;
         padding: 4%;
         border-radius: 10px;
         font-size: 1.1em;
       }
       span {
         position: absolute;
-        top: 12px;
-        left: 6%;
-        font-size: 1em;
+        top:-40%;
+        left: 4%;
         transition: 0.3s;
         font-family: sans-serif;
+      }
+      .error{
+        font-size: small;
+        font-weight: 600;
+        color: red;
+        position: absolute;
+        left: 6%;
+
       }
     }
     .chexkboxConditionGenerale{
       margin-top: 3px;
       padding: 5px;
     }
-    .error{
-      padding-left: 5px;
-      font-size: small;
-      font-weight: 600;
-      color: red;
-      position: absolute;
-    }
-    #connexion,#inscription{
-      margin-top: 5px;
-    }
+
 }
   
   
@@ -123,18 +124,19 @@
 }
   
 input[type="submit"], .buttonTEL{
-    border: none;
-    border-radius: 8px;
-    border: 2px solid #000;
-    background-color: $color-3;
+    border-radius: 10px;
+    background: $color-8;
+    border: 0.3px solid $color-5;
     width: 100%;
     height: 50px;
+    transition:  background-color 1s;
 }
 
 .buttonTEL{
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
 
 input[type="submit"]:hover, .buttonTEL:hover{
     background-color: $color-5;
@@ -151,10 +153,21 @@ input[type="submit"]:hover, .buttonTEL:hover{
 }
 
 .enregistrementReussi{
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
 .formulaire{
   width: 35%;
 }
+
+/*
+#textSucces{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  background-color: $color-5;
+  opacity: 80%;
+  color: $color-8;
+  visibility: hidden;
+}
+*/

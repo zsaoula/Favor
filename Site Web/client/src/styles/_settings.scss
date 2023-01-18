@@ -5,8 +5,11 @@ $color-2: #CCF2F4;
 $color-3: #F4F9F9;
 $color-4: #AAAAAA;
 $color-5: #AABBCC;
-
-
+$color-6:  #5499c7  ;
+$color-7:  #19104f ;
+$color-8: #FAFAFA;
+$color-9: #645b5b;
+$color-10:#dddddd;
 
 
 // $color-1: #4cbfa6;
@@ -17,8 +20,24 @@ $color-5: #AABBCC;
 // $color-6: yellow;
 
 
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+body{
+    background-color: #F0F0F0;
+}
+
+.imageDeProfil{
+    object-fit: cover;
+    background-size: cover;
+    width: 180px;
+    height: 180px;
+    clip-path:circle(50%);
+
+}
+

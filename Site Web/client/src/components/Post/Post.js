@@ -1,16 +1,20 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import FollowHandler from '../UserProfil/FollowHandler';
 import { dateParser, isEmpty } from '../Utils';
 import ButtonLike from './ButtonLike';
-
+import Comment from './Comment';
+import Commentaire from '../../assets/img/commentaire.png';
+import MiniProfil from "../MiniProfil";
 
 const LinkPreview = ({ link }) => {
     const [preview, setPreview] = useState({ image: '', title: '', description: '' });
 
     useEffect(() => {
-        const key = '9f24d981b6f0ddfce993ce4a20d58867';
+        //const key = '9f24d981b6f0ddfce993ce4a20d58867';
+        const key = '2865b6b9d9571dc00bf940fad5728248';
+
         const fullLink = `http://api.linkpreview.net/?key=${key}&q=${link}`;
 
         axios
@@ -19,17 +23,22 @@ const LinkPreview = ({ link }) => {
             .catch((err) => console.error(err));
     }, [link]);
 
-    return (
-        <div>
-            <a href={link}>
-                <img id="imageLien" src={preview.image} alt={preview.title} />
-            </a>
-            <a id="url" href={link}>
-                {link}
-            </a>
+    if(preview.image === "") {
+        return (<div className='alignementLien'><a className="LienPostHome" href={link}>{link}</a></div>);
+    }
+    else {
+        return (
+            <>
+            <div className='alignementLien'>
+                <a href={link}>
+                    <img id="imageLien" className="LienPostHome" src={preview.image} alt={preview.title}/>
+                </a>
+                
+            </div>
             <p>{preview.description}</p>
-        </div>
-    );
+            </>
+        );
+    }
 };
 
 //e.preventDefaul(); pour ne pas recharcher la page
@@ -37,9 +46,13 @@ const Post = ( { post } ) => {
     const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
+    const [updated,setUpdate] = useState(false);
+    const [message, setMessage] = useState(null);
+    const [comments, setComments] = useState(false);
+
 
     useEffect(() => {
-        !isEmpty(usersData[0]) && setIsLoading(false)
+        !isEmpty(usersData[0]) && !isEmpty(userData) && setIsLoading(false)
     })
 
     return (
@@ -51,34 +64,17 @@ const Post = ( { post } ) => {
                 <div id="postContenu">
                     <div id="hautPoste">
                         <div id="cadreInfoPoste">
-                            <img id="PhotoProfile" alt="" src={
-                                !isEmpty(usersData[0]) &&
-                                usersData.map((user) => {
-                                    if (user._id === post.postedId) return user.picture;
-                                    else return null;
-                                }).join('')
-                            }/>
-                            <h6 id="NomProfile">
-                                {
-                                    !isEmpty(usersData[0]) &&
-                                    usersData.map((user) => {
-                                        if(user._id === post.postedId) return user.pseudo;
-                                        else return null;
-                                    }).join('')
-                                }
-                            </h6>
-                            {/* {post.postedId !== userData._id && 
-                            (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)} */}
+                            <MiniProfil uid={post.postedId}/>
+                            {post.postedId !== userData._id && (<FollowHandler idToFollow={post.postedId} type={'suggest'}/>)}
                         </div>
                         <div>{dateParser(post.createdAt)}</div>
                     </div>
 
 
                     <div id="contenuePoste">
-                        <LinkPreview link="https://www.bbc.com/news/uk-politics-63335671" />
+                        <LinkPreview link={post.lien}/>
                         <p>{post.message}</p>
                     </div>
-
                     <div id="basPoste">
                         <div id="like">
                             <ButtonLike post={post}/>
@@ -86,10 +82,11 @@ const Post = ( { post } ) => {
                             <div>{post.likers.length}</div>
                         </div>
                         <div id="commentaire">
-                            <img src="commentaire.png"/>
+                            <img src={Commentaire} onClick={() => setComments(!comments)}/>
                             <div>{post.comments.length}</div>
                         </div>
                     </div>
+                    {comments && <Comment post={post} />}
                 </div>
             </div>) }
         </li>

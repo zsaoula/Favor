@@ -7,6 +7,10 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
 const { promisify } = require("util");
 
+const addNotification = require('./notifFonction');
+
+
+
 module.exports.readPost = (req, res) => {
   PostModel.find((err, docs) => {
     if (!err) res.send(docs);
@@ -60,7 +64,20 @@ module.exports.deletePost = (req, res) => {
   });
 };
 
+
 module.exports.likePost = async (req, res) => {
+  //notif
+  const idUser = await PostModel.findOne({ _id: ObjectID( req.params.id) });
+  console.log("like",idUser);
+  addNotification.addNotification(idUser.postedId, {
+    typeNotif: "like",
+    id_user: req.body.id,
+    id_post1: req.params.id,
+    id_post2: "null"
+  });
+
+
+
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -92,8 +109,9 @@ module.exports.likePost = async (req, res) => {
 };
 
 module.exports.unlikePost = async (req, res) => {
-  if (!ObjectID.isValid(req.params.id))
-    return res.status(400).send("ID unknown : " + req.params.id);
+  if (!ObjectID.isValid(req.params.id)) {
+    return res.status(400).send("ID unknown: " + req.params.id);
+  }
 
   try {
     await PostModel.findByIdAndUpdate(
@@ -101,28 +119,55 @@ module.exports.unlikePost = async (req, res) => {
       {
         $pull: { likers: req.body.id },
       },
-      { new: true },
-      (err, docs) => {
-        if (err) return res.status(400).send(err);
-      }
+      { new: true }
     );
     await UserModel.findByIdAndUpdate(
       req.body.id,
       {
         $pull: { likes: req.params.id },
       },
-      { new: true },
-      (err, docs) => {
-        if (!err) return res.send(docs);
-        else return res.status(400).send(err);
-      }
+      { new: true }
     );
-    } catch (err) {
-        return res.status(400).send(err);
-    }
+    res.send({ message: "Post unliked" });
+  } catch (err) {
+    return res.status(400).send(err);
+  }
 };
 
-module.exports.commentPost = (req, res) => {
+// module.exports.unlikePost = async (req, res) => {
+//   if (!ObjectID.isValid(req.params.id))
+//     return res.status(400).send("ID unknown : " + req.params.id);
+
+//   try {
+//     await PostModel.findByIdAndUpdate(
+//       req.params.id,
+//       {
+//         $pull: { likers: req.body.id },
+//       },
+//       { new: true },
+//       (err, docs) => {
+//         if (err) return res.status(400).send(err);
+//       }
+//     );
+//     await UserModel.findByIdAndUpdate(
+//       req.body.id,
+//       {
+//         $pull: { likes: req.params.id },
+//       },
+//       { new: true },
+//       (err, docs) => {
+//         if (!err) return res.send(docs);
+//         else return res.status(400).send(err);
+//       }
+//     );
+//     } catch (err) {
+//         return res.status(400).send(err);
+//     }
+// };
+
+module.exports.commentPost = async (req, res) => {
+  const idUser = await PostModel.findOne({ _id: ObjectID( req.params.id) });
+
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -132,15 +177,22 @@ module.exports.commentPost = (req, res) => {
       {
         $push: {
           comments: {
-            commenterId: req.body.commenterId,
-            commenterPseudo: req.body.commenterPseudo,
+            commentId: req.body.commenterId,
+            commentPseudo: req.body.commenterPseudo,
             text: req.body.text,
             timestamp: new Date().getTime(),
           },
         },
       },
       { new: true })
-            .then((data) => res.send(data))
+            .then((data) => {
+              addNotification.addNotification(idUser.postedId, {
+                typeNotif: "commente",
+                id_user: req.body.commenterId,
+                id_post1: req.params.id,
+                id_post2: data.comments.slice(-1)[0]._id
+              });
+              res.send(data);})
             .catch((err) => res.status(500).send({ message: err }));
     } catch (err) {
         return res.status(400).send(err);

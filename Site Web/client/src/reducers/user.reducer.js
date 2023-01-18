@@ -22,6 +22,7 @@ export const userSlice = createSlice({
               (id) => id !== action.payload.idToUnfollow
             ),}; 
         },
+        
     },
 });
 

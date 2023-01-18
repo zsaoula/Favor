@@ -1,5 +1,5 @@
 .newPoste-form-popup {
-  background-color: white;
+  background-color: $color-8;
   display: none;
   position:fixed;
 
@@ -38,6 +38,11 @@ textarea[name="description"]{
   margin-left:10%;
   margin-right:10%;
   margin-bottom:10px;
+  margin-top:10px;
   display:flex;
   justify-content: space-between;
+}
+
+.postInMain{
+  width: 80%;
 }

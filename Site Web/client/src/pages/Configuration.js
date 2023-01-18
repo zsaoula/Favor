@@ -4,11 +4,12 @@ import ConfigurationDuProfil from '../components/Configurations/ConfigurationDuP
 import ConfigurationDuCompte from '../components/Configurations/ConfigurationDuCompte.js';
 import PolitiqueDeConfidentialite from '../components/Configurations/PolitiqueDeConfidentialite';
 import Navbar from '../components/Navbar';
-function Configuration(){
+
+const Configuration = () => {
 
         const [ConfigurationCompte, setConfigurationDuCompte] = useState(false);
         const [ConfigurationProfil, setConfigurationDuProfil] = useState(true);
-        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(false)
+        const [PolitiqueConfidentialite, setPolitiqueDeConfidentialite] =useState(false);
     
         const handleModals = (e) => {
             if (e.target.id === "ConfigurationDuProfil") {
@@ -29,22 +30,24 @@ function Configuration(){
     return(
         <>
         <Navbar />
+        <div className='configuration'>
             <div className='boutonDeConfigurations'>
-            <button onClick={handleModals} id="ConfigurationDuProfil" className={ConfigurationProfil} >
+            <a onClick={handleModals} id="ConfigurationDuProfil" >
             Configuration du profil
-            </button>
-            <button onClick={handleModals} id="ConfigurationDuCompte" className={ConfigurationCompte}>
+            </a>
+            <a onClick={handleModals} id="ConfigurationDuCompte" >
             Configuration du compte
-            </button>
-            <button onClick={handleModals} id="PolitiqueDeConfidentialite" className={PolitiqueConfidentialite}>
+            </a>
+            <a onClick={handleModals} id="PolitiqueDeConfidentialite" >
             Politique de confidentialite
-            </button>
+            </a>
             </div>
             
             
             {ConfigurationProfil &&<ConfigurationDuProfil/>}
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
             {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
+        </div>
         </>
     );
 }

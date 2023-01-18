@@ -5,7 +5,7 @@
     --navbar-icon-color:#646c79;
     --navbar-text-color:black;
     --navbar-transition-speed: .2s;
-    --primary-color:#7C4DFF;
+    --primary-color:$color-8;
     --navbar-logo-background-color:#e2dfe4;
   }
   
@@ -18,7 +18,13 @@
   main {
     padding: 1rem 4rem;
     margin-left: 5rem;
-    text-align: justify;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .RightBar{
+    width: 20%;
   }
   
   .navbar {
@@ -30,6 +36,7 @@
     background:var(--navbar-background-color);
     box-shadow: rgba(12,43, 30, 0.2) 0 4px 14px;
     transition: width var(--navbar-transition-speed) ease;
+    z-index: 11;
   }
   
   .navbar:hover {

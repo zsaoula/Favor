@@ -23,7 +23,7 @@ const Navbar = () => {
             data.append('postedId', userData._id);
             data.append('message', description);
             data.append('lien', lien);
-            console.log(data);
+            //console.log("test",data);
             putData(data);
             console.log(data);
             cancelPost();
@@ -75,10 +75,9 @@ const Navbar = () => {
         })
             .then(() => removeCookie('jwt'))
             .catch((err) => console.log(err));
-        window.location = "/HomeNavigation";
+        window.location = "/";
 
     }
-
     return (
         <div>
             {uid ? (
@@ -110,16 +109,22 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="navbar-item">
-                    <NavLink to="/Profil" className="navbar-link">
+                    <NavLink to={`/Profil/${uid}`} className="navbar-link">
                       <i className="fas fa-user navbar-icon"></i>
                       <span className="navbar-title">Me</span>
                     </NavLink>
                   </li>
                   <li className="navbar-item">
-                    <a onClick={() => setDisplayAdd(true)} className="navbar-link">
+                    <NavLink to="/SearchBar" className="navbar-link">
+                      <i className="fas fa-search navbar-icon"></i>
+                      <span className="navbar-title">Recherche</span>
+                    </NavLink>
+                  </li>
+                  <li className="navbar-item">
+                    <NavLink to="/Configuration" className="navbar-link">
                       <i className="fas fa-cog navbar-icon"></i>
                       <span className="navbar-title">Paramètre</span>
-                    </a>
+                    </NavLink>
                   </li>
                   <li className="navbar-item">
                     <a onClick={logout} className="navbar-link">

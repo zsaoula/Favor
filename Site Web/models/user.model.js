@@ -5,6 +5,25 @@ const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
 
+const NotifSchema = new mongoose.Schema({
+    typeNotif: {
+        type: String,
+        required: true
+    },
+    id_user: {
+        type: String,
+        required: true
+    },
+    id_post1: {
+        type: String,
+        required: true
+    },
+    id_post2: {
+        type: String,
+        required: true
+    }
+});
+
 //trim pour supprimer les espaces
 const userSchema = new mongoose.Schema(
   {
@@ -32,7 +51,7 @@ const userSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: "/random-user.png"
+      default: "./random-user.png"
     },
     bio :{
       type: String,
@@ -46,7 +65,8 @@ const userSchema = new mongoose.Schema(
     },
     likes: {
       type: [String]
-    }
+    },
+    notif: [NotifSchema]
   },
   {
     timestamps: true,
