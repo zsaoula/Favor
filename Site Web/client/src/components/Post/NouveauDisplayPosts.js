@@ -26,15 +26,15 @@ const NouveauDisplayPosts = () => {
         return () => window.removeEventListener('scroll',loadMore);
     }, [loadPost,dispatch,count])
 
-    if (!loadPost) {
+    if (loadPost || (postsData === null || isEmpty(postsData)) ) {
         return <p>Loading...</p>;
     }
+
 
     return (
         <div>
             <ul>
-                {!isEmpty(postsData[0]) &&
-                    postsData.map((post) => {
+                { postsData === null && !isEmpty(postsData[0]) && postsData.map((post) => {
                         return <Post post={post} key={post._id}/>
                     })}
             </ul>
