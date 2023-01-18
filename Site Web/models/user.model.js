@@ -24,6 +24,18 @@ const NotifSchema = new mongoose.Schema({
     }
 });
 
+const PictureSchema = new mongoose.Schema({
+  data: {
+    type: String,
+    required: true,
+  },
+  contentType: {
+    type: String,
+    required: true,
+  }
+});
+
+
 //trim pour supprimer les espaces
 const userSchema = new mongoose.Schema(
   {
@@ -50,7 +62,7 @@ const userSchema = new mongoose.Schema(
       minlength: 6
     },
     picture: {
-      type: String,
+      type: PictureSchema,
       default: "./random-user.png"
     },
     bio :{
@@ -96,5 +108,4 @@ userSchema.statics.login = async function({email, password}) {
 };
 
 const UserModel = mongoose.model("user", userSchema);
-
 module.exports = UserModel;

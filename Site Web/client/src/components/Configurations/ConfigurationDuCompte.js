@@ -1,16 +1,31 @@
 
 import { NavLink } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { useSelector } from 'react-redux';
-/*import PolitiqueDeConfidentialite from '../components/';
-*/
+import axios from "axios";
+
 
 
 const ConfigurationDuCompte =()=>{
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const userData = useSelector((state) => state.user.user);
+    const [email, setEmail] = useState(userData.email);
+    const [password, setPassword] = useState(userData.password);
     const [controlPassword, setControlPassword] = useState('');
+ 
+    const handleUpdate=(e)=>{
+        e.preventDefault();
+        console.log(userData._id);
+        axios
+          .put(`${process.env.REACT_APP_API_URL}api/user/update/`+ userData._id , { email, password })
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+
+
 
     return(
         <div>
@@ -47,7 +62,7 @@ const ConfigurationDuCompte =()=>{
                                 value={controlPassword}/>
                                 <div className='password error'></div>
                         </div>
-                        <button className='buttonValidationChangements'>Valider</button>
+                        <button className='buttonValidationChangements' onClick={handleUpdate}>Valider</button>
             </div>
             </form>
         <div />

@@ -1,5 +1,6 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
+/*const Image = mongoose.model('Image', ImageSchema);*/
 
 //-password pour ne pas donner le password
 module.exports.getAllUsers = async (req, res) => {
@@ -16,11 +17,9 @@ module.exports.getNotif = async (req, res) => {
 module.exports.userInfo = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
-  console.log('userinfo:',req.params.id)
 
   UserModel.findById(req.params.id, (err, docs) => {
     if (!err) {
-      console.log('doc:',docs)
       res.send(docs);
     }
     else
@@ -48,20 +47,61 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
-// module.exports.compteUpdate = async (req,res)=>{
+module.exports.compteUpdatePseudo = async (req, res) => {
 
-//    const{email, password}=req.body
+  try {
+    console.log("test1");
+    console.log(req.body.email);
+    console.log(req.body.password);
+    console.log(req.params.id);
+    /*if (!UserModel.isValid(req.params.id)) {
+      return res.status(400).send("ID unknown : " + req.params.id);
+    }
+    */
+    console.log("test");
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          email: req.body.email,
+          password: req.body.password,
+        }
+      },
+      { runValidators: true, new: true}
+    );
+    res.status(200).json({ message: "User updated successfully", data: updatedUser });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+  
+}
 
-//   try{
-//     await UserModel.findOneAndUpdate{
-//       {_id: req.params.id}
-//       {set:{
-//         email: req.body.email
-//       }}
-//     }
-//   }
+module.exports.getImage = async (req, res) => {
 
-// }
+  try {
+    const image = await Image.findById(req.params.id);
+    res.status(200).json(image);
+  } catch (err) {
+    res.status(500).json({ message: 'Error getting image' });
+  }
+};
+
+module.exports.saveImage = async (req, res) => {
+    try {
+      const { data, contentType } = req.body;
+      const image = new Image({ data, contentType });
+      await image.save();
+      res.status(201).json(image);
+    } catch (err) {
+      res.status(500).json({ message: 'Error saving image' });
+    }
+  };
+
+
+
+ 
+   
+ 
 
 
 

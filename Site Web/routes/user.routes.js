@@ -18,13 +18,16 @@ router.get('/logout', authController.logout);
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.userInfo);
 router.put("/:id", userController.updateUser);
-router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 router.patch('/follow/:id', userController.follow);
 router.patch('/unfollow/:id', userController.unfollow);
 router.patch('/notif/:id', userController.getNotif);
-
+router.patch('/:id/image', userController.saveImage);
+router.get('/:id/image',userController.getImage);
+router.put('/update/:id',userController.compteUpdatePseudo);
 //upload pb avec postman
-router.post("/upload", upload.single('file'), uploadController.uploadProfil);
+//router.post("/upload", upload.single('file'), uploadController.uploadProfil);
+
+
 
 module.exports = router;

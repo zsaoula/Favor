@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect,useContext} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import PP  from "../../assets/img/unknown.png";
 import PLUS from "../../assets/img/plus.png";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { uploadPicture } from '../../actions/user.actions';
-
-
+import { useParams } from 'react-router-dom';
+import { UidContext } from '../AppContext';
 
 const ConfigurationDuProfil = ()=>{
    
     const userData = useSelector((state) => state.user.user);
     const [pseudo, setPseudo] = useState(userData.pseudo);
-    const[userPicture, setUserPicture] = useState(userData.picture);
-    const [tmpImage, setTmpImage] =useState(PLUS);
+    const[userPicture, setUserPicture] = useState(null);
+    const [tmpImage, setTmpImage] =useState(null);
+    const [tmpAffichageImage, setTmpAffichageImage]=useState(PLUS)
     const [displayAdd, setDisplayAdd] = useState(false);
-    const dispatch = useDispatch();
+    const uid = useContext(UidContext);
+    const [message, setMessage] = useState('');
 
-    const handleValidationPopup =(e)=>{
-        setUserPicture(tmpImage);
-        setDisplayAdd(false);
-    }
     const handleLoadFile=(e)=>{
         const file=e.target.files[0];
         const reader = new FileReader();
@@ -29,25 +26,49 @@ const ConfigurationDuProfil = ()=>{
         setTmpImage({
             data: reader.result,
             contentType: file.type,
+            
         });
+        console.log("eeee");
     };
+    console.log("rrrrrr");
+   setTmpAffichageImage(`${tmpImage.data}`)
+   console.log("uuuuuuuuuuuu");
     };
+
+
+    useEffect(() => {
+        const fetchImage = async () => {
+          try {
+            const { data } = await axios.get(`/api/users/${uid}/image`);
+            setUserPicture(`data:${data.contentType};base64,${data.data}`);
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        fetchImage();
+      }, [uid]);
 
 
 
     const handleTPM =()=> {
         console.log("test");
         console.log(tmpImage);
+        console.log("test8888");
+        console.log(userPicture);
     }
     const handleUpdate = async (e) => {
-        console.log(userPicture)
-        e.preventDefault();
-        const data = new FormData();
-        data.append("pseudo", pseudo);
-        data.append("userId", userData._id);
-        data.append("file",userPicture);
 
-        dispatch(uploadPicture(data,userData._id));
+        e.preventDefault();
+        try {
+            await axios.patch( `${process.env.REACT_APP_API_URL}api/user/${uid}/image`, tmpImage);
+            setMessage("Image de profil mise à jour avec succès!");
+          } catch (err) {
+            setMessage("Erreur lors de la mise à jour de l'image de profil");
+          }
+          
+          userPicture(tmpAffichageImage);
+          console.log(userPicture);
+          setDisplayAdd(false);
         //const pseudoError = document.querySelector(".pseudo.error");
       /*  const pictureError =document.querySelector(".picture.error");
           await axios({
@@ -136,12 +157,12 @@ const ConfigurationDuProfil = ()=>{
                             <span>Changer</span>
                         </label>
                         <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/> {/*onChange={handleLoadFile} onChange={(e)=> setTmpImage(e.target.files[0].name)} */}
-                        <img src={tmpImage} className="imageDeProfil"id="output" />
+                        <img src={tmpAffichageImage} className="imageDeProfil"id="output" />
                     </div>
                 </div >
                 <div className='buttonPopup'>
                 <button  onClick={()=>setDisplayAdd(false)}>Retour</button>
-                <button onClick={handleTPM()} >Valider</button>
+                <button onClick={handleUpdate} >Valider</button>
                 
                 </div>
                 </div>
@@ -151,18 +172,6 @@ const ConfigurationDuProfil = ()=>{
 
 
     )
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 

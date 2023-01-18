@@ -5,7 +5,7 @@ import FollowHandler from '../UserProfil/FollowHandler';
 import { dateParser, isEmpty } from '../Utils';
 import ButtonLike from './ButtonLike';
 import Comment from './Comment';
-
+import Commentaire from '../../assets/img/commentaire.png';
 
 const LinkPreview = ({ link }) => {
     const [preview, setPreview] = useState({ image: '', title: '' });
@@ -70,7 +70,7 @@ const PostNouvelleAffichage = ( { post } ) => {
                         <div>{post.likers.length}</div>
                     </div>
                     <div id="commentaire">
-                        <img src="commentaire.png" onClick={() => setComments(!comments)}/>
+                    <img src={Commentaire} onClick={() => setComments(!comments)}/>
                         <div >{post.comments.length}</div>
                     </div>
                 </div>
