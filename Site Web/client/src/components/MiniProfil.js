@@ -22,8 +22,6 @@ const MiniProfil =  ({uid} ) => {
         return <p>Loading...</p>;
     }
 
-
-
     return (
         <div className="ListReco">
             <div className="UtiReco">
