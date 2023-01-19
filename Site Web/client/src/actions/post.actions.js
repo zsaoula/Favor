@@ -19,10 +19,13 @@ export const getPostsDisc = (num) => {
         return axios
         .get(`${process.env.REACT_APP_API_URL}api/post/`)
         .then((res) => {
-            console.log("test");
-            let array = res.data.sort((a, b) => b.likers.length - a.likers.length);
+            let currentTime = new Date().getTime();
+            let array = res.data.filter(post => {
+                let postTime = new Date(post.createdAt);
+                return (currentTime - postTime) / (1000 * 60 * 60) < 24
+            });
+            array = array.sort((a, b) => b.likers.length - a.likers.length);
             array = array.slice(0, num);
-            console.log(array);
             dispatch(setPostData(array));
         })
         .catch((err) => console.log(err))

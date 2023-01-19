@@ -11,7 +11,6 @@ const FollowHandler = ( { idToFollow , type } ) => {
     const dispatch = useDispatch();
 
     const handleFollow = (e) => {
-        
         axios.patch(`${process.env.REACT_APP_API_URL}api/user/follow/` + userData._id, {idToFollow: idToFollow})
         .then((res) => {
             //dispatch(setUserToFollowData({payload: {idToFollow}}));
@@ -19,10 +18,10 @@ const FollowHandler = ( { idToFollow , type } ) => {
         .catch((err) => console.log(err));
         setIsFollowed(true);
         e.preventDefault();
+        //window.location.reload();
     };
 
     const handleUnFollow = (e) => {
-        
         axios.patch(`${process.env.REACT_APP_API_URL}api/user/unfollow/` + userData._id, {idToUnFollow: idToFollow})
         .then((res) => {
            // dispatch(setUserToUnFollowData({payload: {idToFollow}}));

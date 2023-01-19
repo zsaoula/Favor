@@ -10,17 +10,14 @@ const NewPoste = ({ post }) => {
             <div className="newPoste-form-popup" id="newPoste-popupFormulaireCreationPoste">
                 <form action="/action_page.php" className="newPoste-form-container">
                     <div className="newPoste-input">
-                        {/* <label for="lien">Lien:</label> */}
                         <input type="text" name="lien" required />
                     </div>
                     <div className="newPoste-input">
-                        {/* <label for="description">Description:</label> */}
                         <textarea name="description" row="250"></textarea>
                     </div>
 
                     <div id="newPoste-buttonForm">
                         <div>
-                            {/* <button type="button" className="newPoste-btn-cancel" onclick="closeForm()">retour</button> */}
                             <button type="button" className="newPoste-btn-cancel" >retour</button>
                         </div>
                         <div>

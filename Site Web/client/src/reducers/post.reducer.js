@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const postSlice = createSlice({
     name: "post",
     initialState: {
-        post : null,
+        post : {
+          },
     },
     reducers: {
         setPostData: (state,action) => {
@@ -11,14 +12,13 @@ export const postSlice = createSlice({
             console.log(state.post)
         },
         setPostLikeData: (state,action) => {
-            console.log(...state.post);
             if (state.post._id === action.payload.postId) {
-                return {
-                ...state.post,
-                likers: [action.payload.userId, ...state.post.likers],
+                state.post = {
+                  ...state.post,
+                  likers: [action.payload.userId, ...state.post.likers],
                 };
-            }
-            return state.post;
+              }
+              console.log(state.post)
         },
         setPostUnLikeData: (state,action) => {
             console.log(state);

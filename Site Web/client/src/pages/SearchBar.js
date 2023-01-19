@@ -1,43 +1,52 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
+import Post from '../components/Post/Post';
+import { isEmpty } from '../components/Utils';
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchUsers, setSearchUsers] = useState(true);
   const [searchPosts, setSearchPosts] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const postsData = useSelector((state) => state.post.post);
-  const usersData =  useSelector((state) => state.users.users);
+  const posts = useSelector((state) => state.post.post);
+  const users =  useSelector((state) => state.users.users);
+
+
+  const filteredResultsPosts = posts.filter(function(item) {
+    return item.tags.some(function(tag) {
+      return tag.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1;
+    });
+  });
+
+  const filteredResultsUsers = users.filter(function(item) {
+    return item.pseudo.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1;
+  });
+
 
   function handleSearch() {
+
+
     const input = searchValue.toLowerCase();
     console.log("Recherche pour : " + input);
 
-    const filteredResultsUsers = usersData.filter(function(item) {
-      return item.pseudo.toLowerCase().indexOf(input) !== -1;
-    });
-
-    const filteredResultsPosts = postsData.filter(function(item) {
-      return item.message.toLowerCase().indexOf(input) !== -1;
-    });
-
-    if(searchUsers)
+    if(searchUsers && searchValue !== "")
     setSearchResults(filteredResultsUsers);
-
-    if(searchPosts)
+    else if(searchPosts && searchValue !== "")
     setSearchResults(filteredResultsPosts);
-
-    console.log(searchResults);
   }
 
   const handleModals = (e) => {
     if (e.target.id === "Users") {
         setSearchUsers(true);
         setSearchPosts(false);
+        if(searchValue !== "")
+        setSearchResults(filteredResultsUsers);
     } else  { 
         setSearchPosts(true);
         setSearchUsers(false);
+        if(searchValue !== "")
+        setSearchResults(filteredResultsPosts);
     }
   }; 
 
@@ -45,36 +54,38 @@ const SearchBar = () => {
         <div>
             <Navbar />
             <main>
+            <div className="search-main">
                 <form>
                     <input type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Rechercher..." />
                     <button type="button" onClick={handleSearch}>Rechercher</button>
                 </form>
-              <div class="divMenu">
-                    <nav role="navigation" class="navProfil">
-                        <ul class="navItemsProfil">
-                            <li class="navItemProfil">
-                                <a class="navLinkProfil" onClick={handleModals} id="Users" >Utilisateur</a>
-                            </li>
-                            <li class="navItemProfil">
-                                <a  class="navLinkProfil" onClick={handleModals} id="Posts" >Postes</a>
-                            </li> 
+                <div className="divMenuSearch">
+                      <nav role="navigation" className="navProfil">
+ <ul className="navItemsProfil">
+                              <li className="navItemProfil">
+                                  <a className="navLinkProfil" onClick={handleModals} id="Users" >Utilisateur</a>
+                              </li>
+                              <li className="navItemProfil">
+                                  <a  className="navLinkProfil" onClick={handleModals} id="Posts" >Postes</a>
+                              </li> 
+ </ul>
+                      </nav>
+                      { searchUsers &&
+                        <ul className='listUsers'>
+                            {searchResults.map((result) => (
+                              <li key={result.pseudo}>{result.pseudo}</li>
+                            ))}
                         </ul>
-                     </nav>
+                      }
+                      { searchPosts && 
+                        <ul className='listUsers'>
+                              {searchResults.length !== 0 && searchResults.map((result) => (
+                                  <Post post={result} key={result._id}/>
+                              ))}
+                        </ul>
+                      }
+                </div>
               </div>
-              { searchUsers &&
-                <ul>
-                    {searchResults.map((result) => (
-                      <li key={result.pseudo}>{result.pseudo}</li>
-                    ))}
-                </ul>
-              }
-              { searchPosts &&
-                <ul>
-                  {searchResults.map((result) => (
-                    <li key={result.message}>{result.message}</li>
-                  ))}
-                </ul>
-              }
             </main>
         </div>
     );

@@ -35,7 +35,6 @@ const LinkPreview = ({ link }) => {
                 </a>
                 
             </div>
-            <p>{preview.description}</p>
             </>
         );
     }
@@ -46,8 +45,6 @@ const Post = ( { post } ) => {
     const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
-    const [updated,setUpdate] = useState(false);
-    const [message, setMessage] = useState(null);
     const [comments, setComments] = useState(false);
 
 
@@ -78,7 +75,6 @@ const Post = ( { post } ) => {
                     <div id="basPoste">
                         <div id="like">
                             <ButtonLike post={post}/>
-                            {/* <img src="coeurs.png"/> */}
                             <div>{post.likers.length}</div>
                         </div>
                         <div id="commentaire">

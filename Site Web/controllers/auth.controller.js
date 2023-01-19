@@ -91,18 +91,14 @@ module.exports.signIn = async (req, res) => {
     console.log("signin: ",req.body);
     const {email, password} = req.body
     try {
-        console.log("test user1 ");
 
         const user = await UserModel.login({email, password});
-        console.log("test user2 ");
 
 
         //creation d'un token 
         const token = createToken(user._id);
-        console.log("test user3 ");
 
         res.cookie('jwt', token, { httpOnly: true, maxAge});
-        console.log("test user4 ");
 
         res.status(200).json({ user: user._id});
     }

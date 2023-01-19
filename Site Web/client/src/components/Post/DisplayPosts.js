@@ -13,13 +13,11 @@ const DisplayPosts = ( {type} ) => {
     const loadMore = () => {
         if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight){
             setLoadPost(true);
+            setCount(count + 5);
         }
     }
 
     useEffect(() => {
-        while(postsData== null){
-
-        }
         if (loadPost) {
             if(type === "discover"){
                 dispatch(getPostsDisc(count));
@@ -28,7 +26,6 @@ const DisplayPosts = ( {type} ) => {
                 dispatch(getPosts(count));
             }
             setLoadPost(false);
-            setCount(count + 5);
         }
         window.addEventListener('scroll', loadMore);
         return () => window.removeEventListener('scroll',loadMore);
@@ -37,7 +34,7 @@ const DisplayPosts = ( {type} ) => {
     return (
         <div>
             <ul>
-                {!isEmpty(postsData[0]) &&
+                {!isEmpty(postsData) && !isEmpty(postsData[0]) &&
                     postsData.map((post) => {
                         return <Post post={post} key={post._id}/>
                     })}

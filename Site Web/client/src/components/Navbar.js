@@ -11,55 +11,6 @@ import { addPost, getPosts } from "../actions/post.actions";
 
 const Navbar = () => {
     const uid = useContext( UidContext );
-    const userData = useSelector((state) => state.user.user);
-    const [displayAdd, setDisplayAdd] = useState(false);
-    const [lien, setLien] = useState("");
-    const [description, setDescription] = useState("");
-    const dispatch = useDispatch();
-
-    const handlePost = () => {
-        if ((description || lien) ){
-            const data = new FormData();
-            data.append('postedId', userData._id);
-            data.append('message', description);
-            data.append('lien', lien);
-            //console.log("test",data);
-            putData(data);
-            console.log(data);
-            cancelPost();
-            setDisplayAdd(false)
-        }else {
-            alert("Veuillez compléter tous les champs.")
-        }
-    };
-
-    const putData = async(data) => {
-      axios
-        .post(`${process.env.REACT_APP_API_URL}api/post/`, { postedId: userData._id, message: description, lien: lien}
-      )
-        .then((res) => {
-            console.log(data,"test");
-        //   if (res.data.errors) {
-        //     dispatch(setPostError({payload: res.data.errors }));
-        //   } else {
-        //     dispatch(setPostError({payload: "" }));
-        //   }
-        })};
-
-
-    const cancelPost = () => {
-      setDescription("");
-      setLien("");
-    };
-    
-    const isValidUrl = (url) => {
-      try {
-        new URL(url);
-        return true;
-      }catch {
-        return false;
-      }
-    }
 
     const removeCookie = (key) => {
         if(window !== "undefined"){
@@ -111,7 +62,7 @@ const Navbar = () => {
                   <li className="navbar-item">
                     <NavLink to={`/Profil/${uid}`} className="navbar-link">
                       <i className="fas fa-user navbar-icon"></i>
-                      <span className="navbar-title">Me</span>
+                      <span className="navbar-title">Profil</span>
                     </NavLink>
                   </li>
                   <li className="navbar-item">

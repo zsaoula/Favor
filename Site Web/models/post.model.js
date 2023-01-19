@@ -21,6 +21,10 @@ const postSchema = new mongoose.Schema(
         type: [String],
         required: true
       },
+      tags: {
+        type: [String],
+        required: true
+      },
       comments: {
         type: [
             {
@@ -31,7 +35,7 @@ const postSchema = new mongoose.Schema(
             }
         ],
         required: true,
-      },
+      }
     },
     {
       timestamps: true,

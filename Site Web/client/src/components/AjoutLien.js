@@ -10,33 +10,43 @@ const AjoutLien = () => {
     const [displayAdd, setDisplayAdd] = useState(false);
     const [lien, setLien] = useState("");
     const [description, setDescription] = useState("");
+    const [tag, setTag] = useState('');
+    const [tags, setTags] = useState([]);
     const dispatch = useDispatch();
 
-    const handlePost = async () => {
-      if(isValidUrl(lien))
-        if ((description || lien) ){
-            putData();
-            dispatch(getPosts());
-            cancelPost();
-            setDisplayAdd(false);
-            window.location.reload();
-        }else {
-            alert("Veuillez compléter tous les champs.")
-        }
-      else{
-        alert("Ce n'est pas lien!")
-      }
-    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setTags([...tags, tag]);
+        setTag('');
+    }
 
+
+
+    const handlePost = async () => {
+        if(isValidUrl(lien)){
+            if ((description || lien) && tags.length > 0){
+                putData();
+                dispatch(getPosts());
+                cancelPost();
+                setDisplayAdd(false);
+                window.location.reload();
+            }else {
+                alert("Veuillez compléter tous les champs et ajouter au moins un tag.")
+            }
+        }else{
+            alert("Veuillez saisir un lien valide.")
+        }
+    };
 
     const cancelPost = () => {
         setDescription("");
         setLien("");
+        setTags([]);
       };
 
     const putData = async() => {
         axios
-          .post(`${process.env.REACT_APP_API_URL}api/post/`, { postedId: userData._id, message: description, lien: lien}
+          .post(`${process.env.REACT_APP_API_URL}api/post/`, { postedId: userData._id, message: description, lien: lien, tags: tags}
         )
           .then((res) => {
           //   if (res.data.errors) {
@@ -94,6 +104,19 @@ const AjoutLien = () => {
                                                 required
                                                 />
                                 </div>
+
+                                <input
+                                    type="text"
+                                    value={tag}
+                                    onChange={e => setTag(e.target.value)}
+                                />
+                                <i type="submit" onClick={handleSubmit}>Add Tag</i>
+
+                                <ul>
+                                    {tags.map(t => (
+                                    <li key={t}>{t}</li>
+                                    ))}
+                                </ul>
 
                                 <div id="newPoste-buttonForm">
                                     <div>

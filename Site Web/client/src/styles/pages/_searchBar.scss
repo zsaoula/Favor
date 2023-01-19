@@ -1,0 +1,23 @@
+.search-main{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.divMenuSearch {
+    background-color: #cccaca;
+    width: 100%;
+    height: 500px;
+    border-radius: 25px;
+}
+
+.listUsers{
+    padding-top: 20px;
+    li {
+        list-style: none;
+        padding-left: 10%;
+        padding-bottom: 15px;
+    }
+}

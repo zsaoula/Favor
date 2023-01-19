@@ -6,35 +6,40 @@ import CoeurPlein from '../../assets/img/coeursPlein.png';
 import { likePost, unlikePost } from '../../actions/post.actions';
 
 const ButtonLike = ( { post } ) => {
-    const [liked, setLiked] = useState(false);
-    const uid = useContext(UidContext);
-    const dispatch = useDispatch();
-  
-    const like = () => {
-      dispatch(likePost(post._id, uid))
-      setLiked(true);
-    };
-  
-    const unlike = () => {
-      dispatch(unlikePost(post._id, uid))
-      setLiked(false);
-    };
-  
-    useEffect(() => {
-      if (post.likers.includes(uid)) setLiked(true);
-      else setLiked(false);
-    }, [uid, post.likers, liked]);
+  const [liked, setLiked] = useState(false);
+  const uid = useContext(UidContext);
+  const dispatch = useDispatch();
 
-    return (
-        <div>
-            {uid && liked === false && (
-            <img src={Coeur} onClick={like} alt="like" />
-            )}
-            {uid && liked && (
-                <img src={CoeurPlein} onClick={unlike} alt="unlike" />
-            )}
-        </div>
-    );
+  const like = (e) => {
+    e.preventDefault();
+    dispatch(likePost(post._id, uid));
+    setLiked(true);
+  };
+
+  const unlike = (e) => {
+    e.preventDefault();
+    dispatch(unlikePost(post._id, uid));
+    setLiked(false);
+  };
+
+  useEffect(() => {
+    if (post.likers.includes(uid)) {
+        setLiked(true);
+    } else {
+        setLiked(false);
+    }
+  }, [uid, post.likers, liked]);
+
+  return (
+      <div>
+          {uid && liked === false && (
+          <img src={Coeur} onClick={like} alt="like" />
+          )}
+          {uid && liked && (
+              <img src={CoeurPlein} onClick={unlike} alt="unlike" />
+          )}
+      </div>
+  );
 };
 
 export default ButtonLike;
