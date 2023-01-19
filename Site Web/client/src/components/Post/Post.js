@@ -75,7 +75,6 @@ const Post = ( { post } ) => {
                     <div id="basPoste">
                         <div id="like">
                             <ButtonLike post={post}/>
-                            <div>{post.likers.length}</div>
                         </div>
                         <div id="commentaire">
                             <img src={Commentaire} onClick={() => setComments(!comments)}/>
