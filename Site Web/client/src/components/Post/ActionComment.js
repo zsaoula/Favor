@@ -7,7 +7,8 @@ import { UidContext } from '../AppContext';
 const ActionComment = ( { commentaire , postId}) => {
     const [createur, setCreateur] = useState(false);
     const [edit, setEdit] = useState(false);
-    const [message,setMessage] = useState('');
+    const [message,setMessage] = useState(commentaire.text);
+
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
     
@@ -15,13 +16,14 @@ const ActionComment = ( { commentaire , postId}) => {
         e.preventDefault();
         if(message){
             dispatch(editComment(postId, commentaire._id, message));
-            setMessage('');
             setEdit(false);
         }
     };
 
     const handleDelete = () => {
         dispatch(deleteComment(postId, commentaire._id));
+        setMessage('commantaire suprimer');
+        setEdit(false);
     };
 
     useEffect(() => {
@@ -36,6 +38,9 @@ const ActionComment = ( { commentaire , postId}) => {
     }, [uid, commentaire.commenterId]);
 
     return (
+        <>
+            <p>{message}</p>
+
         <div className="edit-comment">
             {createur && edit === false && (
                 <span onClick={() => setEdit(!edit)}>
@@ -47,14 +52,14 @@ const ActionComment = ( { commentaire , postId}) => {
                 className="edit-comment-form">
                     <div className="top-edit-com">
                         <label htmlFor='text' onClick={() => setEdit(!edit)}>Annuler</label>
-                <div className="btn">
-                        <span onClick={() => {
-                            if(window.confirm("Etes-vous sur de supprimer ce commentaire ?")){
-                                handleDelete();
-                            }
-                        }}>
-                            <i className="fas fa-trash-alt"></i>
-                        </span>
+                        <div className="btn">
+                            <span onClick={() => {
+                                if(window.confirm("Etes-vous sur de supprimer ce commentaire ?")){
+                                    handleDelete();
+                                }
+                            }}>
+                                <i className="fas fa-trash-alt"></i>
+                            </span>
                     </div>
                     
                     </div>
@@ -66,6 +71,7 @@ const ActionComment = ( { commentaire , postId}) => {
 
             )}
         </div>
+        </>
     );
 };
 
