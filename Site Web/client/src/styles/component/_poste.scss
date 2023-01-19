@@ -95,7 +95,7 @@
 }
 
 .comment-container {
-    display: grid;
+    display: flex;
     grid-template-columns: 50px 1fr;
     border: 1px solid $color-2;
     padding: 15px;
@@ -155,10 +155,13 @@
         }
 
         .edit-comment-form {
+            background-color: rgb(131, 131, 131);
+            padding: 3%;
             margin-top: 14px;
+            border-radius:20px 20px 20px 6px ;
             label {
                 background: white;
-                color: $color-1;
+                color: black;
                 padding: 6px 12px 5px;
                 border-radius: 20px 20px 20px 6px;
                 cursor: pointer;
@@ -169,13 +172,19 @@
                 transform: scale(1.05);
                 }
             }
+            .comment-modify{
+                height: 30px;
+            }
             input[type="text"] {
                 margin: 4px 0;
                 background: white;
-                font-size: 1.15rem;
-                padding: 16px;
+                font-size: 1rem;
+                padding: 8px;
                 width: 100%;
                 border-radius: 6px 20px 6px 20px;
+            }
+            label{
+                background-color: rgb(188, 184, 184);
             }
             .btn {
                 display: flex;
@@ -183,15 +192,15 @@
                 float: right;
 
                 span {
-                    background: white;
-                    padding: 10px 5px;
+                    background: rgb(102, 27, 27);
+                    padding: 3px 5px;
                     border-radius: 50px;
                     margin-right: 6px;
                     transition: 0.2s;
                     cursor: pointer;
 
                     &:hover {
-                        background: $color-2;
+                        background: red;
                     }
 
                     img {
@@ -213,23 +222,24 @@
     }
 }
 
+
 .comment-form {
     margin-top: 6px;
 
     input[type="text"] {
       width: 100%;
-      background: $color-4;
+      background: rgb(215, 215, 215);
       border-radius: 20px 20px 6px 20px;
-      padding: 20px;
-      font-size: 1.4rem;
+      padding: 10px;
+      font-size: 1rem;
 
       &:focus {
-        box-shadow: 0 0 2px rgba(51, 51, 51, 0.5);
+        box-shadow: 0 0 2px rgba(125, 123, 123, 0.5);
         }
     }
     input[type="submit"] {
       margin-top: 4px;
-      padding: 12px 16px;
+      padding: 10px 16px;
       width: 120px;
       background: $color-2;
       border-radius: 20px 6px 20px 20px;
@@ -251,6 +261,23 @@
         background: $color-2;
       }
     }
+}
+
+.top-edit-com {
+    display: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-com {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.right-part {
+    width: 80%;
 }
 
 .like-container {

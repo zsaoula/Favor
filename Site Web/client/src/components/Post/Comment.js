@@ -49,8 +49,11 @@ const Comment = ({ post }) => {
                     </div>
                     <span>{timestampParser(comment.timestamp)}</span>
                   </div>
-                  <p>{comment.text}</p>
+                  <div className="content-com">
+                    <p>{comment.text}</p>
                   <ActionComment commentaire={comment} postId={post._id} />
+                    </div>
+                  
                 </div>
               </div>
             );
