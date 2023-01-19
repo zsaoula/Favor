@@ -49,9 +49,6 @@ const PostNouvelleAffichage = ( { post } ) => {
         !isEmpty(usersData[0]) && setIsLoading(false)
     })
 
-    if(!isLoading){
-        return <p></p>;
-    }
 
     return (
         <li className='PostesProfilConteneur' key={post._id}>

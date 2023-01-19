@@ -27,7 +27,7 @@ const Profil = () => {
         }
         fetchData();
     }, [uid]);
-
+    
 
     const handleModals = (e) => {
         if (e.target.id === "DossierPersonnels") {

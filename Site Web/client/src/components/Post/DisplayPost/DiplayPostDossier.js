@@ -13,14 +13,17 @@ const DiplayPostDossier = () => {
     useEffect(() => {
         dispatch(getPosts());
     },[dispatch])
-
+    console.log("datados");
+    console.log(postsData);
 
     return (
         <div>
             <ul>
-                {!isEmpty(postsData[0]) &&
+                {!isEmpty(postsData) &&
                     postsData.map((post) => {
                         if(post.postedId === uid){
+                            console.log(post)
+                            console.log("tttt")
                         return <Post post={post} key={post._id}/>
                         }
                    })}
