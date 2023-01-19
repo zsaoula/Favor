@@ -45,11 +45,9 @@ const ActionComment = ( { commentaire , postId}) => {
             {createur && edit && (
                 <form action="" onSubmit={handleEdit}
                 className="edit-comment-form">
-                    <label htmlFor='text' onClick={() => setEdit(!edit)}>Modifier le commentaire</label>
-                
-                    <input type="text" name="text" onChange={(e) => setMessage(e.target.value)} defaultValue={commentaire.text}/>
-                    <br/>
-                    <div className="btn">
+                    <div className="top-edit-com">
+                        <label htmlFor='text' onClick={() => setEdit(!edit)}>Annuler</label>
+                <div className="btn">
                         <span onClick={() => {
                             if(window.confirm("Etes-vous sur de supprimer ce commentaire ?")){
                                 handleDelete();
@@ -58,7 +56,12 @@ const ActionComment = ( { commentaire , postId}) => {
                             <i className="fas fa-trash-alt"></i>
                         </span>
                     </div>
-                    <input type="submit" value="Modifier"/>
+                    
+                    </div>
+                    <input type="text" name="text" onChange={(e) => setMessage(e.target.value)} defaultValue={commentaire.text}/>
+                    <br/>
+                    
+                    <input className="comment-modify" type="submit" value="Modifier"/>
                 </form>
 
             )}
