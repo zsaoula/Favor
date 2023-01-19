@@ -80,8 +80,12 @@ const SuggestFriends = () => {
                                     if(user === usersData[i]._id){
                                         return (
                                             <div className="UtiReco" key={user}>
-                                                <MiniProfil uid={usersData[i]._id}></MiniProfil>
-                                                <FollowHandler idToFollow={usersData[i]._id} type={"card"}/>
+                                                <div>
+                                                    <MiniProfil uid={usersData[i]._id}></MiniProfil>
+                                                </div>
+                                                <div>
+                                                    <FollowHandler idToFollow={usersData[i]._id} type={"card"}/>
+                                                </div>
                                             </div>
                                         );
                                     }

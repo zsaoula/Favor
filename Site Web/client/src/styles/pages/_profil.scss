@@ -364,13 +364,15 @@ scrollbar-gutter: stable both-edges;
 .recoDiv {
   width: 250px;
   margin-top: 10px;
+
 }
 
 .UtiReco {
 display: flex;
 flex-direction: row;
-justify-content: space-evenly;
+justify-content: space-between;
 padding: 5% 0% 0% 0%;
+
 }
 
 .ListReco {
