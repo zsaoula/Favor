@@ -6,71 +6,41 @@ import CoeurPlein from '../../assets/img/coeursPlein.png';
 import { likePost, unlikePost } from '../../actions/post.actions';
 
 const ButtonLike = ( { post } ) => {
-  /*const [liked, setLiked] = useState(false);
   const uid = useContext(UidContext);
+  const [likes, setLikes] = useState(post.likers.length);
+  const [liked, setLiked] = useState(post.likers.includes(uid));
   const dispatch = useDispatch();
 
   const like = (e) => {
     e.preventDefault();
-    dispatch(likePost(post._id, uid));
+    setLikes(likes + 1);
     setLiked(true);
+    dispatch(likePost(post._id, uid));
   };
 
   const unlike = (e) => {
     e.preventDefault();
-    dispatch(unlikePost(post._id, uid));
+    setLikes(likes - 1);
     setLiked(false);
+    dispatch(unlikePost(post._id, uid));
   };
 
-  useEffect(() => {
-    if (post.likers.includes(uid)) {
-        setLiked(true);
-    } else {
-        setLiked(false);
-    }
-  }, [uid, post.likers, liked]);
-
-  return (
-      <div>
-          {uid && liked === false && (
-              <img src={Coeur} onClick={like} alt="like" />
-          )}
-          {uid && liked && (
-              <img src={CoeurPlein} onClick={unlike} alt="unlike" />
-          )}
-      </div>
-  );*/
-
-  const [likes, setLikes] = useState(post.likers.length);
-  const [liked, setLiked] = useState(false);
-  const uid = useContext(UidContext);
-  const dispatch = useDispatch();
-
-  const handleLike = () => {
-    if (!liked) {
-      setLikes(likes + 1);
-      dispatch(unlikePost(post._id, uid));
-      setLiked(true);
-    } else {
-      setLikes(likes - 1);
-      dispatch(unlikePost(post._id, uid));
-      setLiked(false);
-    }
-  }
 
   return (
       <>
-      <div>
-        {uid && liked === false && (
-            <img src={Coeur} onClick={handleLike} alt="like" /> )
-        }
-        {uid && liked && (
-            <img src={CoeurPlein} onClick={handleLike} alt="unlike" />
-        )}
-      </div>
-          <div>{likes}</div>
+         <div>
+            {uid && liked === false && (
+                <img src={Coeur} onClick={like} alt="like" />
+            )}
+            {uid && liked && (
+                <img src={CoeurPlein} onClick={unlike} alt="unlike" />
+            )}
+          </div>
+          <div>
+            {likes}
+          </div>
       </>
-  )
+  );
 };
 
 export default ButtonLike;

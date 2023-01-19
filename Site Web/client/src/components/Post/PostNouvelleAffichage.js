@@ -68,8 +68,6 @@ const PostNouvelleAffichage = ( { post } ) => {
                             <div className='informationDunPosteNouvelleAffichage'>
                                 <div id="like">
                                     <ButtonLike post={post}/>
-                                    {/* <img src="coeurs.png"/> */}
-                                    <div>{post.likers.length}</div>
                                 </div>
                                 <div id="commentaire">
                                     <img src={Commentaire} onClick={() => setComments(!comments)}/>
