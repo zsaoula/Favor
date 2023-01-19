@@ -145,7 +145,7 @@ const Profil = () => {
         <div>
             <div>
                 <div className="imageProfil">
-                    <img className="image" src={userData.picture}/>
+                    <img className="image" src={userData.picture.data}/>
                 </div>
                 <div className="divPseudo">
                     <h3 className="pseudo">{userData.pseudo}</h3>

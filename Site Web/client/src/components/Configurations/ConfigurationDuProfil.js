@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PLUS from "../../assets/img/plus.png";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { uploadPicture } from '../../actions/user.actions';
+import { getUser, uploadPicture } from '../../actions/user.actions';
 import { useParams } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 
@@ -16,6 +16,9 @@ const ConfigurationDuProfil = ()=>{
     const [tmpAffichageImage, setTmpAffichageImage]=useState(PLUS);
     const [displayAdd, setDisplayAdd] = useState(false);
     const [message, setMessage] = useState('');
+    const dispatch=useDispatch();
+
+
 
     const handleLoadFile=(e)=>{
         const file=e.target.files[0];
@@ -35,6 +38,21 @@ const ConfigurationDuProfil = ()=>{
    console.log(tmpImage);
     };
 
+
+    const handleUpdatePseudo=(e)=>{
+        e.preventDefault();
+        console.log(userData.pseudo);
+        axios
+          .put(`${process.env.REACT_APP_API_URL}api/user/update/`+ userData._id , { pseudo })
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+          dispatch(getUser);
+      }
+
     const handleTPM =()=> {
         console.log("test");
         console.log(tmpImage);
@@ -44,6 +62,7 @@ const ConfigurationDuProfil = ()=>{
     const handleUpdate = async (e) => {
 
         e.preventDefault();
+        
         try {
             await axios.patch( `${process.env.REACT_APP_API_URL}api/user/${userData.id}/image`, tmpImage);
             setMessage("Image de profil mise à jour avec succès!");
@@ -54,26 +73,7 @@ const ConfigurationDuProfil = ()=>{
           userPicture(tmpAffichageImage);
           console.log(userPicture);
           setDisplayAdd(false);
-        //const pseudoError = document.querySelector(".pseudo.error");
-      /*  const pictureError =document.querySelector(".picture.error");
-          await axios({
-            method: "post",
-            url: `${process.env.REACT_APP_API_URL}api/user/upload`,
-            data: {
-             // pseudo,
-              userPicture,
-              
-            }
-            , 
-          })
-             .then((res) => {
-               console.log(res);
-               if (res.data.errors) {
-                //pseudoError.innerHTML = res.data.errors.pseudo;
-                pictureError.innerHTML = res.data.errors.picture;
-               } 
-            })
-            .catch((err) => console.log(err));*/
+
     };
 
 
@@ -115,7 +115,7 @@ const ConfigurationDuProfil = ()=>{
 
             
             </div>
-            <button type='submit' className='buttonValidationChangements' id='update' value='update' >Valider</button>
+            <button type='submit' className='buttonValidationChangements' id='update' value='update' onClick={handleUpdatePseudo}>Valider</button>
             </div>
         </div>
         </form>
@@ -138,7 +138,6 @@ const ConfigurationDuProfil = ()=>{
                     </div>
                     <div className='profile-pic '>
                         <label className="-label" for="file">
-                        <span className="camera"></span>
                             <span>Changer</span>
                         </label>
                         <input type="file" id="file" name='file' accept=".jpg, .jpeg, .png" onChange={handleLoadFile}/> {/*onChange={handleLoadFile} onChange={(e)=> setTmpImage(e.target.files[0].name)} */}

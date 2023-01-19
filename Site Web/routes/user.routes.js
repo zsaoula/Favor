@@ -25,6 +25,7 @@ router.patch('/notif/:id', userController.getNotif);
 router.patch('/:id/image', userController.saveImage);
 router.get('/:id/image',userController.getImage);
 router.put('/update/:id',userController.compteUpdatePseudo);
+router.put('/update/:id',userController.compteUpdatePseudo);
 //upload pb avec postman
 //router.post("/upload", upload.single('file'), uploadController.uploadProfil);
 

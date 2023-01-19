@@ -1,6 +1,6 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
-
+const bcrypt = require('bcrypt');
 
 //-password pour ne pas donner le password
 module.exports.getAllUsers = async (req, res) => {
@@ -46,25 +46,39 @@ module.exports.updateUser = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
-
-module.exports.compteUpdatePseudo = async (req, res) => {
+module.exports.compteUpdatePseudo= async (req,res)=>{
 
   try {
-    console.log("test1");
-    console.log(req.body.email);
-    console.log(req.body.password);
-    console.log(req.params.id);
-    /*if (!UserModel.isValid(req.params.id)) {
-      return res.status(400).send("ID unknown : " + req.params.id);
-    }
-    */
-    console.log("test");
+   
+    console.log("test Change Pseudo");
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          pseudo: req.body.pseudo,
+        }
+      },
+      { runValidators: true, new: true}
+    );
+    res.status(200).json({ message: "User updated successfully", data: updatedUser });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+  
+}
+
+module.exports.compteUpdateEmail= async (req, res) => {
+
+  try {
+   
+    console.log("test Change mail");
+    const salt = await bcrypt.genSalt();
     const updatedUser = await UserModel.findByIdAndUpdate(
       { _id: req.params.id },
       {
         $set: {
           email: req.body.email,
-          password: req.body.password,
+          password: password = await bcrypt.hash(req.body.password, salt),
         }
       },
       { runValidators: true, new: true}
