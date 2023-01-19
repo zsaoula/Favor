@@ -59,7 +59,7 @@
       position: absolute;
       top: 10%;
       left: 50%;
-      width: 500px;
+      width: 400px;
       transform: translate(-100%);
       background: $color-2;
       padding: 25px;
@@ -91,8 +91,12 @@
           transform: scale(1.07);
         }
       }
+      .infoFollow{
+        display: flex;
+        justify-content: space-between;
+      }
 
-      ul {
+      /*ul {
         margin: 20px 0 0;
         max-height: 500px;
         overflow-y: scroll;
@@ -143,7 +147,7 @@
             }
           }
         }
-      }
+      }*/
     }
 }
 

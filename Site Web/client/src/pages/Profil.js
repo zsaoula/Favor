@@ -175,7 +175,7 @@ const Profil = () => {
                                   {
                                       userData.following.map((follower, i) => {
                                           return (
-                                              <li key={i}>
+                                              <li className="infoFollow" key={i}>
                                                   <MiniProfil uid={follower}/>
                                                   <div classNameName="follow-handler">
                                                       <FollowHandler idToFollow={uid} type={'card'}/>
@@ -199,7 +199,7 @@ const Profil = () => {
                                 {
                                     userData.followers.map((follower, i) => {
                                         return (
-                                            <li key={i}>
+                                            <li className="infoFollow" key={i}>
                                                 <MiniProfil uid={follower}/>
                                                 <div classNameName="follow-handler">
                                                     <FollowHandler idToFollow={uid} type={'card'}/>
