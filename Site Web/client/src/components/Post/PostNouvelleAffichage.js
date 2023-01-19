@@ -46,7 +46,12 @@ const PostNouvelleAffichage = ( { post } ) => {
 
 
     useEffect(() => {
-        !isEmpty(usersData[0]) && setIsLoading(false)
+        try {
+            !isEmpty(usersData[0]) && setIsLoading(false)
+        }
+        catch (error){
+
+        }
     })
 
     

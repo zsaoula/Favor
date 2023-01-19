@@ -66,18 +66,19 @@ const SuggestFriends = () => {
         }
     }, [userData, usersData, change])
 
-    return (
+    try {
+        return (
             <div className="recoDiv">
                 <div className="reco">
                     <span>Vous pourriez suivre</span>
                     <hr/>
                     {chargement ? (
-                        <i className='fas fa-spinner fa-pulse'></i> 
+                        <i className='fas fa-spinner fa-pulse'></i>
                     ) : (
-                        <div className="ListReco" >
+                        <div className="ListReco">
                             {friends && friends.map((user) => {
-                                for(let i = 0; i < usersData.length; i++){
-                                    if(user === usersData[i]._id){
+                                for (let i = 0; i < usersData.length; i++) {
+                                    if (user === usersData[i]._id) {
                                         return (
                                             <div className="UtiReco" key={user}>
                                                 <div>
@@ -96,7 +97,11 @@ const SuggestFriends = () => {
                     )}
                 </div>
             </div>
-    );
+        );
+    }
+    catch (error){
+        return <div>Loading...</div>
+    }
 };
 
 export default SuggestFriends;
