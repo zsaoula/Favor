@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
@@ -9,15 +9,19 @@ import PostPersonnels from '../components/UserProfil/NavigationProfil/PostsPerso
 import DossierPersonnels from '../components/UserProfil/NavigationProfil/DossiersPersonnels';
 import PostsLikes from '../components/UserProfil/NavigationProfil/PostsLikes';
 import MiniProfil from "../components/MiniProfil";
+import SuggestFriends from "../components/UserProfil/SuggestFriends";
+import {UidContext} from "../components/AppContext";
 
 const Profil = () => {
     const { uid } = useParams();
     const [userData, setUserData] = useState(null);
     const [followingPopup, setFollowingPopup] = useState(false);
+    const [uidS, setUidS] = useState(false);
     const [followerPopup, setFollowerPopup] = useState(false);
     const [dossierPersonnels,setdossierPersonnels ] = useState(false);
     const [postPersonnels,setpostPersonnels ] = useState(true);
-    const [postLikes,setpostLikes ] = useState(false)
+    const [postLikes,setpostLikes ] = useState(false);
+    const uidU= useContext(UidContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -26,6 +30,9 @@ const Profil = () => {
             setUserData(data);
         }
         fetchData();
+        if(uidU === uid){
+            setUidS(true);
+        }
     }, [uid]);
     
 
@@ -50,8 +57,8 @@ const Profil = () => {
     }
 
     return (
-        <>
-            <Navbar />
+    <div>
+       <Navbar />
             {/* <main>
             <div id="bandeauProfil">
                 <h1 classNameName='affichage-date'>Compte créé le : {dateParser(userData.createdAt)}</h1>
@@ -134,8 +141,8 @@ const Profil = () => {
             </div>
             </main> */}
 
-            <main>
-            <div>
+    <main>
+        <div>
             <div>
                 <div className="imageProfil">
                     <img className="image" src={userData.picture}/>
@@ -145,7 +152,7 @@ const Profil = () => {
                     {/* <h3>suuu</h3> */}
                 </div>
                 <div className="divSuivreFollowing">
-                    <a href="#" className="button" id="button">Suivre +</a>
+                    { uidS && <a href="#" className="button" id="button">Suivre +</a>}
                 </div>
                 <div className="divSuivreFollowing">
                  <div className="nbFollow" onClick={() => setFollowingPopup(true)}>
@@ -211,7 +218,7 @@ const Profil = () => {
 
 
         <div className="basDePage">
-          <div className="divMenu">
+            <div className="divMenu">
                 <div>
                     <nav role="navigation" className="navProfil">
                         <ul className="navItemsProfil">
@@ -223,52 +230,25 @@ const Profil = () => {
                             </li>
                             <li className="navItemProfil">
                                 <a  className="navLinkProfil" id='PostsLikes' onClick={handleModals}>Posts likés</a>
-                            </li> 
-                          
+                            </li>
                         </ul>
                      </nav>
               </div>
               <div className="menuContent">
-
                 <div className="listContent">
-                {dossierPersonnels &&<DossierPersonnels/>}
-                {postPersonnels &&<PostPersonnels/>}
-                {postLikes &&<PostsLikes/>}
+                    {dossierPersonnels &&<DossierPersonnels/>}
+                    {postPersonnels &&<PostPersonnels/>}
+                    {postLikes &&<PostsLikes/>}
                 </div>
-                  
               </div>
           </div>
-          <div className="recoDiv">
-            <div className="reco">
-              <span>Vous pourriez suivre</span>
-              <hr/>
-              <div className="ListReco">
-                <div className="UtiReco">
-                <img className="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                <span>UtiT</span>
-                <a href="#" className="buttonReco" id="button">Suivre</a>
-              </div>
-              <div className="UtiReco">
-                <img className="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                <span>UtiT</span>
-                <a href="#" className="buttonReco" id="button">Suivre</a>
-              </div>
-              <div className="UtiReco">
-                <img className="image" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                <span>UtiT</span>
-                <a href="#" className="buttonReco" id="button">Suivre</a>
-              </div>
-              </div>
-              
-            </div>
-              
+          <div>
+              {uid && <SuggestFriends />}
           </div>
-          
-         
         </div>
-        </div>
-            </main>
-        </>
+      </div>
+     </main>
+    </div>
     )
 };
 

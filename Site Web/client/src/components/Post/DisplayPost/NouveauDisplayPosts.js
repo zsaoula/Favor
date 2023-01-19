@@ -18,19 +18,24 @@ const NouveauDisplayPosts = () => {
     if (!postsData) {
         return <p>Loading...</p>;
     }
+    try{
+        return (
+            <div>
+                <ul>
+                    {!isEmpty(postsData[0]) &&
+                        postsData.map((post) => {
+                            if(post.postedId === uid){
+                            return <Post post={post} key={post._id}/>
+                            }
+                        })}
+                </ul>
+            </div>
+        );
+    }
+    catch (error){
+        return <p>Loading...</p>;
 
-    return (
-        <div>
-            <ul>
-                {!isEmpty(postsData[0]) &&
-                    postsData.map((post) => {
-                        if(post.postedId === uid){
-                        return <Post post={post} key={post._id}/>
-                        }
-                   })}
-            </ul>
-        </div>
-    );
+    }
 };
 
 export default NouveauDisplayPosts;

@@ -22,10 +22,12 @@ const MiniProfil =  ({uid} ) => {
     }
 
     return (
-        <div className="ListReco">
-            <div className="UtiReco">
-                <img className="image" src={userData.picture.data}/>
-                <a href={`/Profil/${uid}`}>{userData.pseudo}</a>
+        <div className="miniProfil">
+            <div className="infoMiniProfil">
+                <img className="miniProfilImage" src={userData.picture.data}/>
+            </div>
+            <div className="infoMiniProfil">
+                <a className="miniProfilLien" href={`/Profil/${uid}`}>{userData.pseudo}</a>
             </div>
         </div>
     );

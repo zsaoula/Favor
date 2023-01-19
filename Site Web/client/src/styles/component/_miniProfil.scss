@@ -1,0 +1,23 @@
+.miniProfil{
+  display: flex;
+  justify-content: start;
+}
+
+.infoMiniProfil{
+  margin-left: 10px;
+}
+
+.miniProfilLien{
+  font-weight: bold;
+  text-decoration : none;
+
+}
+
+.miniProfilImage{
+
+    object-fit: cover;
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    clip-path:circle(50%);
+}

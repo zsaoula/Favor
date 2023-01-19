@@ -49,38 +49,43 @@ const PostNouvelleAffichage = ( { post } ) => {
         !isEmpty(usersData[0]) && setIsLoading(false)
     })
 
-
-    return (
-        <li className='PostesProfilConteneur' key={post._id}>
-            {isLoading ? (
-                <i className='fas fa-spinner fa-spin'></i>
-            ):(
-                <>
-            <div className="unPosteNouvelleAffichage">
-                <div className="dateDePublicationDuPost">
-                    <div>{dateParser(post.createdAt)}</div>
-                </div>
-                <div className="LienDunPosteNouvelleAffichage">
-                    <LinkPreview link={post.lien}/>
-                    <p>{post.message}</p>
-                </div>
-                <div className='informationDunPosteNouvelleAffichage'>
-                    <div id="like">
-                        <ButtonLike post={post}/>
-                        {/* <img src="coeurs.png"/> */}
-                        <div>{post.likers.length}</div>
-                    </div>
-                    <div id="commentaire">
-                    <img src={Commentaire} onClick={() => setComments(!comments)}/>
-                        <div >{post.comments.length}</div>
-                    </div>
-                </div>
-            </div>
-            {comments && <Comment className="CommentaireProfil" post={post} />}
-            </>
-            ) }
-        </li>
-    );
+    
+    try {
+        return (
+            <li className='PostesProfilConteneur' key={post._id}>
+                {isLoading ? (
+                    <i className='fas fa-spinner fa-spin'></i>
+                ) : (
+                    <>
+                        <div className="unPosteNouvelleAffichage">
+                            <div className="dateDePublicationDuPost">
+                                <div>{dateParser(post.createdAt)}</div>
+                            </div>
+                            <div className="LienDunPosteNouvelleAffichage">
+                                <LinkPreview link={post.lien}/>
+                                <p>{post.message}</p>
+                            </div>
+                            <div className='informationDunPosteNouvelleAffichage'>
+                                <div id="like">
+                                    <ButtonLike post={post}/>
+                                    {/* <img src="coeurs.png"/> */}
+                                    <div>{post.likers.length}</div>
+                                </div>
+                                <div id="commentaire">
+                                    <img src={Commentaire} onClick={() => setComments(!comments)}/>
+                                    <div>{post.comments.length}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {comments && <Comment className="CommentaireProfil" post={post}/>}
+                    </>
+                )}
+            </li>
+        );
+    }
+    catch (error){
+        return <p>Loading...</p>;
+    }
 };
 
 

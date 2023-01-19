@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Connexion from './Connexion';
 import Inscription from './Inscription';
+import Logo from '../../assets/img/logo.png';
 
 const Log = ( props ) => {
     const [signUpModal, setSignUpModal] = useState(props.signup);
@@ -18,6 +19,12 @@ const Log = ( props ) => {
     
     return (
         <div className="connection-form">
+            <div className='form-presentation'>
+                <img src={Logo} alt='Favor'/>
+                <p>Bienvenue!</p>
+                <p>"Comment découvrir et partager des sites et des ressources sur internet de manière plus efficace et personnalisée ?"</p>
+                <p></p>
+            </div>
             <div className="form-container">
                 <div className="info-form-container">
                     <ul className='ul-profil'>
