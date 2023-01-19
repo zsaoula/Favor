@@ -1,6 +1,6 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
-/*const Image = mongoose.model('Image', ImageSchema);*/
+
 
 //-password pour ne pas donner le password
 module.exports.getAllUsers = async (req, res) => {
@@ -77,10 +77,12 @@ module.exports.compteUpdatePseudo = async (req, res) => {
 }
 
 module.exports.getImage = async (req, res) => {
-
   try {
-    const image = await Image.findById(req.params.id);
-    res.status(200).json(image);
+    const user = await UserModel.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user.picture);
   } catch (err) {
     res.status(500).json({ message: 'Error getting image' });
   }
@@ -89,7 +91,7 @@ module.exports.getImage = async (req, res) => {
 module.exports.saveImage = async (req, res) => {
     try {
       const { data, contentType } = req.body;
-      const image = new Image({ data, contentType });
+      const image = new UserModel.picture({ data, contentType });
       await image.save();
       res.status(201).json(image);
     } catch (err) {

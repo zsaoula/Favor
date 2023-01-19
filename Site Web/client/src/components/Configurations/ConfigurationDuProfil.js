@@ -11,11 +11,10 @@ const ConfigurationDuProfil = ()=>{
    
     const userData = useSelector((state) => state.user.user);
     const [pseudo, setPseudo] = useState(userData.pseudo);
-    const[userPicture, setUserPicture] = useState(null);
+    const [userPicture, setUserPicture] = useState(userData.picture.data);
     const [tmpImage, setTmpImage] =useState(null);
-    const [tmpAffichageImage, setTmpAffichageImage]=useState(PLUS)
+    const [tmpAffichageImage, setTmpAffichageImage]=useState(PLUS);
     const [displayAdd, setDisplayAdd] = useState(false);
-    const uid = useContext(UidContext);
     const [message, setMessage] = useState('');
 
     const handleLoadFile=(e)=>{
@@ -31,24 +30,10 @@ const ConfigurationDuProfil = ()=>{
         console.log("eeee");
     };
     console.log("rrrrrr");
-   setTmpAffichageImage(`${tmpImage.data}`)
+   setTmpAffichageImage(`${tmpImage.data}`);
    console.log("uuuuuuuuuuuu");
+   console.log(tmpImage);
     };
-
-
-    useEffect(() => {
-        const fetchImage = async () => {
-          try {
-            const { data } = await axios.get(`/api/users/${uid}/image`);
-            setUserPicture(`data:${data.contentType};base64,${data.data}`);
-          } catch (err) {
-            console.error(err);
-          }
-        };
-        fetchImage();
-      }, [uid]);
-
-
 
     const handleTPM =()=> {
         console.log("test");
@@ -60,7 +45,7 @@ const ConfigurationDuProfil = ()=>{
 
         e.preventDefault();
         try {
-            await axios.patch( `${process.env.REACT_APP_API_URL}api/user/${uid}/image`, tmpImage);
+            await axios.patch( `${process.env.REACT_APP_API_URL}api/user/${userData.id}/image`, tmpImage);
             setMessage("Image de profil mise à jour avec succès!");
           } catch (err) {
             setMessage("Erreur lors de la mise à jour de l'image de profil");

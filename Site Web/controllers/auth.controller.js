@@ -91,10 +91,8 @@ module.exports.signIn = async (req, res) => {
     console.log("signin: ",req.body);
     const {email, password} = req.body
     try {
-        console.log("test user1 ");
 
         const user = await UserModel.login({email, password});
-        console.log("test user2 ");
 
 
         //creation d'un token 

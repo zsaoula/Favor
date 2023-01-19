@@ -8,7 +8,6 @@ import FollowHandler from "./UserProfil/FollowHandler";
 
 const MiniProfil =  ({uid} ) => {
     const [userData, setUserData] = useState(null);
-
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(`${process.env.REACT_APP_API_URL}api/user/${uid}`);
@@ -25,7 +24,7 @@ const MiniProfil =  ({uid} ) => {
     return (
         <div className="ListReco">
             <div className="UtiReco">
-                <img className="image" src={userData.picture}/>
+                <img className="image" src={userData.picture.data}/>
                 <a href={`/Profil/${uid}`}>{userData.pseudo}</a>
             </div>
         </div>
