@@ -59,12 +59,13 @@
         }
       }
 
-      ul {
+      .ul_ajout_Profil {
         min-width: 250px;
         max-width: 300px;
         margin: 20px 0 0;
         max-height: 500px;
         min-height: 200px;
+        overflow: hidden;
 
 
         li {

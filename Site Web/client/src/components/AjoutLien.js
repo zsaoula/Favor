@@ -80,13 +80,13 @@ const AjoutLien = () => {
                 }
             </div>
             {displayAdd && (
-                <div className="popup-profil-container">
+                <div className="popup-ajout-container">
                     <div className="modal">
                         <h3>Ajout d'un lien</h3>
                         <span className="cross" onClick={() => setDisplayAdd(false)}>
                             &#10005;
                         </span>
-                        <ul>
+                        <ul className='ul_ajout_Profil'>
                             <form className="newPoste-form-container">
                                 <div className="newPoste-input">
                                     <input  type="text" 
