@@ -1,6 +1,6 @@
 .miniProfil{
   display: flex;
-  align-content: start;
+  justify-content: start;
 }
 
 .infoMiniProfil{
@@ -8,6 +8,8 @@
 }
 
 .miniProfilLien{
+  font-weight: bold;
+  text-decoration : none;
 
 }
 
