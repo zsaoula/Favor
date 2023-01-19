@@ -14,6 +14,10 @@ const NouveauDisplayPosts = () => {
         dispatch(getPosts());
     },[dispatch])
 
+    if (!postsData) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <div>
             <ul>

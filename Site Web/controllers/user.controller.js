@@ -1,6 +1,7 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 
+
 //-password pour ne pas donner le password
 module.exports.getAllUsers = async (req, res) => {
   const users = await UserModel.find().select("-password");
@@ -46,20 +47,63 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
-// module.exports.compteUpdate = async (req,res)=>{
+module.exports.compteUpdatePseudo = async (req, res) => {
 
-//    const{email, password}=req.body
+  try {
+    console.log("test1");
+    console.log(req.body.email);
+    console.log(req.body.password);
+    console.log(req.params.id);
+    /*if (!UserModel.isValid(req.params.id)) {
+      return res.status(400).send("ID unknown : " + req.params.id);
+    }
+    */
+    console.log("test");
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          email: req.body.email,
+          password: req.body.password,
+        }
+      },
+      { runValidators: true, new: true}
+    );
+    res.status(200).json({ message: "User updated successfully", data: updatedUser });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+  
+}
 
-//   try{
-//     await UserModel.findOneAndUpdate{
-//       {_id: req.params.id}
-//       {set:{
-//         email: req.body.email
-//       }}
-//     }
-//   }
+module.exports.getImage = async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user.picture);
+  } catch (err) {
+    res.status(500).json({ message: 'Error getting image' });
+  }
+};
 
-// }
+module.exports.saveImage = async (req, res) => {
+    try {
+      const { data, contentType } = req.body;
+      const image = new UserModel.picture({ data, contentType });
+      await image.save();
+      res.status(201).json(image);
+    } catch (err) {
+      res.status(500).json({ message: 'Error saving image' });
+    }
+  };
+
+
+
+ 
+   
+ 
 
 
 

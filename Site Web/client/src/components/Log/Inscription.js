@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, redirect} from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import axios from "axios";
 import Connexion from "./Connexion";
 
