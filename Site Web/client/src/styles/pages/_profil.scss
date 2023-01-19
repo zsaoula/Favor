@@ -313,7 +313,7 @@ margin-top: 1%;
 .divMenu {
   margin: 0%;
   background-color: #cccaca;
-  width: 75%;
+  width: 1000px;
   height: 500px;
   border-radius: 25px;
 }
@@ -351,14 +351,13 @@ scrollbar-gutter: stable both-edges;
 }
 
 .basDePage {
-display: flex;
-  flex-direction: row ;
-  justify-content: space-around;
+  display: flex;
+  justify-content: space-between;
 
 }
 
 .recoDiv {
-width: 20%;
+  width: 250px;
 }
 
 .UtiReco {

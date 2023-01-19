@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty } from '../Utils';
 import FollowHandler from './FollowHandler';
+import MiniProfil from "../MiniProfil";
 
 const SuggestFriends = () => {
     const userData = useSelector((state) => state.user.user);
@@ -79,8 +80,7 @@ const SuggestFriends = () => {
                                     if(user === usersData[i]._id){
                                         return (
                                             <div className="UtiReco" key={user}>
-                                                <img src={usersData[i].picture} alt="img"/>
-                                                <p>{usersData[i].pseudo}</p>
+                                                <MiniProfil uid={usersData[i]._id}></MiniProfil>
                                                 <FollowHandler idToFollow={usersData[i]._id} type={"card"}/>
                                             </div>
                                         );
