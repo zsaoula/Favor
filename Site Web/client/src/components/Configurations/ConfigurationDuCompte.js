@@ -29,7 +29,7 @@ const ConfigurationDuCompte =()=>{
 
     return(
         <div>
-        <h2 className='ligneHorizontal'>Modification des information du compte</h2>
+        <h2 className='ligneHorizontal'>Modification des informations du compte</h2>
        
             <form className="ModifucationInformationDuCompte">
                         
@@ -72,7 +72,7 @@ const ConfigurationDuCompte =()=>{
         <button>
             supprimer votre compte    
         </button>
-            <p className='buttonSuppressionText'>Note : action irreversible qui vous fera perdre toutes les données du compte en conséquence</p>
+            <p className='buttonSuppressionText'>Note : Cette action est irreversible qui vous fera perdre toutes les données du compte en conséquence</p>
         </div> 
     </div>
     )
