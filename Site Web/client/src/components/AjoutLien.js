@@ -29,6 +29,7 @@ const AjoutLien = () => {
                 dispatch(getPosts());
                 cancelPost();
                 setDisplayAdd(false);
+                await new Promise(r => setTimeout(r, 500));
                 window.location.reload();
             }else {
                 alert("Veuillez compléter tous les champs et ajouter au moins un tag.")
