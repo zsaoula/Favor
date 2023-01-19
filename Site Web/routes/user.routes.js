@@ -24,8 +24,9 @@ router.patch('/unfollow/:id', userController.unfollow);
 router.patch('/notif/:id', userController.getNotif);
 router.patch('/:id/image', userController.saveImage);
 router.get('/:id/image',userController.getImage);
+router.put('/update/email/:id',userController.compteUpdateEmail);
 router.put('/update/:id',userController.compteUpdatePseudo);
-router.put('/update/:id',userController.compteUpdatePseudo);
+router.delete('/delete/:ip', userController.deleteUser);
 //upload pb avec postman
 //router.post("/upload", upload.single('file'), uploadController.uploadProfil);
 

@@ -16,13 +16,28 @@ const ConfigurationDuCompte =()=>{
         e.preventDefault();
         console.log(userData._id);
         axios
-          .put(`${process.env.REACT_APP_API_URL}api/user/update/`+ userData._id , { email, password })
+          .put(`${process.env.REACT_APP_API_URL}api/user/update/email/`+ userData._id , { email, password })
           .then(response => {
             console.log(response);
           })
           .catch(error => {
             console.log(error);
           });
+      }
+      
+     /* const handleSuppression{
+
+      }
+      */
+      const deleteUser = (userId) => {
+        try {
+          console.log("test");
+          console.log(userId);
+          const response = axios.delete(`${process.env.REACT_APP_API_URL}api/user/delete/${userId}`);
+          console.log(response.data.message);
+        } catch (error) {
+          console.log(error.response.data.error);
+        }
       }
 
 
@@ -69,10 +84,10 @@ const ConfigurationDuCompte =()=>{
         <h2 className='ligneHorizontal'>Suppression du compte</h2>
         <div className='buttonSuppressionCompte'>
 
-        <button>
+        <button  onClick={()=>deleteUser(userData._id)}>
             supprimer votre compte    
         </button>
-            <p className='buttonSuppressionText'>Note : Cette action est irreversible qui vous fera perdre toutes les données du compte en conséquence</p>
+            <p className='buttonSuppressionText'>Note : Cette action est  irréversible qui vous fera perdre toutes les données du compte en conséquence</p>
         </div> 
     </div>
     )
