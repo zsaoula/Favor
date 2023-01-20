@@ -15,12 +15,14 @@ const SuggestFriends = () => {
         const stateFriend = () => {
             let array = [];
             usersData.map((user) => {
-                if(user._id !== userData._id && user.followers.includes(userData._id)){
+                console.log("user",user);
+                if(user._id !== userData._id && !user.followers.includes(userData._id)){
                     return array.push(user._id);
                 }
             })
             //mettre dans un ordre aléatoire
             array.sort(() => 0.5 - Math.random());
+            array.length = 5;/*
             if(window.innerHeight > 780){
                 array.length = 5;
             }
@@ -37,7 +39,7 @@ const SuggestFriends = () => {
                 array.length = 1;
             }else {
                 array.length = 0;
-            }
+            }*/
             setFriends(array);
         }
 
