@@ -81,7 +81,7 @@ const SearchBar = () => {
                             
                         </div>
                         
-                        <div className="divMenuSearch">
+                        <div className="divMenuSearch listContent">
                             <nav role="navigation" className="navProfil">
                                 <ul className="navItemsProfil">
                                     <li className="navItemProfil">
