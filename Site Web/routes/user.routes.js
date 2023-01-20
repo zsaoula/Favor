@@ -12,7 +12,11 @@ router.post('/login', authController.signIn);
 //router.post('/send-verification-email', authController.verifEmail);
 //retirer le token (cookie)
 router.get('/logout', authController.logout);
-
+router.post('/verify-email',authController.verifyEmail);
+router.post('/forgotpassword',authController.forgotPassword);
+router.post('/reset/:token',authController.resetPost);
+router.get('/reset/:token',authController.resetGet);
+router.post('/send-verification-email',authController.sendVerificationEmail);
 
 // user 
 router.get('/', userController.getAllUsers);

@@ -25,6 +25,9 @@ module.exports.createPost = async (req, res) => {
     lien: req.body.lien,
     likers: [],
     tags: req.body.tags,
+    image: req.body.image,
+    publique: req.body.publique,
+    privee: req.body.privee,
     comments: [],
   });
 

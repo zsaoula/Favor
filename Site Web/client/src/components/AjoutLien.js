@@ -5,15 +5,41 @@ import { addPost, getPosts } from '../actions/post.actions';
 import { UidContext } from './AppContext';
 import IconeFavor from '../assets/img/logo.png';
 
+
+
 const AjoutLien = () => {
     const uid = useContext(UidContext);
     const userData = useSelector((state) => state.user.user);
     const [displayAdd, setDisplayAdd] = useState(false);
     const [lien, setLien] = useState("");
+    const [privee, setPrivee] = useState(false);
+    const [image, setImage] = useState("");
+    const [publique, setPublique] = useState(false);
     const [description, setDescription] = useState("");
     const [tag, setTag] = useState('');
     const [tags, setTags] = useState([]);
     const dispatch = useDispatch();
+    const [preview, setPreview] = useState({ image: '', title: '', description: '' });
+
+    const apiPost =  () => {
+        //const key = '9f24d981b6f0ddfce993ce4a20d58867';
+        const keyApi = '2865b6b9d9571dc00bf940fad5728248';
+
+        const fullLink = `http://api.linkpreview.net/?key=${keyApi}&q=${lien}`;
+
+        axios
+            .get(fullLink)
+            .then((res) => setPreview(res.data))
+            .catch((err) => console.error(err));
+
+        if(preview.image === "") {
+            setImage("");
+        }
+        else {
+            console.log(typeof preview.image);
+            setImage(preview.image);
+         };
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,10 +48,10 @@ const AjoutLien = () => {
     }
 
 
-
     const handlePost = async () => {
         if(isValidUrl(lien)){
             if ((description || lien) && tags.length > 0){
+                apiPost();
                 putData();
                 dispatch(getPosts());
                 cancelPost();
@@ -48,7 +74,7 @@ const AjoutLien = () => {
 
     const putData = async() => {
         axios
-          .post(`${process.env.REACT_APP_API_URL}api/post/`, { postedId: userData._id, message: description, lien: lien, tags: tags}
+          .post(`${process.env.REACT_APP_API_URL}api/post/`, { postedId: userData._id, message: description, lien: lien, tags: tags, publique: publique, privee:privee, image: image,}
         )
           .then((res) => {
           //   if (res.data.errors) {
@@ -65,7 +91,7 @@ const AjoutLien = () => {
       }catch {
         return false;
       }
-    }
+    };
 
     return (
         <>
@@ -117,6 +143,22 @@ const AjoutLien = () => {
                                                 required
                                                 />
                                 </div>
+
+                                <fieldset>
+                                    <legend>Type publication:</legend>
+
+                                    <div>
+                                    <input type="checkbox" id="scales" name="scales" onChange={(e) => setPrivee(e.target.value)}
+                                                value={true}/>
+                                    <label for="scales">Privée</label>
+                                    </div>
+
+                                    <div>
+                                    <input type="checkbox" id="horns" name="horns" onChange={(e) => setPublique(e.target.value)}
+                                                value={true}/>
+                                    <label for="horns">Public</label>
+                                    </div>
+                                </fieldset>
 
                                 <input
                                     type="text"

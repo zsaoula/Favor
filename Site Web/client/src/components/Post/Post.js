@@ -27,6 +27,7 @@ const LinkPreview = ({ link }) => {
         return (<div className='alignementLien'><a className="LienPostHome" href={link}>{link}</a></div>);
     }
     else {
+        console.log(typeof preview.image);
         return (
             <>
             <div className='alignementLien'>
@@ -49,7 +50,7 @@ const Post = ( { post } ) => {
 
 
     useEffect(() => {
-        !isEmpty(usersData[0]) && !isEmpty(userData) && setIsLoading(false)
+        !isEmpty(usersData) && !isEmpty(userData) && setIsLoading(false)
     })
 
     return (

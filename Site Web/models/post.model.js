@@ -20,10 +20,20 @@ const postSchema = new mongoose.Schema(
       likers: {
         type: [String],
         required: true
-      },
+      },-
       tags: {
         type: [String],
         required: true
+      },
+      image:{
+        type: String,
+      },
+      
+      publique: {
+        type: Boolean
+      },
+      privee: {
+        type: Boolean
       },
       comments: {
         type: [
