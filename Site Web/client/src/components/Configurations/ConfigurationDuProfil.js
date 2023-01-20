@@ -120,15 +120,6 @@ const ConfigurationDuProfil = ()=>{
         </div>
         </form>
         
-        <h2 className='ligneHorizontal' >Acces au dossiers personnel</h2>
-        <div className='accesDossiersPerso'>
-            <div className='accesDossiersPersoValidation'>
-            <input type="checkbox" name='cocher' />
-            <label for="cocher" className='textAccesDossiersPerso'>Cocher si oui</label>
-            </div>
-           
-        </div> 
-        
         {displayAdd && (
             <div className='popup-modificationProfil'>
                 <div className="modal">

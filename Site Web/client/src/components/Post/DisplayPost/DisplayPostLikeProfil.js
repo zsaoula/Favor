@@ -6,9 +6,8 @@ import { isEmpty } from "../../Utils";
 import Post from '../PostNouvelleAffichage';
 import { UidContext } from '../../AppContext';
 
-const DisplayPostLikeProfil = () => {
+const DisplayPostLikeProfil = ({uid}) => {
     const postsData = useSelector((state) => state.post.post);
-    const uid = useContext(UidContext);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getPosts());

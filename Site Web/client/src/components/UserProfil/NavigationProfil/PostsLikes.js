@@ -4,13 +4,13 @@ import DisplayPostLikeProfil from "../../Post/DisplayPost/DisplayPostLikeProfil"
 
 
 
-const PostLikes=()=>{
+const PostLikes=({uid})=>{
 
 
 return(
 
     <div className='postPersonnel'>
-    <DisplayPostLikeProfil/>
+    <DisplayPostLikeProfil uid={uid}/>
     </div>
 )
 

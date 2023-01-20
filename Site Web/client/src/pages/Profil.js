@@ -153,9 +153,9 @@ const Profil = () => {
               </div>
               <div className="menuContent">
                 <div className="listContent">
-                    {dossierPersonnels &&<DossierPersonnels/>}
-                    {postPersonnels &&<PostPersonnels/>}
-                    {postLikes &&<PostsLikes/>}
+                    {dossierPersonnels &&<DossierPersonnels uid={uid}/>}
+                    {postPersonnels &&<PostPersonnels uid={uid}/>}
+                    {postLikes &&<PostsLikes uid={uid}/>}
                 </div>
               </div>
           </div>

@@ -6,9 +6,8 @@ import { isEmpty } from "../../Utils";
 import Post from '../PostNouvelleAffichage';
 import { UidContext } from '../../AppContext';
 
-const NouveauDisplayPosts = () => {
+const NouveauDisplayPosts = ({uid}) => {
     const postsData = useSelector((state) => state.post.post);
-    const uid = useContext(UidContext);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getPosts());
@@ -25,6 +24,7 @@ const NouveauDisplayPosts = () => {
                     {!isEmpty(postsData) &&
                         postsData.map((post) => {
                             if(post.postedId === uid){
+                                console.log("test uid post");
                             return <Post post={post} key={post._id}/>
                             }
                         })}

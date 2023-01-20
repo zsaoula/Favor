@@ -34,9 +34,11 @@ const DisplayPosts = ( {type} ) => {
     return (
         <div>
             <ul>
-                {!isEmpty(postsData) && !isEmpty(postsData) &&
+                {!isEmpty(postsData) &&
                     postsData.map((post) => {
+                        if(post.publique === true){
                         return <Post post={post} key={post._id}/>
+                        }
                     })}
             </ul>
         </div>

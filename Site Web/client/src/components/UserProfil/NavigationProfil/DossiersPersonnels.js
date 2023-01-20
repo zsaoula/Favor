@@ -4,10 +4,10 @@ import DiplayPostDossier from "../../Post/DisplayPost/DiplayPostDossier";
 
 
 
-const DossiersPersonnels=()=>{
+const DossiersPersonnels=({uid})=>{
     return(
     <div className='dossierPersonnel'>
-     <DiplayPostDossier/>
+     <DiplayPostDossier uid={uid}/>
 
     </div>
     )

@@ -6,9 +6,8 @@ import { isEmpty } from "../../Utils";
 import Post from '../PostNouvelleAffichage';
 import { UidContext } from '../../AppContext';
 
-const DiplayPostDossier = () => {
+const DiplayPostDossier = ({uid}) => {
     const postsData = useSelector((state) => state.post.post);
-    const uid = useContext(UidContext);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getPosts());
@@ -21,9 +20,7 @@ const DiplayPostDossier = () => {
             <ul>
                 {!isEmpty(postsData) &&
                     postsData.map((post) => {
-                        if(post.postedId === uid){
-                            console.log(post)
-                            console.log("tttt")
+                        if(post.postedId === uid && post.privee === true){
                         return <Post post={post} key={post._id}/>
                         }
                    })}

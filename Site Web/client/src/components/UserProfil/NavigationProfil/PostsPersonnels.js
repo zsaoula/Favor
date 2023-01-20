@@ -4,11 +4,11 @@ import NouveauDisplayPosts from "../../Post/DisplayPost/NouveauDisplayPosts";
 
 
 
-const PostPersonnels=()=>{
+const PostPersonnels=({uid})=>{
 
     return(
     <div className='postPersonnel'>
-        <NouveauDisplayPosts/>
+        <NouveauDisplayPosts uid={uid}/>
     </div>
     )
 }
