@@ -24,7 +24,7 @@ const Log = ( props ) => {
                 <img src={Logo} alt='Favor'/>
                 <p>Bienvenue!</p>
                 <p>Qu'est ce que Favor?</p>
-                <p>Un réseau social de partage de liens, Partagez vos coups de coeur en ligne</p>
+                <p>Un réseau social de partage de liens, partagez vos coups de coeur en ligne.</p>
             </div>
             <div className="form-container">
                 <div className="info-form-container">

@@ -160,12 +160,12 @@ const AjoutLien = () => {
                                     </div>
                                 </fieldset>
 
-                                <input
+                                <input className='ajoutTagInput'
                                     type="text"
                                     value={tag}
                                     onChange={e => setTag(e.target.value)}
                                 />
-                                <i type="submit" onClick={handleSubmit}>Ajouter un tag</i>
+                                <i type="submit" onClick={handleSubmit}>Ajouter Tag</i>
 
                                 <ul>
                                     {tags.map(t => (
