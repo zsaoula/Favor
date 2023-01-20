@@ -159,7 +159,7 @@ const Profil = () => {
                 </div>
               </div>
           </div>
-          <div>
+          <div className='recommendationProfil'>
               {uid && <SuggestFriends />}
           </div>
         </div>

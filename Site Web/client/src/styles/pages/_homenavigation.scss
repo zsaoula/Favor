@@ -279,7 +279,7 @@ input[type="submit"]:hover, .buttonTEL:hover{
 
 
 .form-presentation{
-  background-color: aquamarine;
+  background: $color-2;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -299,6 +299,7 @@ input[type="submit"]:hover, .buttonTEL:hover{
     padding-left: 30px;
     padding-right: 30px;
     text-align: center;
+    color:  rgba(0, 0, 0, 0.855);
   }
   img{
     padding-top: 20px;
