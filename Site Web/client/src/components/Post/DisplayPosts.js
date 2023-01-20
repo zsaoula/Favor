@@ -34,7 +34,7 @@ const DisplayPosts = ( {type} ) => {
     return (
         <div>
             <ul>
-                {!isEmpty(postsData) && !isEmpty(postsData[0]) &&
+                {!isEmpty(postsData) && !isEmpty(postsData) &&
                     postsData.map((post) => {
                         return <Post post={post} key={post._id}/>
                     })}

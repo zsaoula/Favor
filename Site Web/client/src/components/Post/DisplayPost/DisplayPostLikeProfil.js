@@ -19,7 +19,7 @@ const DisplayPostLikeProfil = () => {
     return (
         <div>
             <ul>
-            {!isEmpty(postsData[0]) &&
+            {!isEmpty(postsData) &&
             postsData.filter(post => post.likers.includes(uid))
             .map((post) => {
                 return <Post post={post} key={post._id}/>

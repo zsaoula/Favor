@@ -22,7 +22,7 @@ const NouveauDisplayPosts = () => {
         return (
             <div>
                 <ul>
-                    {!isEmpty(postsData[0]) &&
+                    {!isEmpty(postsData) &&
                         postsData.map((post) => {
                             if(post.postedId === uid){
                             return <Post post={post} key={post._id}/>
