@@ -153,8 +153,8 @@ const Profil = () => {
                         </ul>
                      </nav>
               </div>
-              <div className="menuContent">
-                <div className="listContent">
+              <div className="menuContent listContent">
+                <div >
                     {dossierPersonnels &&<DossierPersonnels uid={uid}/>}
                     {postPersonnels &&<PostPersonnels uid={uid}/>}
                     {postLikes &&<PostsLikes uid={uid}/>}
