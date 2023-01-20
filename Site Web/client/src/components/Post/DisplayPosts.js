@@ -20,7 +20,7 @@ const DisplayPosts = ( {type} ) => {
     useEffect(() => {
         if (loadPost) {
             if(type === "discover"){
-                dispatch(getPostsDisc(count));
+                dispatch(getPostsDisc(count+100));
             }
             else{
                 dispatch(getPosts(count));
