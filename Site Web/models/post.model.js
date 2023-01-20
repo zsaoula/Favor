@@ -20,7 +20,7 @@ const postSchema = new mongoose.Schema(
       likers: {
         type: [String],
         required: true
-      },-
+      },
       tags: {
         type: [String],
         required: true

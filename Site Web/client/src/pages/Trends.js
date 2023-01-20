@@ -8,20 +8,25 @@ const Trends = () => {
     const [setLoadNotif] = useState(true);
     const userData =  useSelector((state) => state.user.user);
 
-    return (
-        <div id={'listeNotif'}>
-            <Navbar />
-            <h1>Notification</h1>
-            {
-                userData.notif != null && userData.notif.map((notif) => {
-                    return (
+    try {
+        return (
+            <div id={'listeNotif'}>
+                <Navbar/>
+                <h1>Notification</h1>
+                {
+                    userData.notif != null && userData.notif.map((notif) => {
+                        return (
                             <Notif key={notif._id} notification={notif}/>
-                    );
-                })
+                        );
+                    })
 
-            }
-        </div>
-    );
+                }
+            </div>
+        );
+    }
+    catch (error){
+        return <div>Loading...</div>
+    }
 };
 
 export default Trends;

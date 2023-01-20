@@ -55,7 +55,7 @@ const SuggestFriends = () => {
             setFriends(array);
         }
 
-        if(change && !isEmpty(usersData[0]) && userData!=null){
+        if(change && !isEmpty(usersData) && userData!=null){
             if(userData.followers.length === 0){
                 stateTopFollowers();
             }else{

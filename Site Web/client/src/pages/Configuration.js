@@ -26,7 +26,8 @@ const Configuration = () => {
                 setConfigurationDuProfil(false);
             }
 
-        };        
+        };
+
     return(
         <>
         <Navbar />
@@ -39,11 +40,11 @@ const Configuration = () => {
             Configuration du compte
             </a>
             <a onClick={handleModals} id="PolitiqueDeConfidentialite" >
-            Politique de confidentialite
+                Politique de confidentialité
             </a>
             </div>
-            
-            
+
+
             {ConfigurationProfil &&<ConfigurationDuProfil/>}
             {ConfigurationCompte &&<ConfigurationDuCompte/>}
             {PolitiqueConfidentialite &&<PolitiqueDeConfidentialite/>}
