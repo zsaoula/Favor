@@ -22,7 +22,7 @@ const ActionComment = ( { commentaire , postId}) => {
 
     const handleDelete = () => {
         dispatch(deleteComment(postId, commentaire._id));
-        setMessage('commantaire suprimer');
+        setMessage('commentaire supprimé');
         setEdit(false);
     };
 

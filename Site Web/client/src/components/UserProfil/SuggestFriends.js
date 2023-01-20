@@ -41,7 +41,7 @@ const SuggestFriends = () => {
             setFriends(array);
         }
 
-        const stateTopFollowers = () => {
+        const stateTopFollowers = async () => {
             let array = [];
             let obj = JSON.parse(JSON.stringify(usersData));
             obj.sort((a, b) => b.followers.length - a.followers.length);
