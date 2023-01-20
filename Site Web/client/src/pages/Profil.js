@@ -71,7 +71,9 @@ const Profil = () => {
                     {/* <h3>suuu</h3> */}
                 </div>
                 <div className="divSuivreFollowing">
-                    { uidS && <a href="#" className="button" id="button">Suivre +</a>}
+                    { /*uidS && <a href="#" className="button" id="button">Suivre +</a>*/
+                        <FollowHandler idToFollow={uid} type={'card'}/>
+                    }
                 </div>
                 <div className="divSuivreFollowing">
                  <div className="nbFollow" onClick={() => setFollowingPopup(true)}>
