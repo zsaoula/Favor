@@ -7,6 +7,7 @@ import Discover from '../../pages/Discover.js';
 import Profil from '../../pages/Profil.js';
 import Configuration from '../../pages/Configuration.js';
 import SearchBar from '../../pages/SearchBar.js';
+import ResetPassword from '../../pages/ResetPassword.js';
 
 const index = () => {
     return (
@@ -20,6 +21,7 @@ const index = () => {
                     {/* <Route path="*" element={<HomeNavigation/>} /> */}
                     <Route path="/Profil/:uid" element={<Profil/>} />
                     <Route path="/Configuration" element={<Configuration/>}/>
+                    <Route path="/reset/:token" element={<ResetPassword />}/>
                 </Routes>
             </BrowserRouter>
     );

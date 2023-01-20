@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Connexion from './Connexion';
 import Inscription from './Inscription';
 import Logo from '../../assets/img/logo.png';
+import Img from '../../assets/img/insc.png';
 
 const Log = ( props ) => {
     const [signUpModal, setSignUpModal] = useState(props.signup);
@@ -22,8 +23,8 @@ const Log = ( props ) => {
             <div className='form-presentation'>
                 <img src={Logo} alt='Favor'/>
                 <p>Bienvenue!</p>
-                <p>"Comment découvrir et partager des sites et des ressources sur internet de manière plus efficace et personnalisée ?"</p>
-                <p></p>
+                <p>Qu'est ce que Favor?</p>
+                <p>Un réseau social de partage de liens, dont vous pourrez partager vos liensfefezfefezfzefzfz</p>
             </div>
             <div className="form-container">
                 <div className="info-form-container">
@@ -56,6 +57,7 @@ const Log = ( props ) => {
                             Se connecter
                         </li>
                     </ul>
+                    <img src={Img} className="imginsc"/>
                 </div>
                 {signUpModal && <Inscription />}
                 {signInModal && <Connexion />}
