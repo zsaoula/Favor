@@ -187,8 +187,7 @@ module.exports.verifyEmail = async (req, res) => {
 
 //gestion des erreurs
 module.exports.signUp = async (req, res) => {
-    console.log(req.body);
-
+    console.log("signUp: ",req.body);
     //Attention à enlever
     
     const {pseudo, email, password} = req.body

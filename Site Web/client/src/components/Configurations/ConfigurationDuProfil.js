@@ -70,7 +70,7 @@ const ConfigurationDuProfil = ()=>{
             setMessage("Erreur lors de la mise à jour de l'image de profil");
           }
           
-          setUserPicture(tmpAffichageImage);
+          userPicture(tmpAffichageImage);
           console.log(userPicture);
           setDisplayAdd(false);
 
