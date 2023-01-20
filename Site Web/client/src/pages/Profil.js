@@ -34,7 +34,7 @@ const Profil = () => {
             setUidS(true);
         }
     }, [uid]);
-
+    
 
     const handleModals = (e) => {
         if (e.target.id === "DossierPersonnels") {
@@ -64,7 +64,7 @@ const Profil = () => {
         <div>
             <div>
                 <div className="imageProfil">
-                    <img className="image" src={userData.picture}/>
+                    <img className="image" src={userData.picture.data}/>
                 </div>
                 <div className="divPseudo">
                     <h3 className="pseudo">{userData.pseudo}</h3>
@@ -84,55 +84,53 @@ const Profil = () => {
                   </div> 
                 </div>
                   {followingPopup && (
-                                <div className="popup-profil-container">
-                                <div className="modal">
-                                    <h3>Abonnements</h3>
-                                    <span className="cross" onClick={() => setFollowingPopup(false)}>
-                                    &#10005;
-                                    </span>
-                                    <ul>
-                                        {
-                                            userData.following.map((follower, i) => {
-                                                return (
-                                                    <li key={i}>
-                                                        <MiniProfil uid={follower}/>
-                                                        <div classNameName="follow-handler">
-                                                            <FollowHandler idToFollow={uid} type={'card'}/>
-                                                        </div>
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                                </div>
-                            )}
-                            {followerPopup && (
-                                <div classNameName="popup-profil-container">
-                                <div classNameName="modal">
-                                    <h3>Abonnés</h3>
-                                    <span classNameName="cross" onClick={() => setFollowerPopup(false)}>
-                                    &#10005;
-                                    </span>
-                                    <ul>
-                                        {
-                                            userData.followers.map((follower, i) => {
-                                                return (
-                                                    <li key={i}>
-                                                        <MiniProfil uid={follower}/>
-                                                        <div classNameName="follow-handler">
-                                                            <FollowHandler idToFollow={uid} type={'card'}/>
-                                                        </div>
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                                </div>
-                            )}
-
-                
+                      <div className="popup-profil-container">
+                          <div className="modal">
+                              <h3>Abonnements</h3>
+                              <span className="cross" onClick={() => setFollowingPopup(false)}>
+                                  &#10005;
+                              </span>
+                              <ul>
+                                  {
+                                      userData.following.map((follower, i) => {
+                                          return (
+                                              <li className="infoFollow" key={i}>
+                                                  <MiniProfil uid={follower}/>
+                                                  <div classNameName="follow-handler">
+                                                      <FollowHandler idToFollow={uid} type={'card'}/>
+                                                  </div>
+                                              </li>
+                                          )
+                                      })
+                                  }
+                              </ul>
+                          </div>
+                      </div>
+                  )}
+                {followerPopup && (
+                    <div className="popup-profil-container">
+                        <div className="modal">
+                            <h3>Abonnements</h3>
+                            <span className="cross" onClick={() => setFollowerPopup(false)}>
+                                  &#10005;
+                              </span>
+                            <ul>
+                                {
+                                    userData.followers.map((follower, i) => {
+                                        return (
+                                            <li className="infoFollow" key={i}>
+                                                <MiniProfil uid={follower}/>
+                                                <div classNameName="follow-handler">
+                                                    <FollowHandler idToFollow={uid} type={'card'}/>
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                )}
             </div>
 
 

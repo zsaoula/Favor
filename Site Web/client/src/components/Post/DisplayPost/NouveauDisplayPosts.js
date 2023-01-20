@@ -13,7 +13,8 @@ const NouveauDisplayPosts = () => {
     useEffect(() => {
         dispatch(getPosts());
     },[dispatch])
-
+    console.log("datapost");
+    console.log(postsData);
     if (!postsData) {
         return <p>Loading...</p>;
     }

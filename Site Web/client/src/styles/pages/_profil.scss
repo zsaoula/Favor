@@ -59,6 +59,7 @@
       position: absolute;
       top: 10%;
       left: 50%;
+      width: 400px;
       transform: translate(-100%);
       background: $color-2;
       padding: 25px;
@@ -90,8 +91,12 @@
           transform: scale(1.07);
         }
       }
+      .infoFollow{
+        display: flex;
+        justify-content: space-between;
+      }
 
-      ul {
+      /*ul {
         margin: 20px 0 0;
         max-height: 500px;
         overflow-y: scroll;
@@ -142,7 +147,7 @@
             }
           }
         }
-      }
+      }*/
     }
 }
 
@@ -223,7 +228,7 @@ width: 10%;
 
 .imageProfil{
   display: flex;
-justify-content: center;
+  justify-content: center;
 }
 
 .flex-menu {
@@ -329,10 +334,11 @@ height: 85%;
 
 .reco{
 background-color: #a8a8a8;
-margin: 0% 0% 0% 2.5%;
+margin: 5% 0% 0% 0%;
 border-radius: 25px;
-width: 100%;
+width: 19%;
 height: 300px;
+position: fixed;
 }
 
 .reco span{
@@ -359,13 +365,15 @@ scrollbar-gutter: stable both-edges;
 .recoDiv {
   width: 250px;
   margin-top: 10px;
+
 }
 
 .UtiReco {
 display: flex;
 flex-direction: row;
-justify-content: space-evenly;
+justify-content: space-between;
 padding: 5% 0% 0% 0%;
+
 }
 
 .ListReco {

@@ -3,6 +3,7 @@ import React, {useContext, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPost, getPosts } from '../actions/post.actions';
 import { UidContext } from './AppContext';
+import IconeFavor from '../assets/img/logo.png';
 
 const AjoutLien = () => {
     const uid = useContext(UidContext);
@@ -29,6 +30,7 @@ const AjoutLien = () => {
                 dispatch(getPosts());
                 cancelPost();
                 setDisplayAdd(false);
+                await new Promise(r => setTimeout(r, 500));
                 window.location.reload();
             }else {
                 alert("Veuillez compléter tous les champs et ajouter au moins un tag.")
@@ -74,23 +76,34 @@ const AjoutLien = () => {
                     </button>
                 }
                 {uid !== null &&
-                    <button className='button-add-link'  onClick={() => setDisplayAdd(true)} >
-                        Poster un lien
+                    // <button className='button-add-link'  onClick={() => setDisplayAdd(true)} >
+                    //     Poster un lien
+                    // </button>
+                    <ul className="wrapperAjout">
+  
+                    <button className="iconFavor" onClick={() => setDisplayAdd(true)}>
+                        <div className="flexButon">
+                        {/* <img src={IconeFavor}/> */}
+                        <span>Poster un lien</span>
+                        
+                        </div>
                     </button>
+ 
+                    </ul>
                 }
             </div>
             {displayAdd && (
-                <div className="popup-profil-container">
+                <div className="popup-ajout-container">
                     <div className="modal">
                         <h3>Ajout d'un lien</h3>
                         <span className="cross" onClick={() => setDisplayAdd(false)}>
                             &#10005;
                         </span>
-                        <ul>
+                        <ul className='ul_ajout_Profil'>
                             <form className="newPoste-form-container">
                                 <div className="newPoste-input">
                                     <input  type="text" 
-                                            placeholder="Votre lien!"
+                                            placeholder="Votre lien !"
                                             onChange={(e) => setLien(e.target.value)}
                                             value={lien}
                                             required />
@@ -110,7 +123,7 @@ const AjoutLien = () => {
                                     value={tag}
                                     onChange={e => setTag(e.target.value)}
                                 />
-                                <i type="submit" onClick={handleSubmit}>Add Tag</i>
+                                <i type="submit" onClick={handleSubmit}>Ajouter un tag</i>
 
                                 <ul>
                                     {tags.map(t => (
@@ -120,7 +133,7 @@ const AjoutLien = () => {
 
                                 <div id="newPoste-buttonForm">
                                     <div>
-                                        <button  onClick={() => setDisplayAdd(false)} className="newPoste-btn-cancel" >retour</button>
+                                        <button  onClick={() => setDisplayAdd(false)} className="newPoste-btn-cancel" >Retour</button>
                                     </div>
                                     <div>
                                         <button onClick={handlePost} className="newPoste-btn">Poster</button>

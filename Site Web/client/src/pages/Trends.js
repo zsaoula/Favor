@@ -15,9 +15,7 @@ const Trends = () => {
             {
                 userData.notif != null && userData.notif.map((notif) => {
                     return (
-                        <li>
                             <Notif key={notif._id} notification={notif}/>
-                        </li>
                     );
                 })
 

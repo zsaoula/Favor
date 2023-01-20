@@ -13,7 +13,8 @@ const DisplayPostLikeProfil = () => {
     useEffect(() => {
         dispatch(getPosts());
     },[dispatch])
-
+    console.log("datapost like");
+    console.log(postsData);
 
     return (
         <div>

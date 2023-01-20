@@ -2,18 +2,57 @@
     border: solid black 2px;
     background-color: beige;
     border-radius: 10px;
+    position: fixed;
     width: 250px;
     height: 50px;
     text-align: center;
     cursor: pointer;
 }
 
+.flexButon img {
+  width: 20px;
+  padding-right:20px;
+}
 
+.flexButon {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  
+}
+
+.wrapperAjout .iconFavor {
+  position: fixed;
+  background: #ffffff;
+  border-radius: 25px;
+  width: 250px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  border : none;
+}
+
+.wrapperAjout .iconFavor:hover span {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  
+}
+
+.wrapperAjout .iconFavor:hover {
+  background: #a8a8a8;
+  color: #ffffff;
+  border : none;
+}
 
 .popup-ajout-container {
   position: fixed;
   animation: popup 1s forwards;
-  z-index: 100;
+  z-index: 10000;
   left: 50%;
   
     @keyframes popup {
@@ -59,12 +98,13 @@
         }
       }
 
-      ul {
+      .ul_ajout_Profil {
         min-width: 250px;
         max-width: 300px;
         margin: 20px 0 0;
         max-height: 500px;
         min-height: 200px;
+        overflow: hidden;
 
 
         li {

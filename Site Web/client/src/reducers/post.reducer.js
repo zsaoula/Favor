@@ -3,8 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const postSlice = createSlice({
     name: "post",
     initialState: {
-        post : {
-          },
+        post : null,
     },
     reducers: {
         setPostData: (state,action) => {

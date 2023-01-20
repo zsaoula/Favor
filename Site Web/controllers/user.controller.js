@@ -1,6 +1,7 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
-
+const Post = require('../models/post.model');
+const bcrypt = require('bcrypt');
 
 //-password pour ne pas donner le password
 module.exports.getAllUsers = async (req, res) => {
@@ -46,25 +47,39 @@ module.exports.updateUser = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
-
-module.exports.compteUpdatePseudo = async (req, res) => {
+module.exports.compteUpdatePseudo= async (req,res)=>{
 
   try {
-    console.log("test1");
-    console.log(req.body.email);
-    console.log(req.body.password);
-    console.log(req.params.id);
-    /*if (!UserModel.isValid(req.params.id)) {
-      return res.status(400).send("ID unknown : " + req.params.id);
-    }
-    */
-    console.log("test");
+   
+    console.log("test Change Pseudo");
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          pseudo: req.body.pseudo,
+        }
+      },
+      { runValidators: true, new: true}
+    );
+    res.status(200).json({ message: "User updated successfully", data: updatedUser });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+  
+}
+
+module.exports.compteUpdateEmail= async (req, res) => {
+
+  try {
+   
+    console.log("test Change mail");
+    const salt = await bcrypt.genSalt();
     const updatedUser = await UserModel.findByIdAndUpdate(
       { _id: req.params.id },
       {
         $set: {
           email: req.body.email,
-          password: req.body.password,
+          password: password = await bcrypt.hash(req.body.password, salt),
         }
       },
       { runValidators: true, new: true}
@@ -103,11 +118,35 @@ module.exports.saveImage = async (req, res) => {
 
  
    
+
  
+module.exports.deleteUser = async (req ,res) => {
+  try {
+    // Delete all posts created by user 
+    console.log("testdelete1");
+    await Post.deleteMany({ postedId: req.params.id });
+
+    // Delete all comments and likes in other post made by user
+    await Post.updateMany({}, {
+      $pull: {
+        likers: req.params.id,
+        comments: { commentId: req.params.id }
+      }
+      
+    });
+    console.log("testdelete2");
+    // Delete user
+    await UserModel.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({ message: 'User and all associated data deleted successfully.' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'An error occurred while deleting the user. Please try again later.' });
+  }
+};
 
 
-
-
+/*
 module.exports.deleteUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -119,7 +158,7 @@ module.exports.deleteUser = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
-
+*/
 module.exports.follow = async (req, res) => {
   if (!ObjectID.isValid(req.params.id) || !ObjectID.isValid(req.body.idToFollow)) {
     return res.status(400).send("ID unknown : " + req.params.id);

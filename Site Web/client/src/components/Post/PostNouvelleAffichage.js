@@ -46,12 +46,15 @@ const PostNouvelleAffichage = ( { post } ) => {
 
 
     useEffect(() => {
-        !isEmpty(usersData[0]) && setIsLoading(false)
+        try {
+            !isEmpty(usersData[0]) && setIsLoading(false)
+        }
+        catch (error){
+
+        }
     })
 
-    if(!isLoading){
-        return <p></p>;
-    }
+    
     try {
         return (
             <li className='PostesProfilConteneur' key={post._id}>
@@ -70,8 +73,6 @@ const PostNouvelleAffichage = ( { post } ) => {
                             <div className='informationDunPosteNouvelleAffichage'>
                                 <div id="like">
                                     <ButtonLike post={post}/>
-                                    {/* <img src="coeurs.png"/> */}
-                                    <div>{post.likers.length}</div>
                                 </div>
                                 <div id="commentaire">
                                     <img src={Commentaire} onClick={() => setComments(!comments)}/>
